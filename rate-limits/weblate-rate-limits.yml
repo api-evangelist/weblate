@@ -1,0 +1,62 @@
+specificationVersion: '0.1'
+id: weblate-rate-limits
+name: Weblate API Rate Limits
+description: >-
+  Weblate's REST API implements request throttling based on authentication
+  status. Anonymous (unauthenticated) requests face heavy throttling to
+  encourage API token usage. Authenticated requests using personal access tokens
+  or project-scoped tokens have significantly higher limits. Rate limit status
+  is communicated via response headers. Limits can be configured for
+  self-hosted instances via Django REST framework settings or Docker environment
+  variables.
+url: https://docs.weblate.org/en/latest/api.html
+limits:
+  - name: Anonymous Request Limit
+    description: >-
+      Unauthenticated API requests are throttled to 100 requests per day. This
+      applies to all public read-only API access without an Authorization
+      header. Intended to encourage authenticated API usage.
+    requests: 100
+    window: day
+    windowUnit: day
+    scope: global
+    authenticated: false
+    configurable: true
+    configVar: WEBLATE_API_RATELIMIT_ANON
+  - name: Authenticated Request Limit
+    description: >-
+      Authenticated API requests using a valid token (personal access token
+      with wlu_ prefix or project-scoped token with wlp_ prefix) are throttled
+      to 5,000 requests per hour.
+    requests: 5000
+    window: hour
+    windowUnit: hour
+    scope: per-user
+    authenticated: true
+    configurable: true
+    configVar: WEBLATE_API_RATELIMIT_USER
+  - name: Pagination Limit
+    description: >-
+      API list endpoints default to 50 items per page. The maximum page size
+      is 1,000 items, adjustable via the page_size query parameter.
+    defaultPageSize: 50
+    maxPageSize: 1000
+    scope: per-request
+headers:
+  - name: X-RateLimit-Limit
+    description: Maximum number of requests allowed in the current time window
+  - name: X-RateLimit-Remaining
+    description: Number of requests remaining in the current time window
+  - name: X-RateLimit-Reset
+    description: Number of seconds until the rate limit window resets
+authentication:
+  - type: Token
+    description: >-
+      Personal access tokens obtained from user profile settings. Prefixed
+      with wlu_.
+    header: 'Authorization: Token YOUR-TOKEN'
+  - type: ProjectToken
+    description: >-
+      Project-scoped tokens limited to a specific project's access. Prefixed
+      with wlp_.
+    header: 'Authorization: Token YOUR-PROJECT-TOKEN'

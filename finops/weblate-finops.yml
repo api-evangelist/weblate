@@ -1,0 +1,95 @@
+specificationVersion: '1.0'
+id: weblate-finops
+name: Weblate FinOps Framework
+description: >-
+  FinOps guidance for managing Weblate API and hosting costs using the FOCUS
+  (FinOps Open Cost and Usage Specification) framework. Weblate's hosted
+  service is priced based on the number of source strings managed across all
+  translation projects and languages. Understanding string volume, project
+  growth, and language coverage is essential for cost optimization.
+url: https://weblate.org/en/hosting/
+framework: FinOps FOCUS 1.0
+billingModel: string-volume
+currency: EUR
+costDrivers:
+  - name: Source String Count
+    description: >-
+      The primary cost driver for Weblate hosted plans is the total number of
+      source strings across all translation projects and language pairs. A
+      string is an individual text unit within a translation file. Costs
+      increase as string volume crosses plan thresholds.
+    unit: strings
+    impact: high
+  - name: Language Coverage
+    description: >-
+      Each additional target language multiplies the effective string workload
+      for processing and storage. However, Weblate pricing is based on source
+      string count rather than translated string count per language.
+    unit: languages
+    impact: medium
+  - name: Billing Cycle
+    description: >-
+      Annual subscriptions provide a 20% discount compared to month-to-month
+      billing. Organizations with stable string volumes benefit from annual
+      commitment pricing.
+    unit: subscription
+    impact: medium
+optimization:
+  - name: Monitor String Growth
+    description: >-
+      Track total string counts across projects regularly to anticipate plan
+      tier upgrades. String counts grow as new features are added or new
+      products are introduced.
+    action: Monitor /api/projects/ and /api/components/ for string count statistics
+  - name: Annual Commitment Discount
+    description: >-
+      Commit to annual billing to receive a 20% discount on all hosted plans.
+      Suitable when string volume is predictable and stable.
+    savingsPercent: 20
+  - name: Archive Inactive Components
+    description: >-
+      Remove or archive translation components that are no longer actively
+      maintained to reduce string count and potentially qualify for a lower
+      plan tier.
+    action: Review and archive unused translation components via the API
+  - name: Consolidate Projects
+    description: >-
+      Merge related small projects into unified projects to simplify management
+      without increasing string count.
+    action: Audit project structure for consolidation opportunities
+  - name: Self-Hosted Alternative
+    description: >-
+      For organizations with large string volumes, self-hosting Weblate
+      (open-source, GPL-3.0) on cloud infrastructure may be more cost-effective
+      than hosted plans. Factor in infrastructure, maintenance, and support
+      costs when evaluating.
+    action: Compare hosted plan cost vs self-hosted infrastructure cost at each tier
+allocation:
+  - name: Per-Project Cost Allocation
+    description: >-
+      Use the Weblate API to retrieve string counts per project via
+      /api/projects/{project}/statistics/ and allocate hosted plan costs
+      proportionally across business units or product teams.
+    endpoint: /api/projects/{project}/statistics/
+  - name: Per-Component Cost Tracking
+    description: >-
+      Track string counts per component via /api/components/{project}/{component}/statistics/
+      for granular cost attribution to product features or modules.
+    endpoint: /api/components/{project}/{component}/statistics/
+reporting:
+  - name: String Volume Report
+    description: >-
+      Generate monthly reports of total string count using the API to track
+      growth trends and forecast when plan upgrades will be needed.
+    frequency: monthly
+  - name: Translation Coverage Report
+    description: >-
+      Track translation completeness across languages and projects to ensure
+      investment in translation capacity aligns with product requirements.
+    frequency: monthly
+  - name: API Usage Report
+    description: >-
+      Monitor API request volumes using X-RateLimit-Remaining headers and
+      server logs to understand integration usage patterns and optimize
+      API call efficiency.
+    frequency: weekly

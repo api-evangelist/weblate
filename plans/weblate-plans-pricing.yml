@@ -1,0 +1,147 @@
+specificationVersion: '0.1'
+id: weblate-plans-pricing
+name: Weblate Plans and Pricing
+description: >-
+  Weblate offers hosted cloud plans based on the number of source strings across
+  all translation projects, as well as self-hosted options with optional support
+  packages. All hosted plans include unlimited projects, components, and
+  translator accounts with a 14-day free trial. Annual subscriptions receive a
+  20% discount.
+url: https://weblate.org/en/hosting/
+currency: EUR
+plans:
+  - name: Libre / Free
+    description: >-
+      Free hosting for libre and open-source projects. Projects must use a free
+      license. Includes full Weblate features with community-level support.
+    price: 0
+    billingInterval: month
+    features:
+      - Free for open-source and libre projects
+      - Full Weblate feature set
+      - Unlimited translator accounts
+      - Unlimited translation components
+  - name: 10k Strings
+    description: >-
+      Hosted Weblate plan for up to 10,000 strings across all projects and
+      languages. Suitable for small teams and single products.
+    price: 47
+    billingInterval: month
+    annualPrice: 470
+    annualDiscount: 20%
+    features:
+      - Up to 10,000 strings
+      - Unlimited translation projects
+      - Unlimited translation components
+      - Unlimited translator accounts
+      - Premium support from core developers
+      - 14-day free trial
+  - name: 40k Strings
+    description: >-
+      Hosted Weblate plan for up to 40,000 strings. Suited for medium-sized
+      products or teams with multiple projects.
+    price: 70
+    billingInterval: month
+    annualPrice: 700
+    annualDiscount: 20%
+    features:
+      - Up to 40,000 strings
+      - Unlimited translation projects
+      - Unlimited translation components
+      - Unlimited translator accounts
+      - Premium support from core developers
+      - 14-day free trial
+  - name: 160k Strings
+    description: >-
+      Hosted Weblate plan for up to 160,000 strings. Suitable for larger
+      products or organizations managing many translation projects.
+    price: 114
+    billingInterval: month
+    annualPrice: 1140
+    annualDiscount: 20%
+    features:
+      - Up to 160,000 strings
+      - Unlimited translation projects
+      - Unlimited translation components
+      - Unlimited translator accounts
+      - Premium support from core developers
+      - 14-day free trial
+  - name: 640k Strings
+    description: >-
+      Hosted Weblate plan for up to 640,000 strings. Designed for enterprise
+      products with extensive localization needs.
+    price: 193
+    billingInterval: month
+    annualPrice: 1930
+    annualDiscount: 20%
+    features:
+      - Up to 640,000 strings
+      - Unlimited translation projects
+      - Unlimited translation components
+      - Unlimited translator accounts
+      - Optional dedicated instance
+      - Premium support from core developers
+      - 14-day free trial
+  - name: 2.5M Strings
+    description: >-
+      Hosted Weblate plan for up to 2,560,000 strings. For very large
+      enterprise localization operations.
+    price: 342
+    billingInterval: month
+    annualPrice: 3420
+    annualDiscount: 20%
+    features:
+      - Up to 2,560,000 strings
+      - Unlimited translation projects
+      - Unlimited translation components
+      - Unlimited translator accounts
+      - Optional dedicated instance
+      - Premium support from core developers
+      - 14-day free trial
+  - name: 10M Strings
+    description: >-
+      Hosted Weblate plan for up to 10,240,000 strings. For the largest
+      enterprise localization workloads.
+    price: 616
+    billingInterval: month
+    annualPrice: 6160
+    annualDiscount: 20%
+    features:
+      - Up to 10,240,000 strings
+      - Unlimited translation projects
+      - Unlimited translation components
+      - Unlimited translator accounts
+      - Optional dedicated instance
+      - Premium support from core developers
+      - 14-day free trial
+  - name: Custom / Enterprise
+    description: >-
+      Custom hosting plans for organizations needing more than 10M strings or
+      requiring dedicated infrastructure and SLA agreements.
+    price: contact
+    billingInterval: month
+    features:
+      - Unlimited strings
+      - Dedicated instance
+      - Custom SLA
+      - Premium support from core developers
+      - Contact sales for pricing
+  - name: Self-Hosted Basic Support
+    description: >-
+      Basic support package for organizations running Weblate on their own
+      infrastructure.
+    price: 53
+    billingInterval: month
+    features:
+      - Email support from core developers
+      - Self-hosted deployment
+  - name: Self-Hosted Extended Support
+    description: >-
+      Extended support package for organizations running Weblate on their own
+      infrastructure with priority response.
+    price: 106
+    billingInterval: month
+    features:
+      - Priority email support from core developers
+      - Self-hosted deployment
+      - Faster response times

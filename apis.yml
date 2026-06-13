@@ -1,0 +1,75 @@
+aid: weblate
+name: Weblate
+description: >-
+  Weblate is an open-source web-based localization platform that provides a
+  comprehensive REST API for managing translation projects, components, strings,
+  and contributors. The platform enables continuous localization workflows with
+  tight version control integration, supporting Git, GitHub, GitLab, and other
+  VCS systems. Developers can use the API to automate translation management,
+  trigger repository synchronization, retrieve translation statistics, and
+  orchestrate automated translation workflows. Weblate is available as a hosted
+  SaaS service or as a self-hosted open-source deployment.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/weblate/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - Localization
+  - Translation
+  - Internationalization
+  - Open Source
+  - Continuous Localization
+  - Version Control
+apis:
+  - aid: weblate:weblate-rest-api
+    name: Weblate REST API
+    description: >-
+      The Weblate REST API provides full programmatic access to the localization
+      platform, enabling management of translation projects, components,
+      translations, strings, languages, users, groups, and repository
+      operations. The API is built on Django REST Framework and documented via
+      OpenAPI 3.1 schema, accessible at /api/schema/. Authentication uses
+      token-based access with personal access tokens (wlu_ prefix) or
+      project-scoped tokens (wlp_ prefix).
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://docs.weblate.org/en/latest/api.html
+    baseURL: https://hosted.weblate.org/api/
+    tags:
+      - Localization
+      - Translation
+      - Projects
+      - Components
+      - Strings
+    properties:
+      - type: Documentation
+        url: https://docs.weblate.org/en/latest/api.html
+      - type: OpenAPI
+        url: https://hosted.weblate.org/api/schema/
+common:
+  - type: Website
+    url: https://weblate.org/en/
+  - type: Documentation
+    url: https://docs.weblate.org/en/latest/api.html
+  - type: GitHubOrg
+    url: https://github.com/WeblateOrg
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/weblate/
+  - type: Blog
+    url: https://weblate.org/en/blog/
+  - type: Pricing
+    url: https://weblate.org/en/hosting/
+  - type: StatusPage
+    url: https://status.weblate.org/
+  - type: X
+    url: https://x.com/WeblateOrg
+  - type: Plans
+    url: plans/weblate-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/weblate-rate-limits.yml
+  - type: FinOps
+    url: finops/weblate-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
