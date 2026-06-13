@@ -47,6 +47,9 @@ apis:
         url: https://docs.weblate.org/en/latest/api.html
       - type: OpenAPI
         url: https://hosted.weblate.org/api/schema/
+      - type: OpenAPI
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/weblate/refs/heads/main/openapi/weblate-weblate-rest-api-openapi.yml
 common:
   - type: Website
     url: https://weblate.org/en/

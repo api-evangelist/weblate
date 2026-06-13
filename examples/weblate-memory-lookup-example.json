@@ -1,0 +1,26 @@
+{
+  "request_query": {
+    "source": "Submit",
+    "language": "de",
+    "project": "myproject"
+  },
+  "response": {
+    "count": 2,
+    "results": [
+      {
+        "source": "Submit",
+        "target": "Absenden",
+        "quality": 100,
+        "service": "Weblate Translation Memory",
+        "origin": "myproject/app"
+      },
+      {
+        "source": "Submit",
+        "target": "Einreichen",
+        "quality": 100,
+        "service": "Weblate Translation Memory",
+        "origin": "otherproject/web"
+      }
+    ]
+  }
+}

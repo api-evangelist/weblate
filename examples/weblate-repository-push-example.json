@@ -1,0 +1,9 @@
+{
+  "request": {
+    "operation": "push"
+  },
+  "response": {
+    "result": true,
+    "detail": "Repository successfully pushed."
+  }
+}

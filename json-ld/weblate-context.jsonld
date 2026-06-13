@@ -1,0 +1,287 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "weblate": "https://docs.weblate.org/en/latest/api.html#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Project": {
+      "@id": "weblate:project",
+      "@type": "@id"
+    },
+    "Component": {
+      "@id": "weblate:component",
+      "@type": "@id"
+    },
+    "Translation": {
+      "@id": "weblate:translation",
+      "@type": "@id"
+    },
+    "Unit": {
+      "@id": "weblate:unit",
+      "@type": "@id"
+    },
+    "Language": {
+      "@id": "weblate:language",
+      "@type": "@id"
+    },
+    "Change": {
+      "@id": "weblate:change",
+      "@type": "@id"
+    },
+    "Addon": {
+      "@id": "weblate:addon",
+      "@type": "@id"
+    },
+    "Screenshot": {
+      "@id": "weblate:screenshot",
+      "@type": "@id"
+    },
+    "User": {
+      "@id": "weblate:user",
+      "@type": "@id"
+    },
+    "Group": {
+      "@id": "weblate:group",
+      "@type": "@id"
+    },
+    "Role": {
+      "@id": "weblate:role",
+      "@type": "@id"
+    },
+    "Memory": {
+      "@id": "weblate:memory",
+      "@type": "@id"
+    },
+    "Category": {
+      "@id": "weblate:category",
+      "@type": "@id"
+    },
+    "ComponentList": {
+      "@id": "weblate:component_list",
+      "@type": "@id"
+    },
+    "Label": {
+      "@id": "weblate:label",
+      "@type": "@id"
+    },
+    "Task": {
+      "@id": "weblate:task",
+      "@type": "@id"
+    },
+
+    "id": "@id",
+    "type": "@type",
+
+    "slug": {
+      "@id": "weblate:slug",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "web_url": {
+      "@id": "weblate:web_url",
+      "@type": "@id"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "source_language": {
+      "@id": "weblate:source_language",
+      "@type": "@id"
+    },
+    "code": {
+      "@id": "weblate:language_code",
+      "@type": "xsd:string"
+    },
+    "language": {
+      "@id": "weblate:language",
+      "@type": "@id"
+    },
+    "project": {
+      "@id": "weblate:project",
+      "@type": "@id"
+    },
+    "component": {
+      "@id": "weblate:component",
+      "@type": "@id"
+    },
+    "translation": {
+      "@id": "weblate:translation",
+      "@type": "@id"
+    },
+    "vcs": {
+      "@id": "weblate:vcs",
+      "@type": "xsd:string"
+    },
+    "repo": {
+      "@id": "weblate:repo",
+      "@type": "xsd:string"
+    },
+    "branch": {
+      "@id": "weblate:branch",
+      "@type": "xsd:string"
+    },
+    "filemask": {
+      "@id": "weblate:filemask",
+      "@type": "xsd:string"
+    },
+    "file_format": {
+      "@id": "weblate:file_format",
+      "@type": "xsd:string"
+    },
+    "source": {
+      "@id": "weblate:source",
+      "@type": "xsd:string"
+    },
+    "target": {
+      "@id": "weblate:target",
+      "@type": "xsd:string"
+    },
+    "state": {
+      "@id": "weblate:state",
+      "@type": "xsd:integer"
+    },
+    "translated": {
+      "@id": "weblate:translated",
+      "@type": "xsd:boolean"
+    },
+    "fuzzy": {
+      "@id": "weblate:fuzzy",
+      "@type": "xsd:boolean"
+    },
+    "timestamp": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "created": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "username": {
+      "@id": "weblate:username",
+      "@type": "xsd:string"
+    },
+    "full_name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "email": {
+      "@id": "schema:email",
+      "@type": "xsd:string"
+    },
+    "is_superuser": {
+      "@id": "weblate:is_superuser",
+      "@type": "xsd:boolean"
+    },
+    "is_active": {
+      "@id": "weblate:is_active",
+      "@type": "xsd:boolean"
+    },
+    "groups": {
+      "@id": "weblate:groups",
+      "@container": "@list"
+    },
+    "roles": {
+      "@id": "weblate:roles",
+      "@container": "@list"
+    },
+    "permissions": {
+      "@id": "weblate:permissions",
+      "@container": "@list"
+    },
+    "translated_percent": {
+      "@id": "weblate:translated_percent",
+      "@type": "xsd:float"
+    },
+    "total": {
+      "@id": "weblate:total",
+      "@type": "xsd:integer"
+    },
+    "total_words": {
+      "@id": "weblate:total_words",
+      "@type": "xsd:integer"
+    },
+    "translated_words": {
+      "@id": "weblate:translated_words",
+      "@type": "xsd:integer"
+    },
+    "failing_checks": {
+      "@id": "weblate:failing_checks",
+      "@type": "xsd:integer"
+    },
+    "addon_name": {
+      "@id": "weblate:addon_name",
+      "@type": "xsd:string"
+    },
+    "configuration": {
+      "@id": "weblate:configuration"
+    },
+    "context": {
+      "@id": "weblate:context",
+      "@type": "xsd:string"
+    },
+    "position": {
+      "@id": "weblate:position",
+      "@type": "xsd:integer"
+    },
+    "priority": {
+      "@id": "weblate:priority",
+      "@type": "xsd:integer"
+    },
+    "content_hash": {
+      "@id": "weblate:content_hash",
+      "@type": "xsd:string"
+    },
+    "has_suggestion": {
+      "@id": "weblate:has_suggestion",
+      "@type": "xsd:boolean"
+    },
+    "has_comment": {
+      "@id": "weblate:has_comment",
+      "@type": "xsd:boolean"
+    },
+    "has_failing_check": {
+      "@id": "weblate:has_failing_check",
+      "@type": "xsd:boolean"
+    },
+    "color": {
+      "@id": "weblate:color",
+      "@type": "xsd:string"
+    },
+    "action": {
+      "@id": "weblate:action",
+      "@type": "xsd:integer"
+    },
+    "action_name": {
+      "@id": "weblate:action_name",
+      "@type": "xsd:string"
+    },
+    "author": {
+      "@id": "schema:author",
+      "@type": "@id"
+    },
+    "message": {
+      "@id": "schema:text",
+      "@type": "xsd:string"
+    },
+    "result": {
+      "@id": "weblate:result"
+    },
+    "status": {
+      "@id": "weblate:status",
+      "@type": "xsd:string"
+    },
+    "completed": {
+      "@id": "weblate:completed",
+      "@type": "xsd:boolean"
+    }
+  }
+}

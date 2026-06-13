@@ -1,0 +1,36 @@
+{
+  "request": {
+    "key": "welcome.message",
+    "value": ["Welcome to Weblate!"],
+    "skip_fuzzy_matching": false,
+    "context": "Shown on the homepage greeting banner"
+  },
+  "response": {
+    "translation": "https://hosted.weblate.org/api/translations/myproject/app/en/",
+    "source": ["Welcome to Weblate!"],
+    "previous_source": "",
+    "target": ["Welcome to Weblate!"],
+    "id_hash": -5234567890123456789,
+    "content_hash": 1234567890123456789,
+    "location": "weblate/templates/home.html:42",
+    "context": "Shown on the homepage greeting banner",
+    "note": "",
+    "flags": "",
+    "labels": [],
+    "state": 20,
+    "fuzzy": false,
+    "translated": true,
+    "approved": false,
+    "position": 1,
+    "has_suggestion": false,
+    "has_comment": false,
+    "has_failing_check": false,
+    "num_words": 4,
+    "priority": 100,
+    "id": 987654,
+    "explanation": "",
+    "extra_flags": "",
+    "web_url": "https://hosted.weblate.org/translate/myproject/app/en/?checksum=abc123",
+    "url": "https://hosted.weblate.org/api/units/987654/"
+  }
+}

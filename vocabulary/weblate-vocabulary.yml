@@ -1,0 +1,280 @@
+vocabulary:
+  name: Weblate REST API Vocabulary
+  description: >-
+    Terms and concepts drawn from the Weblate REST API, covering localization
+    projects, translation components, strings, languages, users, groups,
+    memory, screenshots, and repository operations.
+  url: https://docs.weblate.org/en/latest/api.html
+  version: '5.x'
+  terms:
+
+    # Core Resources
+    - term: project
+      label: Project
+      description: >-
+        Top-level container for related translation components. A project groups
+        components sharing the same source language and workflow settings.
+      type: Resource
+      endpoints:
+        - /api/projects/
+        - /api/projects/{slug}/
+
+    - term: component
+      label: Component
+      description: >-
+        A single translatable resource within a project, typically mapped to a
+        file or set of files in a version control repository. Components define
+        the file format, VCS connection, and branch.
+      type: Resource
+      endpoints:
+        - /api/components/
+        - /api/components/{project__slug}/{slug}/
+
+    - term: translation
+      label: Translation
+      description: >-
+        A specific language version of a component. Each translation contains
+        units (strings) in the target language.
+      type: Resource
+      endpoints:
+        - /api/translations/
+        - /api/translations/{component__project__slug}/{component__slug}/{language__code}/
+
+    - term: unit
+      label: Unit
+      description: >-
+        A single translatable string within a translation. Contains source text,
+        target text, state, flags, and associated metadata.
+      type: Resource
+      endpoints:
+        - /api/units/
+        - /api/units/{id}/
+
+    - term: language
+      label: Language
+      description: >-
+        A natural language supported by Weblate, identified by a language code
+        (e.g., cs, de, fr). Languages are used to scope translations.
+      type: Resource
+      endpoints:
+        - /api/languages/
+        - /api/languages/{code}/
+
+    - term: change
+      label: Change
+      description: >-
+        An audit log entry recording a modification to a translation unit,
+        component, project, or other resource. Changes include the timestamp,
+        action type, and actor.
+      type: Resource
+      endpoints:
+        - /api/changes/
+        - /api/changes/{id}/
+
+    - term: addon
+      label: Add-on
+      description: >-
+        A plugin attached to a component that extends Weblate's behavior —
+        for example, auto-fixing strings, enforcing checks, or triggering
+        post-processing steps.
+      type: Resource
+      endpoints:
+        - /api/addons/
+        - /api/addons/{id}/
+
+    - term: screenshot
+      label: Screenshot
+      description: >-
+        An image file associated with one or more translation units to provide
+        visual context for translators.
+      type: Resource
+      endpoints:
+        - /api/screenshots/
+        - /api/screenshots/{id}/
+
+    - term: user
+      label: User
+      description: >-
+        A registered Weblate account. Users belong to groups and can have
+        personal access tokens for API authentication.
+      type: Resource
+      endpoints:
+        - /api/users/
+        - /api/users/{username}/
+
+    - term: group
+      label: Group
+      description: >-
+        A collection of users sharing the same access rights. Groups can be
+        scoped to projects, component lists, or global roles.
+      type: Resource
+      endpoints:
+        - /api/groups/
+        - /api/groups/{id}/
+
+    - term: role
+      label: Role
+      description: >-
+        A named set of permissions assigned to a group, controlling what
+        actions members may perform on projects and components.
+      type: Resource
+      endpoints:
+        - /api/roles/
+        - /api/roles/{id}/
+
+    - term: memory
+      label: Translation Memory
+      description: >-
+        Stored previously translated strings that can be suggested for reuse.
+        The API supports listing, importing, and deleting memory entries, as
+        well as performing lookups.
+      type: Resource
+      endpoints:
+        - /api/memory/
+        - /api/memory/{id}/
+        - /api/memory/lookup/
+
+    - term: category
+      label: Category
+      description: >-
+        An organizational grouping within a project used to nest components.
+        Categories support hierarchical organization of large projects.
+      type: Resource
+      endpoints:
+        - /api/categories/
+        - /api/categories/{id}/
+
+    - term: component_list
+      label: Component List
+      description: >-
+        A named, ordered collection of components across projects, used to
+        organize dashboards and access control.
+      type: Resource
+      endpoints:
+        - /api/component-lists/
+        - /api/component-lists/{slug}/
+
+    - term: label
+      label: Label
+      description: >-
+        A tag that can be applied to translation units within a project to
+        categorize or flag them for workflow purposes.
+      type: Resource
+      endpoints:
+        - /api/projects/{slug}/labels/
+        - /api/projects/{slug}/labels/{label_id}/
+
+    - term: task
+      label: Task
+      description: >-
+        An asynchronous background operation (e.g., auto-translation, repository
+        push) that can be polled for completion status.
+      type: Resource
+      endpoints:
+        - /api/tasks/{id}/
+
+    # Authentication Concepts
+    - term: token
+      label: API Token
+      description: >-
+        A personal access token (wlu_ prefix) or project-scoped token
+        (wlp_ prefix) used to authenticate API requests via the
+        Authorization HTTP header.
+      type: Concept
+
+    - term: personal_access_token
+      label: Personal Access Token
+      description: >-
+        A user-level token with wlu_ prefix granting API access scoped
+        to the user's permissions across all their projects.
+      type: Concept
+
+    - term: project_token
+      label: Project Token
+      description: >-
+        A project-scoped token with wlp_ prefix that limits API access
+        to a single project's resources.
+      type: Concept
+
+    # Repository Operations
+    - term: repository
+      label: Repository
+      description: >-
+        The version control system (Git, GitHub, GitLab, etc.) backing a
+        component. Repository operations include pulling, pushing, resetting,
+        and checking status via the API.
+      type: Concept
+      endpoints:
+        - /api/components/{project__slug}/{slug}/repository/
+        - /api/translations/{component__project__slug}/{component__slug}/{language__code}/repository/
+        - /api/projects/{slug}/repository/
+
+    - term: lock
+      label: Lock
+      description: >-
+        A mechanism to temporarily disable commits and pushes on a component
+        or project, used during maintenance or large updates.
+      type: Concept
+      endpoints:
+        - /api/components/{project__slug}/{slug}/lock/
+        - /api/projects/{slug}/lock/
+
+    # Translation Concepts
+    - term: autotranslate
+      label: Auto-Translate
+      description: >-
+        An operation that automatically fills in translation units using
+        machine translation services or translation memory suggestions.
+      type: Operation
+      endpoints:
+        - /api/translations/{component__project__slug}/{component__slug}/{language__code}/autotranslate/
+
+    - term: statistics
+      label: Statistics
+      description: >-
+        Aggregated translation progress metrics for a project, component,
+        translation, language, or category — including counts of translated,
+        fuzzy, failing, and total strings.
+      type: Concept
+
+    - term: announcement
+      label: Announcement
+      description: >-
+        A message attached to a project, component, or language visible
+        to translators within the Weblate interface.
+      type: Resource
+
+    - term: credits
+      label: Credits
+      description: >-
+        A summary of translator contributions (users and string counts) for
+        a component or project over a time range.
+      type: Concept
+
+    - term: slug
+      label: Slug
+      description: >-
+        A URL-safe identifier string used to reference projects, components,
+        component lists, and categories in API paths.
+      type: Concept
+
+    - term: file_format
+      label: File Format
+      description: >-
+        The translation file type used by a component — e.g., po, xliff, json,
+        strings, yaml. Determines how Weblate parses and serializes strings.
+      type: Concept
+
+    - term: vcs
+      label: Version Control System
+      description: >-
+        The source control backend (git, github, gitlab, gitea, pagure, etc.)
+        used to store and sync translation files for a component.
+      type: Concept
+
+    - term: machinery
+      label: Machinery
+      description: >-
+        Machine translation backends (DeepL, Google Translate, LibreTranslate,
+        etc.) integrated into Weblate for automated translation suggestions.
+      type: Concept

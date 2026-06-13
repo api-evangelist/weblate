@@ -1,0 +1,53 @@
+{
+  "count": 2,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "name": "Hello World",
+      "slug": "hello",
+      "id": 1,
+      "url": "https://hosted.weblate.org/api/projects/hello/",
+      "web_url": "https://hosted.weblate.org/projects/hello/",
+      "web": "https://weblate.org/",
+      "source_language": {
+        "code": "en",
+        "name": "English",
+        "plural": {
+          "id": 75,
+          "source": 0,
+          "number": 2,
+          "formula": "n != 1",
+          "type": 1
+        },
+        "aliases": ["english", "base", "source"],
+        "direction": "ltr",
+        "population": 159034349015,
+        "web_url": "https://hosted.weblate.org/languages/en/",
+        "url": "https://hosted.weblate.org/api/languages/en/"
+      },
+      "components_list_url": "https://hosted.weblate.org/api/projects/hello/components/",
+      "statistics_url": "https://hosted.weblate.org/api/projects/hello/statistics/",
+      "categories_url": "https://hosted.weblate.org/api/projects/hello/categories/",
+      "changes_list_url": "https://hosted.weblate.org/api/projects/hello/changes/"
+    },
+    {
+      "name": "Weblate",
+      "slug": "weblate",
+      "id": 2,
+      "url": "https://hosted.weblate.org/api/projects/weblate/",
+      "web_url": "https://hosted.weblate.org/projects/weblate/",
+      "web": "https://weblate.org/",
+      "source_language": {
+        "code": "en",
+        "name": "English",
+        "direction": "ltr",
+        "web_url": "https://hosted.weblate.org/languages/en/",
+        "url": "https://hosted.weblate.org/api/languages/en/"
+      },
+      "components_list_url": "https://hosted.weblate.org/api/projects/weblate/components/",
+      "statistics_url": "https://hosted.weblate.org/api/projects/weblate/statistics/",
+      "changes_list_url": "https://hosted.weblate.org/api/projects/weblate/changes/"
+    }
+  ]
+}
