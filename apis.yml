@@ -10,7 +10,7 @@ description: >-
   orchestrate automated translation workflows. Weblate is available as a hosted
   SaaS service or as a self-hosted open-source deployment.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/weblate/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -33,7 +33,7 @@ apis:
       OpenAPI 3.1 schema, accessible at /api/schema/. Authentication uses
       token-based access with personal access tokens (wlu_ prefix) or
       project-scoped tokens (wlp_ prefix).
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://docs.weblate.org/en/latest/api.html
     baseURL: https://hosted.weblate.org/api/
     tags:
