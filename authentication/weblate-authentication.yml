@@ -1,0 +1,39 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/weblate-weblate-rest-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - cookie
+  - header
+schemes:
+- name: bearerAuth
+  type: apiKey
+  in: header
+  parameter: Bearer
+  description: |-
+    Token-based authentication with required prefix `Bearer`.
+
+    - Each user has a personal access token which they can get from their respective user profile. These tokens have the `wlu_` prefix.
+    - It is possible to create project tokens whose access to the API is limited to operations to their associated project. These tokens have the `wlp_` prefix.
+  sources:
+  - openapi/weblate-weblate-rest-api-openapi.yml
+- name: cookieAuth
+  type: apiKey
+  in: cookie
+  parameter: sessionid
+  description: Session-based authentication used when user is signed in.
+  sources:
+  - openapi/weblate-weblate-rest-api-openapi.yml
+- name: tokenAuth
+  type: apiKey
+  in: header
+  parameter: Token
+  description: |-
+    Token-based authentication with required prefix `Token`.
+
+    - Each user has a personal access token which they can get from their respective user profile. These tokens have the `wlu_` prefix.
+    - It is possible to create project tokens whose access to the API is limited to operations to their associated project. These tokens have the `wlp_` prefix.
+  sources:
+  - openapi/weblate-weblate-rest-api-openapi.yml

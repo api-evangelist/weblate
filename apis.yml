@@ -51,6 +51,12 @@ apis:
         url: >-
           https://raw.githubusercontent.com/api-evangelist/weblate/refs/heads/main/openapi/weblate-weblate-rest-api-openapi.yml
 common:
+  - type: VulnerabilityDisclosure
+    url: security/weblate-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/weblate-domain-security.yml
+  - type: Authentication
+    url: authentication/weblate-authentication.yml
   - type: Website
     url: https://weblate.org/en/
   - type: Documentation
