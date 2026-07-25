@@ -1,0 +1,2686 @@
+openapi: 3.1.1
+info:
+  title: Weblate's REST addons categories API
+  version: ''
+  x-logo:
+    url: /static/weblate.svg
+  description: "\nThe API is accessible on the ``/api/`` URL and it is based on [Django REST framework](https://www.django-rest-framework.org/).\n\nThe OpenAPI specification is available as feature preview, feedback welcome!\n\n## Authorization\n\n<!-- Redoc-Inject: <security-definitions> -->\n\n\n    "
+  license:
+    name: GNU General Public License v3 or later
+    url: https://docs.weblate.org/en/latest/contributing/license.html
+servers:
+- url: 'http:'
+  description: Weblate
+tags:
+- name: categories
+paths:
+  /api/categories/:
+    get:
+      operationId: api_categories_list
+      description: List available categories.
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - categories
+      security:
+      - tokenAuth: []
+      - bearerAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse400'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse401'
+              examples:
+                AuthenticationFailed:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: authentication_failed
+                      detail: Incorrect authentication credentials.
+                      attr: null
+                NotAuthenticated:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: not_authenticated
+                      detail: Authentication credentials were not provided.
+                      attr: null
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse403'
+              examples:
+                PermissionDenied:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: permission_denied
+                      detail: You do not have permission to perform this action.
+                      attr: null
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse404'
+              examples:
+                NotFound:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: not_found
+                      detail: Not found.
+                      attr: null
+          description: ''
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse405'
+              examples:
+                MethodNotAllowed:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: method_not_allowed
+                      detail: Method "get" not allowed.
+                      attr: null
+          description: ''
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse406'
+              examples:
+                NotAcceptable:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: not_acceptable
+                      detail: Could not satisfy the request Accept header.
+                      attr: null
+          description: ''
+        '423':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse423'
+          description: ''
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse429'
+              examples:
+                Throttled:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: throttled
+                      detail: Request was throttled.
+                      attr: null
+          description: ''
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse500'
+              examples:
+                APIException:
+                  value:
+                    type: server_error
+                    errors:
+                    - code: error
+                      detail: A server error occurred.
+                      attr: null
+          description: ''
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedCategoryList'
+          description: ''
+          headers:
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/X-RateLimit-Limit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/X-RateLimit-Remaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/X-RateLimit-Reset'
+    post:
+      operationId: api_categories_create
+      description: Category API.
+      tags:
+      - categories
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Category'
+        required: true
+      security:
+      - tokenAuth: []
+      - bearerAuth: []
+      - cookieAuth: []
+      responses:
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse400'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse401'
+              examples:
+                AuthenticationFailed:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: authentication_failed
+                      detail: Incorrect authentication credentials.
+                      attr: null
+                NotAuthenticated:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: not_authenticated
+                      detail: Authentication credentials were not provided.
+                      attr: null
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse403'
+              examples:
+                PermissionDenied:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: permission_denied
+                      detail: You do not have permission to perform this action.
+                      attr: null
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse404'
+              examples:
+                NotFound:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: not_found
+                      detail: Not found.
+                      attr: null
+          description: ''
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse405'
+              examples:
+                MethodNotAllowed:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: method_not_allowed
+                      detail: Method "get" not allowed.
+                      attr: null
+          description: ''
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse406'
+              examples:
+                NotAcceptable:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: not_acceptable
+                      detail: Could not satisfy the request Accept header.
+                      attr: null
+          description: ''
+        '415':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse415'
+              examples:
+                UnsupportedMediaType:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: unsupported_media_type
+                      detail: Unsupported media type "application/json" in request.
+                      attr: null
+          description: ''
+        '423':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse423'
+          description: ''
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse429'
+              examples:
+                Throttled:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: throttled
+                      detail: Request was throttled.
+                      attr: null
+          description: ''
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse500'
+              examples:
+                APIException:
+                  value:
+                    type: server_error
+                    errors:
+                    - code: error
+                      detail: A server error occurred.
+                      attr: null
+          description: ''
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+          description: ''
+  /api/categories/{id}/:
+    get:
+      operationId: api_categories_retrieve
+      description: Category API.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          pattern: ^[^/]+$
+        required: true
+      tags:
+      - categories
+      security:
+      - tokenAuth: []
+      - bearerAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse400'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse401'
+              examples:
+                AuthenticationFailed:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: authentication_failed
+                      detail: Incorrect authentication credentials.
+                      attr: null
+                NotAuthenticated:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: not_authenticated
+                      detail: Authentication credentials were not provided.
+                      attr: null
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse403'
+              examples:
+                PermissionDenied:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: permission_denied
+                      detail: You do not have permission to perform this action.
+                      attr: null
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse404'
+              examples:
+                NotFound:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: not_found
+                      detail: Not found.
+                      attr: null
+          description: ''
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse405'
+              examples:
+                MethodNotAllowed:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: method_not_allowed
+                      detail: Method "get" not allowed.
+                      attr: null
+          description: ''
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse406'
+              examples:
+                NotAcceptable:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: not_acceptable
+                      detail: Could not satisfy the request Accept header.
+                      attr: null
+          description: ''
+        '423':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse423'
+          description: ''
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse429'
+              examples:
+                Throttled:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: throttled
+                      detail: Request was throttled.
+                      attr: null
+          description: ''
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse500'
+              examples:
+                APIException:
+                  value:
+                    type: server_error
+                    errors:
+                    - code: error
+                      detail: A server error occurred.
+                      attr: null
+          description: ''
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+          description: ''
+          headers:
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/X-RateLimit-Limit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/X-RateLimit-Remaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/X-RateLimit-Reset'
+    put:
+      operationId: api_categories_update
+      description: Edit full information about category.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          pattern: ^[^/]+$
+        required: true
+      tags:
+      - categories
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Category'
+        required: true
+      security:
+      - tokenAuth: []
+      - bearerAuth: []
+      - cookieAuth: []
+      responses:
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse400'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse401'
+              examples:
+                AuthenticationFailed:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: authentication_failed
+                      detail: Incorrect authentication credentials.
+                      attr: null
+                NotAuthenticated:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: not_authenticated
+                      detail: Authentication credentials were not provided.
+                      attr: null
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse403'
+              examples:
+                PermissionDenied:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: permission_denied
+                      detail: You do not have permission to perform this action.
+                      attr: null
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse404'
+              examples:
+                NotFound:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: not_found
+                      detail: Not found.
+                      attr: null
+          description: ''
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse405'
+              examples:
+                MethodNotAllowed:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: method_not_allowed
+                      detail: Method "get" not allowed.
+                      attr: null
+          description: ''
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse406'
+              examples:
+                NotAcceptable:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: not_acceptable
+                      detail: Could not satisfy the request Accept header.
+                      attr: null
+          description: ''
+        '415':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse415'
+              examples:
+                UnsupportedMediaType:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: unsupported_media_type
+                      detail: Unsupported media type "application/json" in request.
+                      attr: null
+          description: ''
+        '423':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse423'
+          description: ''
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse429'
+              examples:
+                Throttled:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: throttled
+                      detail: Request was throttled.
+                      attr: null
+          description: ''
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse500'
+              examples:
+                APIException:
+                  value:
+                    type: server_error
+                    errors:
+                    - code: error
+                      detail: A server error occurred.
+                      attr: null
+          description: ''
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+          description: ''
+          headers:
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/X-RateLimit-Limit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/X-RateLimit-Remaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/X-RateLimit-Reset'
+    patch:
+      operationId: api_categories_partial_update
+      description: Category API.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          pattern: ^[^/]+$
+        required: true
+      tags:
+      - categories
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCategory'
+      security:
+      - tokenAuth: []
+      - bearerAuth: []
+      - cookieAuth: []
+      responses:
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse400'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse401'
+              examples:
+                AuthenticationFailed:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: authentication_failed
+                      detail: Incorrect authentication credentials.
+                      attr: null
+                NotAuthenticated:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: not_authenticated
+                      detail: Authentication credentials were not provided.
+                      attr: null
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse403'
+              examples:
+                PermissionDenied:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: permission_denied
+                      detail: You do not have permission to perform this action.
+                      attr: null
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse404'
+              examples:
+                NotFound:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: not_found
+                      detail: Not found.
+                      attr: null
+          description: ''
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse405'
+              examples:
+                MethodNotAllowed:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: method_not_allowed
+                      detail: Method "get" not allowed.
+                      attr: null
+          description: ''
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse406'
+              examples:
+                NotAcceptable:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: not_acceptable
+                      detail: Could not satisfy the request Accept header.
+                      attr: null
+          description: ''
+        '415':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse415'
+              examples:
+                UnsupportedMediaType:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: unsupported_media_type
+                      detail: Unsupported media type "application/json" in request.
+                      attr: null
+          description: ''
+        '423':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse423'
+          description: ''
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse429'
+              examples:
+                Throttled:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: throttled
+                      detail: Request was throttled.
+                      attr: null
+          description: ''
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse500'
+              examples:
+                APIException:
+                  value:
+                    type: server_error
+                    errors:
+                    - code: error
+                      detail: A server error occurred.
+                      attr: null
+          description: ''
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+          description: ''
+          headers:
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/X-RateLimit-Limit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/X-RateLimit-Remaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/X-RateLimit-Reset'
+    delete:
+      operationId: api_categories_destroy
+      description: Delete category.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          pattern: ^[^/]+$
+        required: true
+      tags:
+      - categories
+      security:
+      - tokenAuth: []
+      - bearerAuth: []
+      - cookieAuth: []
+      responses:
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse400'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse401'
+              examples:
+                AuthenticationFailed:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: authentication_failed
+                      detail: Incorrect authentication credentials.
+                      attr: null
+                NotAuthenticated:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: not_authenticated
+                      detail: Authentication credentials were not provided.
+                      attr: null
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse403'
+              examples:
+                PermissionDenied:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: permission_denied
+                      detail: You do not have permission to perform this action.
+                      attr: null
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse404'
+              examples:
+                NotFound:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: not_found
+                      detail: Not found.
+                      attr: null
+          description: ''
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse405'
+              examples:
+                MethodNotAllowed:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: method_not_allowed
+                      detail: Method "get" not allowed.
+                      attr: null
+          description: ''
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse406'
+              examples:
+                NotAcceptable:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: not_acceptable
+                      detail: Could not satisfy the request Accept header.
+                      attr: null
+          description: ''
+        '423':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse423'
+          description: ''
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse429'
+              examples:
+                Throttled:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: throttled
+                      detail: Request was throttled.
+                      attr: null
+          description: ''
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse500'
+              examples:
+                APIException:
+                  value:
+                    type: server_error
+                    errors:
+                    - code: error
+                      detail: A server error occurred.
+                      attr: null
+          description: ''
+        '204':
+          description: No response body
+  /api/categories/{id}/announcements/:
+    get:
+      operationId: api_categories_announcements_list
+      description: Return announcements.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          pattern: ^[^/]+$
+        required: true
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - categories
+      security:
+      - tokenAuth: []
+      - bearerAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse400'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse401'
+              examples:
+                AuthenticationFailed:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: authentication_failed
+                      detail: Incorrect authentication credentials.
+                      attr: null
+                NotAuthenticated:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: not_authenticated
+                      detail: Authentication credentials were not provided.
+                      attr: null
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse403'
+              examples:
+                PermissionDenied:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: permission_denied
+                      detail: You do not have permission to perform this action.
+                      attr: null
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse404'
+              examples:
+                NotFound:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: not_found
+                      detail: Not found.
+                      attr: null
+          description: ''
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse405'
+              examples:
+                MethodNotAllowed:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: method_not_allowed
+                      detail: Method "get" not allowed.
+                      attr: null
+          description: ''
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse406'
+              examples:
+                NotAcceptable:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: not_acceptable
+                      detail: Could not satisfy the request Accept header.
+                      attr: null
+          description: ''
+        '423':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse423'
+          description: ''
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse429'
+              examples:
+                Throttled:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: throttled
+                      detail: Request was throttled.
+                      attr: null
+          description: ''
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse500'
+              examples:
+                APIException:
+                  value:
+                    type: server_error
+                    errors:
+                    - code: error
+                      detail: A server error occurred.
+                      attr: null
+          description: ''
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedAnnouncementList'
+          description: ''
+          headers:
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/X-RateLimit-Limit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/X-RateLimit-Remaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/X-RateLimit-Reset'
+    post:
+      operationId: api_categories_announcements_create
+      description: Create an announcement.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          pattern: ^[^/]+$
+        required: true
+      tags:
+      - categories
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Announcement'
+        required: true
+      security:
+      - tokenAuth: []
+      - bearerAuth: []
+      - cookieAuth: []
+      responses:
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse400'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse401'
+              examples:
+                AuthenticationFailed:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: authentication_failed
+                      detail: Incorrect authentication credentials.
+                      attr: null
+                NotAuthenticated:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: not_authenticated
+                      detail: Authentication credentials were not provided.
+                      attr: null
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse403'
+              examples:
+                PermissionDenied:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: permission_denied
+                      detail: You do not have permission to perform this action.
+                      attr: null
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse404'
+              examples:
+                NotFound:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: not_found
+                      detail: Not found.
+                      attr: null
+          description: ''
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse405'
+              examples:
+                MethodNotAllowed:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: method_not_allowed
+                      detail: Method "get" not allowed.
+                      attr: null
+          description: ''
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse406'
+              examples:
+                NotAcceptable:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: not_acceptable
+                      detail: Could not satisfy the request Accept header.
+                      attr: null
+          description: ''
+        '415':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse415'
+              examples:
+                UnsupportedMediaType:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: unsupported_media_type
+                      detail: Unsupported media type "application/json" in request.
+                      attr: null
+          description: ''
+        '423':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse423'
+          description: ''
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse429'
+              examples:
+                Throttled:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: throttled
+                      detail: Request was throttled.
+                      attr: null
+          description: ''
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse500'
+              examples:
+                APIException:
+                  value:
+                    type: server_error
+                    errors:
+                    - code: error
+                      detail: A server error occurred.
+                      attr: null
+          description: ''
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Announcement'
+          description: ''
+  /api/categories/{id}/announcements/{announcement_id}/:
+    delete:
+      operationId: api_categories_announcements_destroy
+      description: Delete an announcement.
+      parameters:
+      - in: path
+        name: announcement_id
+        schema:
+          type: integer
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: string
+          pattern: ^[^/]+$
+        required: true
+      tags:
+      - categories
+      security:
+      - tokenAuth: []
+      - bearerAuth: []
+      - cookieAuth: []
+      responses:
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse400'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse401'
+              examples:
+                AuthenticationFailed:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: authentication_failed
+                      detail: Incorrect authentication credentials.
+                      attr: null
+                NotAuthenticated:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: not_authenticated
+                      detail: Authentication credentials were not provided.
+                      attr: null
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse403'
+              examples:
+                PermissionDenied:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: permission_denied
+                      detail: You do not have permission to perform this action.
+                      attr: null
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse404'
+              examples:
+                NotFound:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: not_found
+                      detail: Not found.
+                      attr: null
+          description: ''
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse405'
+              examples:
+                MethodNotAllowed:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: method_not_allowed
+                      detail: Method "get" not allowed.
+                      attr: null
+          description: ''
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse406'
+              examples:
+                NotAcceptable:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: not_acceptable
+                      detail: Could not satisfy the request Accept header.
+                      attr: null
+          description: ''
+        '423':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse423'
+          description: ''
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse429'
+              examples:
+                Throttled:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: throttled
+                      detail: Request was throttled.
+                      attr: null
+          description: ''
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse500'
+              examples:
+                APIException:
+                  value:
+                    type: server_error
+                    errors:
+                    - code: error
+                      detail: A server error occurred.
+                      attr: null
+          description: ''
+        '204':
+          description: No response body
+  /api/categories/{id}/statistics/:
+    get:
+      operationId: api_categories_statistics_retrieve
+      description: Return statistics for a category.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          pattern: ^[^/]+$
+        required: true
+      tags:
+      - categories
+      security:
+      - tokenAuth: []
+      - bearerAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse400'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse401'
+              examples:
+                AuthenticationFailed:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: authentication_failed
+                      detail: Incorrect authentication credentials.
+                      attr: null
+                NotAuthenticated:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: not_authenticated
+                      detail: Authentication credentials were not provided.
+                      attr: null
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse403'
+              examples:
+                PermissionDenied:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: permission_denied
+                      detail: You do not have permission to perform this action.
+                      attr: null
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse404'
+              examples:
+                NotFound:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: not_found
+                      detail: Not found.
+                      attr: null
+          description: ''
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse405'
+              examples:
+                MethodNotAllowed:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: method_not_allowed
+                      detail: Method "get" not allowed.
+                      attr: null
+          description: ''
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse406'
+              examples:
+                NotAcceptable:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: not_acceptable
+                      detail: Could not satisfy the request Accept header.
+                      attr: null
+          description: ''
+        '423':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse423'
+          description: ''
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse429'
+              examples:
+                Throttled:
+                  value:
+                    type: client_error
+                    errors:
+                    - code: throttled
+                      detail: Request was throttled.
+                      attr: null
+          description: ''
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse500'
+              examples:
+                APIException:
+                  value:
+                    type: server_error
+                    errors:
+                    - code: error
+                      detail: A server error occurred.
+                      attr: null
+          description: ''
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Statistics'
+          description: ''
+          headers:
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/X-RateLimit-Limit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/X-RateLimit-Remaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/X-RateLimit-Reset'
+components:
+  schemas:
+    Error415:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode415Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    Announcement:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        message:
+          type: string
+          description: You can use Markdown and mention users by @username.
+        severity:
+          allOf:
+          - $ref: '#/components/schemas/SeverityEnum'
+          description: 'Severity defines color used for the message.
+
+
+            * `info` - Info (light blue)
+
+            * `warning` - Warning (yellow)
+
+            * `danger` - Danger (red)
+
+            * `success` - Success (green)'
+        expiry:
+          type:
+          - string
+          - 'null'
+          format: date
+          title: Expiry date
+          description: The message will be not shown after this date. Use it to announce string freeze and translation deadline for next release.
+        notify:
+          type: boolean
+          title: Notify users
+          description: Send notification to subscribed users.
+      required:
+      - id
+      - message
+    ErrorCode406Enum:
+      enum:
+      - not_acceptable
+      type: string
+      description: '* `not_acceptable` - Not Acceptable'
+    Error423:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode423Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    ErrorResponse403:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error403'
+      required:
+      - errors
+      - type
+    ErrorResponse404:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error404'
+      required:
+      - errors
+      - type
+    ErrorCode429Enum:
+      enum:
+      - throttled
+      type: string
+      description: '* `throttled` - Throttled'
+    PatchedCategory:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          title: Category name
+          description: Display name
+          maxLength: 100
+        slug:
+          type: string
+          title: URL slug
+          description: Name used in URLs and filenames.
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        project:
+          type: string
+          format: uri
+        category:
+          type:
+          - string
+          - 'null'
+          format: uri
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        statistics_url:
+          type: string
+          format: uri
+          readOnly: true
+        announcements_url:
+          type: string
+          format: uri
+          readOnly: true
+        check_flags:
+          type: string
+          title: Translation flags
+          description: Additional comma-separated flags to influence Weblate behavior.
+        effective_check_flags:
+          type: string
+          readOnly: true
+        license:
+          title: Translation license
+          type: string
+          maxLength: 150
+          examples:
+          - MIT
+          - GPL-3.0-or-later
+          - Apache-2.0
+          - BSD-3-Clause
+          - proprietary
+        inherit_license:
+          type: boolean
+          title: Inherit translation license
+          description: Use the translation license configured in the parent category or project.
+        effective_license:
+          type: string
+          readOnly: true
+        agreement:
+          type: string
+          title: Contributor license agreement
+          description: Contributor license agreement which needs to be approved before a user can translate components in this category.
+        inherit_agreement:
+          type: boolean
+          title: Inherit contributor license agreement
+          description: Use the contributor license agreement configured in the parent category or project.
+        effective_agreement:
+          type: string
+          readOnly: true
+        new_lang:
+          allOf:
+          - $ref: '#/components/schemas/NewLangEnum'
+          title: Adding new translation
+          description: 'How to handle requests for creating new translations.
+
+
+            * `contact` - Contact maintainers
+
+            * `url` - Point to translation instructions URL
+
+            * `add` - Create new language file
+
+            * `none` - Disable adding new translations'
+        inherit_new_lang:
+          type: boolean
+          title: Inherit adding new translations
+          description: Use the adding new translations setting configured in the parent category or project.
+        effective_new_lang:
+          type: string
+          readOnly: true
+        language_code_style:
+          description: 'Customize language code used to generate the filename for translations created by Weblate.
+
+
+            * `` - Default based on the file format
+
+            * `posix` - POSIX style using underscore as a separator
+
+            * `posix_lowercase` - POSIX style using underscore as a separator, lower cased
+
+            * `bcp` - BCP style using hyphen as a separator
+
+            * `posix_long` - POSIX style using underscore as a separator, including country code
+
+            * `posix_long_lowercase` - POSIX style using underscore as a separator, including country code, lower cased
+
+            * `bcp_long` - BCP style using hyphen as a separator, including country code
+
+            * `bcp_legacy` - BCP style using hyphen as a separator, legacy language codes
+
+            * `bcp_lower` - BCP style using hyphen as a separator, lower cased
+
+            * `android` - Android style
+
+            * `appstore` - Apple App Store metadata style
+
+            * `googleplay` - Google Play metadata style
+
+            * `linux` - Linux style
+
+            * `linux_lowercase` - Linux style, lower cased'
+          oneOf:
+          - $ref: '#/components/schemas/LanguageCodeStyleEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+        inherit_language_code_style:
+          type: boolean
+          description: Use the language code style configured in the parent category or project.
+        effective_language_code_style:
+          type: string
+          readOnly: true
+        secondary_language:
+          type:
+          - integer
+          - 'null'
+          description: Additional language to show together with the source language while translating.
+        inherit_secondary_language:
+          type: boolean
+          description: Use the secondary language configured in the parent category or project.
+        effective_secondary_language:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+        commit_message:
+          type: string
+          title: Commit message when translating
+          description: You can use template language for various info, please consult the documentation for more details.
+        inherit_commit_message:
+          type: boolean
+          title: Inherit commit message when translating
+          description: Use the commit message when translating configured in the parent category or project.
+        effective_commit_message:
+          type: string
+          readOnly: true
+        add_message:
+          type: string
+          title: Commit message when adding translation
+          description: You can use template language for various info, please consult the documentation for more details.
+        inherit_add_message:
+          type: boolean
+          title: Inherit commit message when adding translation
+          description: Use the commit message when adding translation configured in the parent category or project.
+        effective_add_message:
+          type: string
+          readOnly: true
+        delete_message:
+          type: string
+          title: Commit message when removing translation
+          description: You can use template language for various info, please consult the documentation for more details.
+        inherit_delete_message:
+          type: boolean
+          title: Inherit commit message when removing translation
+          description: Use the commit message when removing translation configured in the parent category or project.
+        effective_delete_message:
+          type: string
+          readOnly: true
+        merge_message:
+          type: string
+          title: Commit message when merging translation
+          description: You can use template language for various info, please consult the documentation for more details.
+        inherit_merge_message:
+          type: boolean
+          title: Inherit commit message when merging translation
+          description: Use the commit message when merging translation configured in the parent category or project.
+        effective_merge_message:
+          type: string
+          readOnly: true
+        addon_message:
+          type: string
+          title: Commit message when add-on makes a change
+          description: You can use template language for various info, please consult the documentation for more details.
+        inherit_addon_message:
+          type: boolean
+          title: Inherit commit message when add-on makes a change
+          description: Use the commit message when add-on makes a change configured in the parent category or project.
+        effective_addon_message:
+          type: string
+          readOnly: true
+        pull_message:
+          type: string
+          title: Merge request message
+          description: You can use template language for various info, please consult the documentation for more details.
+        inherit_pull_message:
+          type: boolean
+          title: Inherit merge request message
+          description: Use the merge request message configured in the parent category or project.
+        effective_pull_message:
+          type: string
+          readOnly: true
+    ErrorCode401Enum:
+      enum:
+      - authentication_failed
+      - not_authenticated
+      type: string
+      description: '* `authentication_failed` - Authentication Failed
+
+        * `not_authenticated` - Not Authenticated'
+    Statistics:
+      type: object
+      properties:
+        total:
+          type: integer
+        total_words:
+          type: integer
+        total_chars:
+          type: integer
+        last_change:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        recent_changes:
+          type: integer
+        translated:
+          type: integer
+        translated_words:
+          type: integer
+        translated_percent:
+          type: number
+          format: double
+        translated_words_percent:
+          type: number
+          format: double
+        translated_chars:
+          type: integer
+        translated_chars_percent:
+          type: number
+          format: double
+        fuzzy:
+          type: integer
+        fuzzy_percent:
+          type: number
+          format: double
+        fuzzy_words:
+          type: integer
+        fuzzy_words_percent:
+          type: number
+          format: double
+        fuzzy_chars:
+          type: integer
+        fuzzy_chars_percent:
+          type: number
+          format: double
+        failing:
+          type: integer
+        failing_percent:
+          type: number
+          format: double
+        approved:
+          type: integer
+        approved_percent:
+          type: number
+          format: double
+        approved_words:
+          type: integer
+        approved_words_percent:
+          type: number
+          format: double
+        approved_chars:
+          type: integer
+        approved_chars_percent:
+          type: number
+          format: double
+        readonly:
+          type: integer
+        readonly_percent:
+          type: number
+          format: double
+        readonly_words:
+          type: integer
+        readonly_words_percent:
+          type: number
+          format: double
+        readonly_chars:
+          type: integer
+        readonly_chars_percent:
+          type: number
+          format: double
+        suggestions:
+          type: integer
+        comments:
+          type: integer
+        code:
+          type: string
+        name:
+          type: string
+        url:
+          type: string
+          format: uri
+        translate_url:
+          type: string
+          format: uri
+      required:
+      - approved
+      - approved_chars
+      - approved_chars_percent
+      - approved_percent
+      - approved_words
+      - approved_words_percent
+      - comments
+      - failing
+      - failing_percent
+      - fuzzy
+      - fuzzy_chars
+      - fuzzy_chars_percent
+      - fuzzy_percent
+      - fuzzy_words
+      - fuzzy_words_percent
+      - last_change
+      - readonly
+      - readonly_chars
+      - readonly_chars_percent
+      - readonly_percent
+      - readonly_words
+      - readonly_words_percent
+      - recent_changes
+      - suggestions
+      - total
+      - total_chars
+      - total_words
+      - translated
+      - translated_chars
+      - translated_chars_percent
+      - translated_percent
+      - translated_words
+      - translated_words_percent
+    ErrorCode403Enum:
+      enum:
+      - permission_denied
+      type: string
+      description: '* `permission_denied` - Permission Denied'
+    ErrorResponse415:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error415'
+      required:
+      - errors
+      - type
+    Error429:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode429Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    NewLangEnum:
+      enum:
+      - contact
+      - url
+      - add
+      - none
+      type: string
+      description: '* `contact` - Contact maintainers
+
+        * `url` - Point to translation instructions URL
+
+        * `add` - Create new language file
+
+        * `none` - Disable adding new translations'
+    Error406:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode406Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    Error405:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode405Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    PaginatedAnnouncementList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Announcement'
+    Error400:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code. The examples list common validation and parse error codes.
+          examples:
+          - blank
+          - date
+          - datetime
+          - does_not_exist
+          - empty
+          - incorrect_match
+          - incorrect_type
+          - invalid
+          - invalid_choice
+          - invalid_image
+          - invalid_list
+          - make_aware
+          - max_length
+          - max_string_length
+          - max_value
+          - min_value
+          - no_match
+          - no_name
+          - not_a_list
+          - 'null'
+          - null_characters_not_allowed
+          - overflow
+          - parse_error
+          - required
+          - surrogate_characters_not_allowed
+          - unique
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    Error401:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode401Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    LanguageCodeStyleEnum:
+      enum:
+      - posix
+      - posix_lowercase
+      - bcp
+      - posix_long
+      - posix_long_lowercase
+      - bcp_long
+      - bcp_legacy
+      - bcp_lower
+      - android
+      - appstore
+      - googleplay
+      - linux
+      - linux_lowercase
+      type: string
+      description: '* `` - Default based on the file format
+
+        * `posix` - POSIX style using underscore as a separator
+
+        * `posix_lowercase` - POSIX style using underscore as a separator, lower cased
+
+        * `bcp` - BCP style using hyphen as a separator
+
+        * `posix_long` - POSIX style using underscore as a separator, including country code
+
+        * `posix_long_lowercase` - POSIX style using underscore as a separator, including country code, lower cased
+
+        * `bcp_long` - BCP style using hyphen as a separator, including country code
+
+        * `bcp_legacy` - BCP style using hyphen as a separator, legacy language codes
+
+        * `bcp_lower` - BCP style using hyphen as a separator, lower cased
+
+        * `android` - Android style
+
+        * `appstore` - Apple App Store metadata style
+
+        * `googleplay` - Google Play metadata style
+
+        * `linux` - Linux style
+
+        * `linux_lowercase` - Linux style, lower cased'
+    ErrorResponse400TypeEnum:
+      enum:
+      - validation_error
+      - client_error
+      type: string
+      description: '* `validation_error` - Validation Error
+
+        * `client_error` - Client Error'
+    Error500:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode500Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    ErrorCode500Enum:
+      enum:
+      - error
+      type: string
+      description: '* `error` - Error'
+    PaginatedCategoryList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+    ServerErrorEnum:
+      enum:
+      - server_error
+      type: string
+      description: '* `server_error` - Server Error'
+    ErrorCode415Enum:
+      enum:
+      - unsupported_media_type
+      type: string
+      description: '* `unsupported_media_type` - Unsupported Media Type'
+    Error404:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode404Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    ErrorCode404Enum:
+      enum:
+      - not_found
+      type: string
+      description: '* `not_found` - Not Found'
+    ErrorResponse500:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ServerErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error500'
+      required:
+      - errors
+      - type
+    ErrorResponse423:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ServerErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error423'
+      required:
+      - errors
+      - type
+    Error403:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode403Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    ErrorResponse401:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error401'
+      required:
+      - errors
+      - type
+    SeverityEnum:
+      enum:
+      - info
+      - warning
+      - danger
+      - success
+      type: string
+      description: '* `info` - Info (light blue)
+
+        * `warning` - Warning (yellow)
+
+        * `danger` - Danger (red)
+
+        * `success` - Success (green)'
+    ErrorResponse429:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error429'
+      required:
+      - errors
+      - type
+    ErrorCode423Enum:
+      enum:
+      - repository-locked
+      - component-locked
+      - unknown-locked
+      type: string
+      description: '* `repository-locked` - Repository Locked
+
+        * `component-locked` - Component Locked
+
+        * `unknown-locked` - Unknown Locked'
+    ErrorResponse400:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ErrorResponse400TypeEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error400'
+      required:
+      - errors
+      - type
+    BlankEnum:
+      enum:
+      - ''
+    ErrorResponse405:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error405'
+      required:
+      - errors
+      - type
+    ErrorResponse406:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error406'
+      required:
+      - errors
+      - type
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          title: Category name
+          description: Display name
+          maxLength: 100
+        slug:
+          type: string
+          title: URL slug
+          description: Name used in URLs and filenames.
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        project:
+          type: string
+          format: uri
+        category:
+          type:
+          - string
+          - 'null'
+          format: uri
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        statistics_url:
+          type: string
+          format: uri
+          readOnly: true
+        announcements_url:
+          type: string
+          format: uri
+          readOnly: true
+        check_flags:
+          type: string
+          title: Translation flags
+          description: Additional comma-separated flags to influence Weblate behavior.
+        effective_check_flags:
+          type: string
+          readOnly: true
+        license:
+          title: Translation license
+          type: string
+          maxLength: 150
+          examples:
+          - MIT
+          - GPL-3.0-or-later
+          - Apache-2.0
+          - BSD-3-Clause
+          - proprietary
+        inherit_license:
+          type: boolean
+          title: Inherit translation license
+          description: Use the translation license configured in the parent category or project.
+        effective_license:
+          type: string
+          readOnly: true
+        agreement:
+          type: string
+          title: Contributor license agreement
+          description: Contributor license agreement which needs to be approved before a user can translate components in this category.
+        inherit_agreement:
+          type: boolean
+          title: Inherit contributor license agreement
+          description: Use the contributor license agreement configured in the parent category or project.
+        effective_agreement:
+          type: string
+          readOnly: true
+        new_lang:
+          allOf:
+          - $ref: '#/components/schemas/NewLangEnum'
+          title: Adding new translation
+          description: 'How to handle requests for creating new translations.
+
+
+            * `contact` - Contact maintainers
+
+            * `url` - Point to translation instructions URL
+
+            * `add` - Create new language file
+
+            * `none` - Disable adding new translations'
+        inherit_new_lang:
+          type: boolean
+          title: Inherit adding new translations
+          description: Use the adding new translations setting configured in the parent category or project.
+        effective_new_lang:
+          type: string
+          readOnly: true
+        language_code_style:
+          description: 'Customize language code used to generate the filename for translations created by Weblate.
+
+
+            * `` - Default based on the file format
+
+            * `posix` - POSIX style using underscore as a separator
+
+            * `posix_lowercase` - POSIX style using underscore as a separator, lower cased
+
+            * `bcp` - BCP style using hyphen as a separator
+
+            * `posix_long` - POSIX style using underscore as a separator, including country code
+
+            * `posix_long_lowercase` - POSIX style using underscore as a separator, including country code, lower cased
+
+            * `bcp_long` - BCP style using hyphen as a separator, including country code
+
+            * `bcp_legacy` - BCP style using hyphen as a separator, legacy language codes
+
+            * `bcp_lower` - BCP style using hyphen as a separator, lower cased
+
+            * `android` - Android style
+
+            * `appstore` - Apple App Store metadata style
+
+            * `googleplay` - Google Play metadata style
+
+            * `linux` - Linux style
+
+            * `linux_lowercase` - Linux style, lower cased'
+          oneOf:
+          - $ref: '#/components/schemas/LanguageCodeStyleEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+        inherit_language_code_style:
+          type: boolean
+          description: Use the language code style configured in the parent category or project.
+        effective_language_code_style:
+          type: string
+          readOnly: true
+        secondary_language:
+          type:
+          - integer
+          - 'null'
+          description: Additional language to show together with the source language while translating.
+        inherit_secondary_language:
+          type: boolean
+          description: Use the secondary language configured in the parent category or project.
+        effective_secondary_language:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+        commit_message:
+          type: string
+          title: Commit message when translating
+          description: You can use template language for various info, please consult the documentation for more details.
+        inherit_commit_message:
+          type: boolean
+          title: Inherit commit message when translating
+          description: Use the commit message when translating configured in the parent category or project.
+        effective_commit_message:
+          type: string
+          readOnly: true
+        add_message:
+          type: string
+          title: Commit message when adding translation
+          description: You can use template language for various info, please consult the documentation for more details.
+        inherit_add_message:
+          type: boolean
+          title: Inherit commit message when adding translation
+          description: Use the commit message when adding translation configured in the parent category or project.
+        effective_add_message:
+          type: string
+          readOnly: true
+        delete_message:
+          type: string
+          title: Commit message when removing translation
+          description: You can use template language for various info, please consult the documentation for more details.
+        inherit_delete_message:
+          type: boolean
+          title: Inherit commit message when removing translation
+          description: Use the commit message when removing translation configured in the parent category or project.
+        effective_delete_message:
+          type: string
+          readOnly: true
+        merge_message:
+          type: string
+          title: Commit message when merging translation
+          description: You can use template language for various info, please consult the documentation for more details.
+        inherit_merge_message:
+          type: boolean
+          title: Inherit commit message when merging translation
+          description: Use the commit message when merging translation configured in the parent category or project.
+        effective_merge_message:
+          type: string
+          readOnly: true
+        addon_message:
+          type: string
+          title: Commit message when add-on makes a change
+          description: You can use template language for various info, please consult the documentation for more details.
+        inherit_addon_message:
+          type: boolean
+          title: Inherit commit message when add-on makes a change
+          description: Use the commit message when add-on makes a change configured in the parent category or project.
+        effective_addon_message:
+          type: string
+          readOnly: true
+        pull_message:
+          type: string
+          title: Merge request message
+          description: You can use template language for various info, please consult the documentation for more details.
+        inherit_pull_message:
+          type: boolean
+          title: Inherit merge request message
+          description: Use the merge request message configured in the parent category or project.
+        effective_pull_message:
+          type: string
+          readOnly: true
+      required:
+      - announcements_url
+      - effective_add_message
+      - effective_addon_message
+      - effective_agreement
+      - effective_check_flags
+      - effective_commit_message
+      - effective_delete_message
+      - effective_language_code_style
+      - effective_license
+      - effective_merge_message
+      - effective_new_lang
+      - effective_pull_message
+      - effective_secondary_language
+      - id
+      - name
+      - project
+      - slug
+      - statistics_url
+      - url
+    ErrorCode405Enum:
+      enum:
+      - method_not_allowed
+      type: string
+      description: '* `method_not_allowed` - Method Not Allowed'
+    ClientErrorEnum:
+      enum:
+      - client_error
+      type: string
+      description: '* `client_error` - Client Error'
+  headers:
+    X-RateLimit-Limit:
+      schema:
+        type: integer
+      description: Allowed number of requests to perform
+      required: true
+    X-RateLimit-Remaining:
+      schema:
+        type: integer
+      description: Remaining number of requests to perform
+      required: true
+    X-RateLimit-Reset:
+      schema:
+        type: integer
+      description: Number of seconds until the rate-limit window resets
+      required: true
+  securitySchemes:
+    bearerAuth:
+      type: apiKey
+      in: header
+      name: Bearer
+      description: "Token-based authentication with required prefix `Bearer`.\n\n- Each user has a personal access token which they can get from their respective user profile. These tokens have the `wlu_` prefix.\n- It is possible to create project tokens whose access to the API is limited to operations to their associated project. These tokens have the `wlp_` prefix.\n        "
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+      description: Session-based authentication used when user is signed in.
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Token
+      description: "Token-based authentication with required prefix `Token`.\n\n- Each user has a personal access token which they can get from their respective user profile. These tokens have the `wlu_` prefix.\n- It is possible to create project tokens whose access to the API is limited to operations to their associated project. These tokens have the `wlp_` prefix.\n        "
+externalDocs:
+  url: https://docs.weblate.org/en/latest/index.html
+  description: Official Weblate documentation
