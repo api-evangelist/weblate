@@ -10,7 +10,20 @@ description: >-
   orchestrate automated translation workflows. Weblate is available as a hosted
   SaaS service or as a self-hosted open-source deployment.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: true
+  try_now: true
+  public: false
+  label: Freemium (free trial) · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/weblate.png
 url: https://raw.githubusercontent.com/api-evangelist/weblate/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -23,33 +36,270 @@ tags:
   - Continuous Localization
   - Version Control
 apis:
-  - aid: weblate:weblate-rest-api
-    name: Weblate REST API
-    description: >-
-      The Weblate REST API provides full programmatic access to the localization
-      platform, enabling management of translation projects, components,
-      translations, strings, languages, users, groups, and repository
-      operations. The API is built on Django REST Framework and documented via
-      OpenAPI 3.1 schema, accessible at /api/schema/. Authentication uses
-      token-based access with personal access tokens (wlu_ prefix) or
-      project-scoped tokens (wlp_ prefix).
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.weblate.org/en/latest/api.html
-    baseURL: https://hosted.weblate.org/api/
-    tags:
-      - Localization
-      - Translation
-      - Projects
-      - Components
-      - Strings
-    properties:
-      - type: Documentation
-        url: https://docs.weblate.org/en/latest/api.html
-      - type: OpenAPI
-        url: https://hosted.weblate.org/api/schema/
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/weblate/refs/heads/main/openapi/weblate-weblate-rest-api-openapi.yml
+- aid: weblate:weblate-addons-api
+  name: Weblate addons API
+  description: Added in version 4.4.1.
+  humanURL: https://docs.weblate.org/en/latest/api.html
+  baseURL: https://hosted.weblate.org/api/
+  tags:
+  - addons
+  properties:
+  - type: OpenAPI
+    url: openapi/weblate-addons-api-openapi.yml
+  - type: Documentation
+    url: https://docs.weblate.org/en/latest/api.html
+- aid: weblate:weblate-categories-api
+  name: Weblate categories API
+  description: The categories API from Weblate — 5 operation(s) for categories.
+  humanURL: https://docs.weblate.org/en/latest/api.html
+  baseURL: https://hosted.weblate.org/api/
+  tags:
+  - categories
+  properties:
+  - type: OpenAPI
+    url: openapi/weblate-categories-api-openapi.yml
+  - type: Documentation
+    url: https://docs.weblate.org/en/latest/api.html
+- aid: weblate:weblate-changes-api
+  name: Weblate changes API
+  description: The changes API from Weblate — 2 operation(s) for changes.
+  humanURL: https://docs.weblate.org/en/latest/api.html
+  baseURL: https://hosted.weblate.org/api/
+  tags:
+  - changes
+  properties:
+  - type: OpenAPI
+    url: openapi/weblate-changes-api-openapi.yml
+  - type: Documentation
+    url: https://docs.weblate.org/en/latest/api.html
+- aid: weblate:weblate-component-lists-api
+  name: Weblate component-lists API
+  description: Added in version 4.0.
+  humanURL: https://docs.weblate.org/en/latest/api.html
+  baseURL: https://hosted.weblate.org/api/
+  tags:
+  - component-lists
+  properties:
+  - type: OpenAPI
+    url: openapi/weblate-component-lists-api-openapi.yml
+  - type: Documentation
+    url: https://docs.weblate.org/en/latest/api.html
+- aid: weblate:weblate-components-api
+  name: Weblate components API
+  description: The components API from Weblate — 17 operation(s) for components.
+  humanURL: https://docs.weblate.org/en/latest/api.html
+  baseURL: https://hosted.weblate.org/api/
+  tags:
+  - components
+  properties:
+  - type: OpenAPI
+    url: openapi/weblate-components-api-openapi.yml
+  - type: Documentation
+    url: https://docs.weblate.org/en/latest/api.html
+- aid: weblate:weblate-contributions-api
+  name: Weblate contributions API
+  description: The contributions API from Weblate — 1 operation(s) for contributions.
+  humanURL: https://docs.weblate.org/en/latest/api.html
+  baseURL: https://hosted.weblate.org/api/
+  tags:
+  - contributions
+  properties:
+  - type: OpenAPI
+    url: openapi/weblate-contributions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.weblate.org/en/latest/api.html
+- aid: weblate:weblate-groups-api
+  name: Weblate groups API
+  description: Added in version 4.0.
+  humanURL: https://docs.weblate.org/en/latest/api.html
+  baseURL: https://hosted.weblate.org/api/
+  tags:
+  - groups
+  properties:
+  - type: OpenAPI
+    url: openapi/weblate-groups-api-openapi.yml
+  - type: Documentation
+    url: https://docs.weblate.org/en/latest/api.html
+- aid: weblate:weblate-hooks-api
+  name: Weblate hooks API
+  description: >-
+    Notification hooks allow external applications to notify Weblate that the VCS repository has been
+    updated.
+
+
+    You can use repository endpoints for projects, components and translations to update individual repositories.
+  humanURL: https://docs.weblate.org/en/latest/api.html
+  baseURL: https://hosted.weblate.org/api/
+  tags:
+  - hooks
+  properties:
+  - type: OpenAPI
+    url: openapi/weblate-hooks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.weblate.org/en/latest/api.html
+- aid: weblate:weblate-languages-api
+  name: Weblate languages API
+  description: The languages API from Weblate — 3 operation(s) for languages.
+  humanURL: https://docs.weblate.org/en/latest/api.html
+  baseURL: https://hosted.weblate.org/api/
+  tags:
+  - languages
+  properties:
+  - type: OpenAPI
+    url: openapi/weblate-languages-api-openapi.yml
+  - type: Documentation
+    url: https://docs.weblate.org/en/latest/api.html
+- aid: weblate:weblate-memory-api
+  name: Weblate memory API
+  description: Added in version 4.14.
+  humanURL: https://docs.weblate.org/en/latest/api.html
+  baseURL: https://hosted.weblate.org/api/
+  tags:
+  - memory
+  properties:
+  - type: OpenAPI
+    url: openapi/weblate-memory-api-openapi.yml
+  - type: Documentation
+    url: https://docs.weblate.org/en/latest/api.html
+- aid: weblate:weblate-metrics-api
+  name: Weblate metrics API
+  description: The metrics API from Weblate — 1 operation(s) for metrics.
+  humanURL: https://docs.weblate.org/en/latest/api.html
+  baseURL: https://hosted.weblate.org/api/
+  tags:
+  - metrics
+  properties:
+  - type: OpenAPI
+    url: openapi/weblate-metrics-api-openapi.yml
+  - type: Documentation
+    url: https://docs.weblate.org/en/latest/api.html
+- aid: weblate:weblate-projects-api
+  name: Weblate projects API
+  description: The projects API from Weblate — 20 operation(s) for projects.
+  humanURL: https://docs.weblate.org/en/latest/api.html
+  baseURL: https://hosted.weblate.org/api/
+  tags:
+  - projects
+  properties:
+  - type: OpenAPI
+    url: openapi/weblate-projects-api-openapi.yml
+  - type: Documentation
+    url: https://docs.weblate.org/en/latest/api.html
+- aid: weblate:weblate-roles-api
+  name: Weblate roles API
+  description: The roles API from Weblate — 2 operation(s) for roles.
+  humanURL: https://docs.weblate.org/en/latest/api.html
+  baseURL: https://hosted.weblate.org/api/
+  tags:
+  - roles
+  properties:
+  - type: OpenAPI
+    url: openapi/weblate-roles-api-openapi.yml
+  - type: Documentation
+    url: https://docs.weblate.org/en/latest/api.html
+- aid: weblate:weblate-schema-api
+  name: Weblate schema API
+  description: The schema API from Weblate — 1 operation(s) for schema.
+  humanURL: https://docs.weblate.org/en/latest/api.html
+  baseURL: https://hosted.weblate.org/api/
+  tags:
+  - schema
+  properties:
+  - type: OpenAPI
+    url: openapi/weblate-schema-api-openapi.yml
+  - type: Documentation
+    url: https://docs.weblate.org/en/latest/api.html
+- aid: weblate:weblate-screenshots-api
+  name: Weblate screenshots API
+  description: The screenshots API from Weblate — 5 operation(s) for screenshots.
+  humanURL: https://docs.weblate.org/en/latest/api.html
+  baseURL: https://hosted.weblate.org/api/
+  tags:
+  - screenshots
+  properties:
+  - type: OpenAPI
+    url: openapi/weblate-screenshots-api-openapi.yml
+  - type: Documentation
+    url: https://docs.weblate.org/en/latest/api.html
+- aid: weblate:weblate-search-api
+  name: Weblate search API
+  description: Added in version 4.18.
+  humanURL: https://docs.weblate.org/en/latest/api.html
+  baseURL: https://hosted.weblate.org/api/
+  tags:
+  - search
+  properties:
+  - type: OpenAPI
+    url: openapi/weblate-search-api-openapi.yml
+  - type: Documentation
+    url: https://docs.weblate.org/en/latest/api.html
+- aid: weblate:weblate-statistics-api
+  name: Weblate statistics API
+  description: Many endpoints support displaying statistics for their objects.
+  humanURL: https://docs.weblate.org/en/latest/api.html
+  baseURL: https://hosted.weblate.org/api/
+  tags:
+  - statistics
+  properties:
+  - type: OpenAPI
+    url: openapi/weblate-statistics-api-openapi.yml
+  - type: Documentation
+    url: https://docs.weblate.org/en/latest/api.html
+- aid: weblate:weblate-tasks-api
+  name: Weblate tasks API
+  description: >-
+    Added in version 4.4.
+
+
+    Listing of the tasks is currently not available.
+  humanURL: https://docs.weblate.org/en/latest/api.html
+  baseURL: https://hosted.weblate.org/api/
+  tags:
+  - tasks
+  properties:
+  - type: OpenAPI
+    url: openapi/weblate-tasks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.weblate.org/en/latest/api.html
+- aid: weblate:weblate-translations-api
+  name: Weblate translations API
+  description: The translations API from Weblate — 10 operation(s) for translations.
+  humanURL: https://docs.weblate.org/en/latest/api.html
+  baseURL: https://hosted.weblate.org/api/
+  tags:
+  - translations
+  properties:
+  - type: OpenAPI
+    url: openapi/weblate-translations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.weblate.org/en/latest/api.html
+- aid: weblate:weblate-units-api
+  name: Weblate units API
+  description: >-
+    A unit is a single piece of a translation which pairs a source string with a corresponding translated
+    string and also contains some related metadata. The term is derived from the Translate Toolkit and
+    XLIFF.
+  humanURL: https://docs.weblate.org/en/latest/api.html
+  baseURL: https://hosted.weblate.org/api/
+  tags:
+  - units
+  properties:
+  - type: OpenAPI
+    url: openapi/weblate-units-api-openapi.yml
+  - type: Documentation
+    url: https://docs.weblate.org/en/latest/api.html
+- aid: weblate:weblate-users-api
+  name: Weblate users API
+  description: Added in version 4.0.
+  humanURL: https://docs.weblate.org/en/latest/api.html
+  baseURL: https://hosted.weblate.org/api/
+  tags:
+  - users
+  properties:
+  - type: OpenAPI
+    url: openapi/weblate-users-api-openapi.yml
+  - type: Documentation
+    url: https://docs.weblate.org/en/latest/api.html
 common:
   - type: AgenticAccess
     url: agentic-access/weblate-agentic-access.yml
