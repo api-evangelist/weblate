@@ -1,7 +1,7 @@
 openapi: 3.1.1
 info:
   title: Weblate's REST addons components API
-  version: ''
+  version: "1.0"
   x-logo:
     url: /static/weblate.svg
   description: "\nThe API is accessible on the ``/api/`` URL and it is based on [Django REST framework](https://www.django-rest-framework.org/).\n\nThe OpenAPI specification is available as feature preview, feedback welcome!\n\n## Authorization\n\n<!-- Redoc-Inject: <security-definitions> -->\n\n\n    "
