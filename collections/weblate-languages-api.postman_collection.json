@@ -1,0 +1,4632 @@
+{
+  "item": [
+    {
+      "id": "ea0b7801-66ac-4036-83ba-cfa52cf2505c",
+      "name": "languages",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "35221852-ee19-44bb-84a2-0c12ea4af3db",
+          "name": "api languages list",
+          "request": {
+            "name": "api languages list",
+            "description": {
+              "content": "Return a list of all languages the user has access to.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "languages",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cb719256-6078-401c-9429-17ca0ccfbfdd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "(Required) Allowed number of requests to perform",
+                  "key": "X-RateLimit-Limit",
+                  "value": "82"
+                },
+                {
+                  "disabled": false,
+                  "description": "(Required) Remaining number of requests to perform",
+                  "key": "X-RateLimit-Remaining",
+                  "value": "82"
+                },
+                {
+                  "disabled": false,
+                  "description": "(Required) Number of seconds until the rate-limit window resets",
+                  "key": "X-RateLimit-Reset",
+                  "value": "82"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 123,\n  \"results\": [\n    {\n      \"code\": \"UWsfk2Zrm@J6t0LEgX1u-Czqg7og8-CD@nTiiHnAI@l66uWZ6C\",\n      \"id\": 5809,\n      \"statistics_url\": \"http://fSDOCUfd.voomdvi4AToROX6+znogrbmtjJdTJ2zdB1GCKe,Z+C6OUe07zyTQmh5phi9-bRM99fNC3QJnAM7YjCkN\",\n      \"url\": \"https://mOCKPJLuyTeSXHgTsPV.yyanuISVoXvRqMqRzqemKJrmrFDVHm+\",\n      \"web_url\": \"string\",\n      \"name\": \"string\",\n      \"plural\": {\n        \"id\": 3653,\n        \"type\": 3145,\n        \"source\": 6,\n        \"number\": 5,\n        \"formula\": \"string\"\n      },\n      \"direction\": \"rtl\",\n      \"population\": 488928570957398000\n    },\n    {\n      \"code\": \"de5SygO_b_HPMSE\",\n      \"id\": 5395,\n      \"statistics_url\": \"https://x.sykklbOQdq.fr6\",\n      \"url\": \"https://JNinoqeUnxL.sgS,6g.u-NI8PWitRGT,9ybssudYzkEmvL9bn,GHlkOSm-a39XlqznoXjFOidA-QMFwDPP8avNi\",\n      \"web_url\": \"string\",\n      \"name\": \"string\",\n      \"plural\": {\n        \"id\": 5971,\n        \"type\": 2437,\n        \"source\": 2,\n        \"number\": 3,\n        \"formula\": \"string\"\n      },\n      \"direction\": \"rtl\",\n      \"population\": -7485765583806259000\n    }\n  ],\n  \"next\": \"http://api.example.org/accounts/?page=4\",\n  \"previous\": \"http://api.example.org/accounts/?page=2\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d181bc35-d660-424a-b85b-de10d8c64b2f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"attr\": \"string\",\n      \"code\": \"blank\",\n      \"detail\": \"string\"\n    },\n    {\n      \"attr\": \"string\",\n      \"code\": \"blank\",\n      \"detail\": \"string\"\n    }\n  ],\n  \"type\": \"validation_error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "06502912-0f8e-411b-835c-5eb61bb17608",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"authentication_failed\",\n      \"detail\": \"Incorrect authentication credentials.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9dc6850c-a668-46bf-8e82-ad7552e04853",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"permission_denied\",\n      \"detail\": \"You do not have permission to perform this action.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "63306b40-a6a6-48bc-965e-0169f5a7ff9c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"not_found\",\n      \"detail\": \"Not found.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "abd4d1c6-9f9b-4c4a-bf69-8839dad51519",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"method_not_allowed\",\n      \"detail\": \"Method \\\"get\\\" not allowed.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b8c50069-60b7-4f43-84c3-166eb193860b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"not_acceptable\",\n      \"detail\": \"Could not satisfy the request Accept header.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa861879-498f-4eb1-9713-37da183df3ff",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Locked (WebDAV) (RFC 4918)",
+              "code": 423,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"attr\": \"string\",\n      \"code\": \"component-locked\",\n      \"detail\": \"string\"\n    },\n    {\n      \"attr\": \"string\",\n      \"code\": \"component-locked\",\n      \"detail\": \"string\"\n    }\n  ],\n  \"type\": \"server_error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "31ccf8c3-81c6-4afc-b500-86ff0fd4f20f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"throttled\",\n      \"detail\": \"Request was throttled.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "855acece-33b3-4b0a-8495-002fdcf8716d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"server_error\",\n  \"errors\": [\n    {\n      \"code\": \"error\",\n      \"detail\": \"A server error occurred.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a92009a1-7867-41eb-9bde-894282f5d8b3",
+          "name": "api languages create",
+          "request": {
+            "name": "api languages create",
+            "description": {
+              "content": "Create a new language.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "languages",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": \"<integer>\",\n    \"number\": \"<integer>\",\n    \"formula\": \"<string>\"\n  },\n  \"direction\": \"<string>\",\n  \"population\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "72623a99-2cab-4c39-b3ca-f60f8ab3f119",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 5,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"aliases\": [],\n  \"code\": \"FB@ViEm@X05UlSByUht\",\n  \"id\": 3212,\n  \"statistics_url\": \"https://rpDbMcwtYJbWGmFcOAhVxUoVztaef.ziAUWg9+m5GBPO\",\n  \"url\": \"https://YkOrlTnTDNeFqyUFB.zjjPmWpKGRA\",\n  \"web_url\": \"string\",\n  \"name\": \"string\",\n  \"plural\": {\n    \"id\": 7482,\n    \"type\": 2829,\n    \"source\": 1,\n    \"number\": 4,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"ltr\",\n  \"population\": 8099807792325630000\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c0eb1ed-5943-4450-8a4c-f143c203a196",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 5,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"attr\": \"string\",\n      \"code\": \"blank\",\n      \"detail\": \"string\"\n    },\n    {\n      \"attr\": \"string\",\n      \"code\": \"blank\",\n      \"detail\": \"string\"\n    }\n  ],\n  \"type\": \"validation_error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b256d3fd-870d-48b9-a5ab-412be8faf1a6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 5,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"authentication_failed\",\n      \"detail\": \"Incorrect authentication credentials.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5a0b890-0ceb-4d8d-9c04-982fa1a2d13b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 5,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"permission_denied\",\n      \"detail\": \"You do not have permission to perform this action.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ba0ef4c-6d48-444a-b236-59aef05efc0a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 5,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"not_found\",\n      \"detail\": \"Not found.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "74519ec4-b852-45e2-a51b-5f066db7762d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 5,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"method_not_allowed\",\n      \"detail\": \"Method \\\"get\\\" not allowed.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6d477ee1-ece1-40aa-90fb-2e2dce79ebca",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 5,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"not_acceptable\",\n      \"detail\": \"Could not satisfy the request Accept header.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f07b2c1f-f9da-41c2-adb5-59d15742ea1e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 5,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"unsupported_media_type\",\n      \"detail\": \"Unsupported media type \\\"application/json\\\" in request.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3ad23b2d-c2c5-4fce-be40-64d3fc5cb613",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 5,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Locked (WebDAV) (RFC 4918)",
+              "code": 423,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"attr\": \"string\",\n      \"code\": \"component-locked\",\n      \"detail\": \"string\"\n    },\n    {\n      \"attr\": \"string\",\n      \"code\": \"component-locked\",\n      \"detail\": \"string\"\n    }\n  ],\n  \"type\": \"server_error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0f84241a-c204-4213-b32f-7308e1b530e5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 5,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"throttled\",\n      \"detail\": \"Request was throttled.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c4b81998-075d-4da6-92fc-5eca32e1aced",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 5,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"server_error\",\n  \"errors\": [\n    {\n      \"code\": \"error\",\n      \"detail\": \"A server error occurred.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf526962-548a-414a-b92e-c61bbfd2d713",
+          "name": "api languages retrieve",
+          "request": {
+            "name": "api languages retrieve",
+            "description": {
+              "content": "Return information about a language.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "languages",
+                ":code",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "code",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "27534f55-6e3d-4f18-a84c-1870b4c0f4dd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "(Required) Allowed number of requests to perform",
+                  "key": "X-RateLimit-Limit",
+                  "value": "82"
+                },
+                {
+                  "disabled": false,
+                  "description": "(Required) Remaining number of requests to perform",
+                  "key": "X-RateLimit-Remaining",
+                  "value": "82"
+                },
+                {
+                  "disabled": false,
+                  "description": "(Required) Number of seconds until the rate-limit window resets",
+                  "key": "X-RateLimit-Reset",
+                  "value": "82"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"aliases\": [],\n  \"code\": \"FB@ViEm@X05UlSByUht\",\n  \"id\": 3212,\n  \"statistics_url\": \"https://rpDbMcwtYJbWGmFcOAhVxUoVztaef.ziAUWg9+m5GBPO\",\n  \"url\": \"https://YkOrlTnTDNeFqyUFB.zjjPmWpKGRA\",\n  \"web_url\": \"string\",\n  \"name\": \"string\",\n  \"plural\": {\n    \"id\": 7482,\n    \"type\": 2829,\n    \"source\": 1,\n    \"number\": 4,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"ltr\",\n  \"population\": 8099807792325630000\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "30c02368-ad28-424a-8d91-958852589bb2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"attr\": \"string\",\n      \"code\": \"blank\",\n      \"detail\": \"string\"\n    },\n    {\n      \"attr\": \"string\",\n      \"code\": \"blank\",\n      \"detail\": \"string\"\n    }\n  ],\n  \"type\": \"validation_error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "29e3bb67-2018-41b1-a0e3-c15f08463d82",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"authentication_failed\",\n      \"detail\": \"Incorrect authentication credentials.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "719a8c19-7e17-43e6-acb6-7bbba80015e5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"permission_denied\",\n      \"detail\": \"You do not have permission to perform this action.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "34ac09b7-3811-42c0-a72b-39029e8dbc33",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"not_found\",\n      \"detail\": \"Not found.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d34b5453-3169-46e7-89af-e3bf57c2078c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"method_not_allowed\",\n      \"detail\": \"Method \\\"get\\\" not allowed.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b63a9454-dd10-44c4-962f-ad8758fad913",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"not_acceptable\",\n      \"detail\": \"Could not satisfy the request Accept header.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5bee9327-d323-4604-beb8-4391194936b1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Locked (WebDAV) (RFC 4918)",
+              "code": 423,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"attr\": \"string\",\n      \"code\": \"component-locked\",\n      \"detail\": \"string\"\n    },\n    {\n      \"attr\": \"string\",\n      \"code\": \"component-locked\",\n      \"detail\": \"string\"\n    }\n  ],\n  \"type\": \"server_error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "049a9ef7-baf0-4b6d-95ab-99963bced913",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"throttled\",\n      \"detail\": \"Request was throttled.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ccb3f0fb-4268-471a-8f63-45bb1e0cec5d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"server_error\",\n  \"errors\": [\n    {\n      \"code\": \"error\",\n      \"detail\": \"A server error occurred.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a7ddda4b-3551-41de-a363-e7ea275d6e4e",
+          "name": "api languages update",
+          "request": {
+            "name": "api languages update",
+            "description": {
+              "content": "Change the language parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "languages",
+                ":code",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "code",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": \"<integer>\",\n    \"number\": \"<integer>\",\n    \"formula\": \"<string>\"\n  },\n  \"direction\": \"<string>\",\n  \"population\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4233c428-167a-4b1c-9524-fb51781a0c78",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 5,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "(Required) Allowed number of requests to perform",
+                  "key": "X-RateLimit-Limit",
+                  "value": "82"
+                },
+                {
+                  "disabled": false,
+                  "description": "(Required) Remaining number of requests to perform",
+                  "key": "X-RateLimit-Remaining",
+                  "value": "82"
+                },
+                {
+                  "disabled": false,
+                  "description": "(Required) Number of seconds until the rate-limit window resets",
+                  "key": "X-RateLimit-Reset",
+                  "value": "82"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"aliases\": [],\n  \"code\": \"FB@ViEm@X05UlSByUht\",\n  \"id\": 3212,\n  \"statistics_url\": \"https://rpDbMcwtYJbWGmFcOAhVxUoVztaef.ziAUWg9+m5GBPO\",\n  \"url\": \"https://YkOrlTnTDNeFqyUFB.zjjPmWpKGRA\",\n  \"web_url\": \"string\",\n  \"name\": \"string\",\n  \"plural\": {\n    \"id\": 7482,\n    \"type\": 2829,\n    \"source\": 1,\n    \"number\": 4,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"ltr\",\n  \"population\": 8099807792325630000\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "217bf7f8-efb0-46a6-aad8-4a7775a3226b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 5,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"attr\": \"string\",\n      \"code\": \"blank\",\n      \"detail\": \"string\"\n    },\n    {\n      \"attr\": \"string\",\n      \"code\": \"blank\",\n      \"detail\": \"string\"\n    }\n  ],\n  \"type\": \"validation_error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03828904-6f7c-48fd-a311-bc887001009b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 5,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"authentication_failed\",\n      \"detail\": \"Incorrect authentication credentials.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dab42b55-4edc-498f-8aad-7de622f79373",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 5,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"permission_denied\",\n      \"detail\": \"You do not have permission to perform this action.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8a4926cf-9905-4437-b808-6520bde10b9f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 5,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"not_found\",\n      \"detail\": \"Not found.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "74e91a61-2d13-4799-97e8-4dbe12a045c3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 5,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"method_not_allowed\",\n      \"detail\": \"Method \\\"get\\\" not allowed.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9403290e-24ad-4a5a-b0ea-43c980cfa0e7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 5,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"not_acceptable\",\n      \"detail\": \"Could not satisfy the request Accept header.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e693ae36-5ae1-48ca-8db7-215c4044cc1e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 5,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"unsupported_media_type\",\n      \"detail\": \"Unsupported media type \\\"application/json\\\" in request.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d69e892f-a691-47c7-87d9-82aa38a231f8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 5,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Locked (WebDAV) (RFC 4918)",
+              "code": 423,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"attr\": \"string\",\n      \"code\": \"component-locked\",\n      \"detail\": \"string\"\n    },\n    {\n      \"attr\": \"string\",\n      \"code\": \"component-locked\",\n      \"detail\": \"string\"\n    }\n  ],\n  \"type\": \"server_error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf069e07-896f-4bf0-bd91-ec2750a56dd2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 5,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"throttled\",\n      \"detail\": \"Request was throttled.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d5e169b0-efea-44a8-a428-d74d2e1f9135",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 5,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"server_error\",\n  \"errors\": [\n    {\n      \"code\": \"error\",\n      \"detail\": \"A server error occurred.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b2a6be64-7501-4037-922b-2e5733ef93eb",
+          "name": "api languages partial update",
+          "request": {
+            "name": "api languages partial update",
+            "description": {
+              "content": "Change the language parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "languages",
+                ":code",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "code",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": \"<integer>\",\n    \"number\": \"<integer>\",\n    \"formula\": \"<string>\"\n  },\n  \"direction\": \"<string>\",\n  \"population\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6eb9edbb-eb39-42e9-a193-651befd11730",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 2,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "(Required) Allowed number of requests to perform",
+                  "key": "X-RateLimit-Limit",
+                  "value": "82"
+                },
+                {
+                  "disabled": false,
+                  "description": "(Required) Remaining number of requests to perform",
+                  "key": "X-RateLimit-Remaining",
+                  "value": "82"
+                },
+                {
+                  "disabled": false,
+                  "description": "(Required) Number of seconds until the rate-limit window resets",
+                  "key": "X-RateLimit-Reset",
+                  "value": "82"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"aliases\": [],\n  \"code\": \"FB@ViEm@X05UlSByUht\",\n  \"id\": 3212,\n  \"statistics_url\": \"https://rpDbMcwtYJbWGmFcOAhVxUoVztaef.ziAUWg9+m5GBPO\",\n  \"url\": \"https://YkOrlTnTDNeFqyUFB.zjjPmWpKGRA\",\n  \"web_url\": \"string\",\n  \"name\": \"string\",\n  \"plural\": {\n    \"id\": 7482,\n    \"type\": 2829,\n    \"source\": 1,\n    \"number\": 4,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"ltr\",\n  \"population\": 8099807792325630000\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b0ea586f-b804-46e4-a7f9-88b4e6d006c5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 2,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"attr\": \"string\",\n      \"code\": \"blank\",\n      \"detail\": \"string\"\n    },\n    {\n      \"attr\": \"string\",\n      \"code\": \"blank\",\n      \"detail\": \"string\"\n    }\n  ],\n  \"type\": \"validation_error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1f372d23-a9ad-481f-aba8-cdc83b96c6f3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 2,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"authentication_failed\",\n      \"detail\": \"Incorrect authentication credentials.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "098a0dec-b76c-47d4-bd39-bbc0ca22cf64",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 2,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"permission_denied\",\n      \"detail\": \"You do not have permission to perform this action.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e43b05f9-db5e-4045-a6ed-f2a8d4dcc274",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 2,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"not_found\",\n      \"detail\": \"Not found.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "869c70de-7f69-4694-b437-e7e6eaebca47",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 2,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"method_not_allowed\",\n      \"detail\": \"Method \\\"get\\\" not allowed.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "800335bc-4c29-4a2b-9021-6d93b0af147d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 2,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"not_acceptable\",\n      \"detail\": \"Could not satisfy the request Accept header.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "136a3661-0b2d-4121-9ee9-13bc2c5fa3f7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 2,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"unsupported_media_type\",\n      \"detail\": \"Unsupported media type \\\"application/json\\\" in request.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa4a8add-b57e-4864-8ed9-8edb6706b5c3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 2,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Locked (WebDAV) (RFC 4918)",
+              "code": 423,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"attr\": \"string\",\n      \"code\": \"component-locked\",\n      \"detail\": \"string\"\n    },\n    {\n      \"attr\": \"string\",\n      \"code\": \"component-locked\",\n      \"detail\": \"string\"\n    }\n  ],\n  \"type\": \"server_error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "38ff6bb2-ddad-407e-8731-43a51d56d3f0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 2,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"throttled\",\n      \"detail\": \"Request was throttled.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae56f526-f7ad-40bd-938d-f436d8edf2be",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"plural\": {\n    \"source\": 2,\n    \"number\": 8,\n    \"formula\": \"string\"\n  },\n  \"direction\": \"rtl\",\n  \"population\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"server_error\",\n  \"errors\": [\n    {\n      \"code\": \"error\",\n      \"detail\": \"A server error occurred.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c9491638-7f62-4885-aaea-379e255a7f92",
+          "name": "api languages destroy",
+          "request": {
+            "name": "api languages destroy",
+            "description": {
+              "content": "Delete the language.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "languages",
+                ":code",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "code",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "669b6f5f-24cb-46a1-9148-5482133bc5fb",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d2cf132e-b89f-4847-97a7-656490f4d883",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"attr\": \"string\",\n      \"code\": \"blank\",\n      \"detail\": \"string\"\n    },\n    {\n      \"attr\": \"string\",\n      \"code\": \"blank\",\n      \"detail\": \"string\"\n    }\n  ],\n  \"type\": \"validation_error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7e3baa0b-4060-403d-91bf-71f08f214eb7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"authentication_failed\",\n      \"detail\": \"Incorrect authentication credentials.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4219edb1-ab5e-4372-8783-151d5f5ae037",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"permission_denied\",\n      \"detail\": \"You do not have permission to perform this action.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e0830308-a40b-4bbc-b23d-fb60d03998ec",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"not_found\",\n      \"detail\": \"Not found.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "26fe4b63-e39e-4c0e-903d-ee4125dff55c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"method_not_allowed\",\n      \"detail\": \"Method \\\"get\\\" not allowed.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9e9ad7a-f09f-464d-909a-295bd6e8b506",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"not_acceptable\",\n      \"detail\": \"Could not satisfy the request Accept header.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "00f72d07-b457-4723-983a-432a893db4b9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Locked (WebDAV) (RFC 4918)",
+              "code": 423,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"attr\": \"string\",\n      \"code\": \"component-locked\",\n      \"detail\": \"string\"\n    },\n    {\n      \"attr\": \"string\",\n      \"code\": \"component-locked\",\n      \"detail\": \"string\"\n    }\n  ],\n  \"type\": \"server_error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "88a2df72-3815-4689-9ff7-0228740869c5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"throttled\",\n      \"detail\": \"Request was throttled.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0235e989-9520-4258-9885-ca92e33a6f6e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"server_error\",\n  \"errors\": [\n    {\n      \"code\": \"error\",\n      \"detail\": \"A server error occurred.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5921c716-b68a-4486-aba2-f175d0f19bef",
+          "name": "api languages statistics retrieve",
+          "request": {
+            "name": "api languages statistics retrieve",
+            "description": {
+              "content": "Return statistics for a language.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "languages",
+                ":code",
+                "statistics",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "code",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ce0e53c0-de85-4e80-9854-ace85767f89c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    "statistics",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "(Required) Allowed number of requests to perform",
+                  "key": "X-RateLimit-Limit",
+                  "value": "82"
+                },
+                {
+                  "disabled": false,
+                  "description": "(Required) Remaining number of requests to perform",
+                  "key": "X-RateLimit-Remaining",
+                  "value": "82"
+                },
+                {
+                  "disabled": false,
+                  "description": "(Required) Number of seconds until the rate-limit window resets",
+                  "key": "X-RateLimit-Reset",
+                  "value": "82"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"approved\": 755,\n  \"approved_chars\": 3282,\n  \"approved_chars_percent\": 3937.605464762973,\n  \"approved_percent\": 1211.393129940117,\n  \"approved_words\": 3627,\n  \"approved_words_percent\": 6889.492860063844,\n  \"comments\": 7288,\n  \"failing\": 5803,\n  \"failing_percent\": 8423.659911037472,\n  \"fuzzy\": 2866,\n  \"fuzzy_chars\": 1169,\n  \"fuzzy_chars_percent\": 1785.4999689810759,\n  \"fuzzy_percent\": 379.89260035089734,\n  \"fuzzy_words\": 384,\n  \"fuzzy_words_percent\": 3064.9787801136395,\n  \"last_change\": \"2003-11-22T19:15:58.412Z\",\n  \"readonly\": 6667,\n  \"readonly_chars\": 5174,\n  \"readonly_chars_percent\": 262.7239263166692,\n  \"readonly_percent\": 1117.6130225099569,\n  \"readonly_words\": 2772,\n  \"readonly_words_percent\": 4940.493329655923,\n  \"recent_changes\": 7458,\n  \"suggestions\": 6585,\n  \"total\": 5359,\n  \"total_chars\": 7570,\n  \"total_words\": 2381,\n  \"translated\": 2329,\n  \"translated_chars\": 442,\n  \"translated_chars_percent\": 61.34243798417427,\n  \"translated_percent\": 3826.5861252496793,\n  \"translated_words\": 282,\n  \"translated_words_percent\": 289.5384747327212,\n  \"code\": \"string\",\n  \"name\": \"string\",\n  \"url\": \"https://kIOuVRddogGFrJCslchwJszTwZ.xcAs4WD8UlJiyRbfFRrzT8bL,c9imDHaUblEZ0JiHxxk91\",\n  \"translate_url\": \"https://B.baim\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "094ac012-b29a-4094-82e8-83ef85944047",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    "statistics",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"attr\": \"string\",\n      \"code\": \"blank\",\n      \"detail\": \"string\"\n    },\n    {\n      \"attr\": \"string\",\n      \"code\": \"blank\",\n      \"detail\": \"string\"\n    }\n  ],\n  \"type\": \"validation_error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "97ef2416-a159-4d76-a46f-24b009b0cfd5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    "statistics",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"authentication_failed\",\n      \"detail\": \"Incorrect authentication credentials.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2443cd22-f603-4fa9-9493-1b5fcb38bfcf",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    "statistics",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"permission_denied\",\n      \"detail\": \"You do not have permission to perform this action.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f0b75975-6293-470c-a64b-0f4ee552cc85",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    "statistics",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"not_found\",\n      \"detail\": \"Not found.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "80cd47af-45c1-4a7d-a880-1bc926df2aa0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    "statistics",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"method_not_allowed\",\n      \"detail\": \"Method \\\"get\\\" not allowed.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d7ee35be-9726-4264-9e4d-feebba7eb7d1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    "statistics",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"not_acceptable\",\n      \"detail\": \"Could not satisfy the request Accept header.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1eadacc5-b70b-48ef-9678-18bd6442a90e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    "statistics",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Locked (WebDAV) (RFC 4918)",
+              "code": 423,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"attr\": \"string\",\n      \"code\": \"component-locked\",\n      \"detail\": \"string\"\n    },\n    {\n      \"attr\": \"string\",\n      \"code\": \"component-locked\",\n      \"detail\": \"string\"\n    }\n  ],\n  \"type\": \"server_error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9640749a-b0bb-4c37-9817-5031f0254762",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    "statistics",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"throttled\",\n      \"detail\": \"Request was throttled.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24edb228-d394-460d-bfa8-d3e50b6e124b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "languages",
+                    ":code",
+                    "statistics",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"server_error\",\n  \"errors\": [\n    {\n      \"code\": \"error\",\n      \"detail\": \"A server error occurred.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http:",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "053937ca-6e09-4272-9ff4-be7d7aba1f5d",
+    "name": "Weblate's REST addons languages API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\nThe API is accessible on the ``/api/`` URL and it is based on [Django REST framework](https://www.django-rest-framework.org/).\n\nThe OpenAPI specification is available as feature preview, feedback welcome!\n\n## Authorization\n\n<!-- Redoc-Inject: <security-definitions> -->\n\n\n    ",
+      "type": "text/plain"
+    }
+  }
+}

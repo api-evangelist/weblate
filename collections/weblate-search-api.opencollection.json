@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Weblate's REST addons search API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "api_search_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http:/api/search/",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search query."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return site-wide search results as a list."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

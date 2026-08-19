@@ -1,0 +1,291 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Weblate's REST addons categories API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "categories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "api_categories_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http:/api/categories/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List available categories."
+        },
+        {
+          "info": {
+            "name": "api_categories_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http:/api/categories/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Category API."
+        },
+        {
+          "info": {
+            "name": "api_categories_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http:/api/categories/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Category API."
+        },
+        {
+          "info": {
+            "name": "api_categories_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http:/api/categories/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Edit full information about category."
+        },
+        {
+          "info": {
+            "name": "api_categories_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http:/api/categories/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Category API."
+        },
+        {
+          "info": {
+            "name": "api_categories_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http:/api/categories/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete category."
+        },
+        {
+          "info": {
+            "name": "api_categories_announcements_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http:/api/categories/:id/announcements/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return announcements."
+        },
+        {
+          "info": {
+            "name": "api_categories_announcements_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http:/api/categories/:id/announcements/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create an announcement."
+        },
+        {
+          "info": {
+            "name": "api_categories_announcements_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http:/api/categories/:id/announcements/:announcement_id/",
+            "params": [
+              {
+                "name": "announcement_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete an announcement."
+        },
+        {
+          "info": {
+            "name": "api_categories_statistics_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http:/api/categories/:id/statistics/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return statistics for a category."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

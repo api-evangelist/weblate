@@ -1,0 +1,42 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Weblate's REST addons schema API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "schema",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "api_schema_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http:/api/schema/",
+            "params": [
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "OpenApi3 schema for this API. Format can be selected via content negotiation.\n\n- YAML: application/vnd.oai.openapi\n- JSON: application/vnd.oai.openapi+json"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

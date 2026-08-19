@@ -1,0 +1,255 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Weblate's REST addons component-lists API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "component-lists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "api_component_lists_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http:/api/component-lists/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return a list of component lists."
+        },
+        {
+          "info": {
+            "name": "api_component_lists_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http:/api/component-lists/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a new component list."
+        },
+        {
+          "info": {
+            "name": "api_component_lists_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http:/api/component-lists/:slug/",
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return information about component list."
+        },
+        {
+          "info": {
+            "name": "api_component_lists_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http:/api/component-lists/:slug/",
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Change the component list parameters."
+        },
+        {
+          "info": {
+            "name": "api_component_lists_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http:/api/component-lists/:slug/",
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Change the component list parameters."
+        },
+        {
+          "info": {
+            "name": "api_component_lists_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http:/api/component-lists/:slug/",
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete the component list."
+        },
+        {
+          "info": {
+            "name": "api_component_lists_components_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http:/api/component-lists/:slug/components/",
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Component lists API."
+        },
+        {
+          "info": {
+            "name": "api_component_lists_components_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http:/api/component-lists/:slug/components/",
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Associate component with a component list."
+        },
+        {
+          "info": {
+            "name": "api_component_lists_components_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http:/api/component-lists/:slug/components/:component_slug/",
+            "params": [
+              {
+                "name": "component_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Disassociate a component from the component list."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

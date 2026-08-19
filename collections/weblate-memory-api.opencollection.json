@@ -1,0 +1,164 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Weblate's REST addons memory API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "memory",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "api_memory_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http:/api/memory/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "project",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "source",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "source_language",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "target_language",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return a list of memory results."
+        },
+        {
+          "info": {
+            "name": "api_memory_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http:/api/memory/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Memory API."
+        },
+        {
+          "info": {
+            "name": "api_memory_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http:/api/memory/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete a memory object."
+        },
+        {
+          "info": {
+            "name": "api_memory_lookup_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http:/api/memory/lookup/",
+            "params": [
+              {
+                "name": "exact",
+                "value": "",
+                "type": "query",
+                "description": "Return exact matches only and skip fuzzy matching."
+              },
+              {
+                "name": "project",
+                "value": "",
+                "type": "query",
+                "description": "Project slug filter."
+              },
+              {
+                "name": "source_language",
+                "value": "",
+                "type": "query",
+                "description": "Source language code."
+              },
+              {
+                "name": "target_language",
+                "value": "",
+                "type": "query",
+                "description": "Target language code."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Look up translation memory matches for the provided source strings."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

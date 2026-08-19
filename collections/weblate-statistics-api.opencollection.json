@@ -1,0 +1,213 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Weblate's REST addons statistics API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "statistics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "api_categories_statistics_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http:/api/categories/:id/statistics/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return statistics for a category."
+        },
+        {
+          "info": {
+            "name": "api_components_statistics_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http:/api/components/:project__slug/:slug/statistics/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "project__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return paginated statistics for all translations within component."
+        },
+        {
+          "info": {
+            "name": "api_languages_statistics_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http:/api/languages/:code/statistics/",
+            "params": [
+              {
+                "name": "code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return statistics for a language."
+        },
+        {
+          "info": {
+            "name": "api_projects_languages_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http:/api/projects/:slug/languages/",
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return statistics for all languages within a project."
+        },
+        {
+          "info": {
+            "name": "api_projects_statistics_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http:/api/projects/:slug/statistics/",
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return statistics for a project."
+        },
+        {
+          "info": {
+            "name": "api_translations_statistics_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http:/api/translations/:component__project__slug/:component__slug/:language__code/statistics/",
+            "params": [
+              {
+                "name": "component__project__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "component__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "language__code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return detailed translation statistics."
+        },
+        {
+          "info": {
+            "name": "api_users_statistics_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http:/api/users/:username/statistics/",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List statistics of a user."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,405 @@
+{
+  "item": [
+    {
+      "id": "8b0d6efc-250f-4546-9e9e-d612fd5c4e96",
+      "name": "hooks",
+      "description": {
+        "content": "Notification hooks allow external applications to notify Weblate that the VCS repository has been updated.\n\nYou can use repository endpoints for projects, components and translations to update individual repositories.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0d6ea0f0-7536-40a7-aff1-02099d6df688",
+          "name": "hooks incoming",
+          "request": {
+            "name": "hooks incoming",
+            "description": {
+              "content": "Process incoming webhook from a code hosting site.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hooks",
+                ":service",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "service",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "response": [
+            {
+              "id": "92344c9c-96ad-4ada-b5c3-bbcc99b9cf42",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hooks",
+                    ":service",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "(Required) Allowed number of requests to perform",
+                  "key": "X-RateLimit-Limit",
+                  "value": "9621"
+                },
+                {
+                  "disabled": false,
+                  "description": "(Required) Remaining number of requests to perform",
+                  "key": "X-RateLimit-Remaining",
+                  "value": "9621"
+                },
+                {
+                  "disabled": false,
+                  "description": "(Required) Number of seconds until the rate-limit window resets",
+                  "key": "X-RateLimit-Reset",
+                  "value": "9621"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status\": \"success\",\n  \"updated_components\": [\n    \"https://jFAF.ldRrxp\",\n    \"https://b.mvNpRfCTg1iqdjFHS69-dAsQTmX12hSatTsCaDy4knTHHW5fAJ.JCFE,emUj6mR4lMB\"\n  ],\n  \"match_status\": {\n    \"branch_matches\": 5346,\n    \"enabled_hook_matches\": 3018,\n    \"repository_matches\": 4908\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "37293ecb-51dd-4581-89c4-2737bc49a8d2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hooks",
+                    ":service",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"attr\": \"string\",\n      \"code\": \"blank\",\n      \"detail\": \"string\"\n    },\n    {\n      \"attr\": \"string\",\n      \"code\": \"blank\",\n      \"detail\": \"string\"\n    }\n  ],\n  \"type\": \"validation_error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c16c9986-76b7-42fd-8cfc-f05e213fa694",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hooks",
+                    ":service",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"not_found\",\n      \"detail\": \"Not found.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "06d4ad2b-6712-4d27-99bc-a1f022e250ca",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hooks",
+                    ":service",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"method_not_allowed\",\n      \"detail\": \"Method \\\"get\\\" not allowed.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4966f902-239e-4d31-8e62-f66d71717874",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hooks",
+                    ":service",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"not_acceptable\",\n      \"detail\": \"Could not satisfy the request Accept header.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4f2a2456-3da9-4723-a0fd-aa637a3909df",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hooks",
+                    ":service",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Locked (WebDAV) (RFC 4918)",
+              "code": 423,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"attr\": \"string\",\n      \"code\": \"repository-locked\",\n      \"detail\": \"string\"\n    },\n    {\n      \"attr\": \"string\",\n      \"code\": \"repository-locked\",\n      \"detail\": \"string\"\n    }\n  ],\n  \"type\": \"server_error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c7c68fbb-c8b8-41a2-9d68-00da17caa74b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hooks",
+                    ":service",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"server_error\",\n  \"errors\": [\n    {\n      \"code\": \"error\",\n      \"detail\": \"A server error occurred.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http:",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "feee8064-39ac-4327-b202-c342c07b170c",
+    "name": "Weblate's REST addons hooks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\nThe API is accessible on the ``/api/`` URL and it is based on [Django REST framework](https://www.django-rest-framework.org/).\n\nThe OpenAPI specification is available as feature preview, feedback welcome!\n\n## Authorization\n\n<!-- Redoc-Inject: <security-definitions> -->\n\n\n    ",
+      "type": "text/plain"
+    }
+  }
+}

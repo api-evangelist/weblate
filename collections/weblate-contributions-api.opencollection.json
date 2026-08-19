@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Weblate's REST addons contributions API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "contributions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "api_users_contributions_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http:/api/users/:username/contributions/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "is_active",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List translation contributions of a user."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

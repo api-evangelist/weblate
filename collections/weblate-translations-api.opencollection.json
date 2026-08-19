@@ -1,0 +1,624 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Weblate's REST addons translations API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "translations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "api_translations_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http:/api/translations/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return a list of translations."
+        },
+        {
+          "info": {
+            "name": "api_translations_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http:/api/translations/:component__project__slug/:component__slug/:language__code/",
+            "params": [
+              {
+                "name": "component__project__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "component__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "language__code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return information about a translation."
+        },
+        {
+          "info": {
+            "name": "api_translations_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http:/api/translations/:component__project__slug/:component__slug/:language__code/",
+            "params": [
+              {
+                "name": "component__project__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "component__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "language__code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete a translation."
+        },
+        {
+          "info": {
+            "name": "api_translations_announcements_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http:/api/translations/:component__project__slug/:component__slug/:language__code/announcements/",
+            "params": [
+              {
+                "name": "component__project__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "component__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "language__code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return announcements."
+        },
+        {
+          "info": {
+            "name": "api_translations_announcements_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http:/api/translations/:component__project__slug/:component__slug/:language__code/announcements/",
+            "params": [
+              {
+                "name": "component__project__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "component__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "language__code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create an announcement."
+        },
+        {
+          "info": {
+            "name": "api_translations_announcements_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http:/api/translations/:component__project__slug/:component__slug/:language__code/announcements/:announcement_id/",
+            "params": [
+              {
+                "name": "announcement_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "component__project__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "component__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "language__code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete an announcement."
+        },
+        {
+          "info": {
+            "name": "api_translations_autotranslate_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http:/api/translations/:component__project__slug/:component__slug/:language__code/autotranslate/",
+            "params": [
+              {
+                "name": "component__project__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "component__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "language__code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Trigger automatic translation."
+        },
+        {
+          "info": {
+            "name": "api_translations_changes_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http:/api/translations/:component__project__slug/:component__slug/:language__code/changes/",
+            "params": [
+              {
+                "name": "component__project__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "component__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "language__code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return a list of translation changes."
+        },
+        {
+          "info": {
+            "name": "api_translations_file_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http:/api/translations/:component__project__slug/:component__slug/:language__code/file/",
+            "params": [
+              {
+                "name": "component__project__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "component__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "language__code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Download translation file."
+        },
+        {
+          "info": {
+            "name": "api_translations_file_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http:/api/translations/:component__project__slug/:component__slug/:language__code/file/",
+            "params": [
+              {
+                "name": "component__project__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "component__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "language__code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Upload new file with translations."
+        },
+        {
+          "info": {
+            "name": "api_translations_file_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http:/api/translations/:component__project__slug/:component__slug/:language__code/file/",
+            "params": [
+              {
+                "name": "component__project__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "component__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "language__code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Upload new file with translations."
+        },
+        {
+          "info": {
+            "name": "api_translations_repository_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http:/api/translations/:component__project__slug/:component__slug/:language__code/repository/",
+            "params": [
+              {
+                "name": "component__project__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "component__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "language__code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return information about VCS repository status."
+        },
+        {
+          "info": {
+            "name": "api_translations_repository_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http:/api/translations/:component__project__slug/:component__slug/:language__code/repository/",
+            "params": [
+              {
+                "name": "component__project__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "component__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "language__code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Perform given operation on the VCS repository."
+        },
+        {
+          "info": {
+            "name": "api_translations_statistics_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http:/api/translations/:component__project__slug/:component__slug/:language__code/statistics/",
+            "params": [
+              {
+                "name": "component__project__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "component__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "language__code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return detailed translation statistics."
+        },
+        {
+          "info": {
+            "name": "api_translations_units_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http:/api/translations/:component__project__slug/:component__slug/:language__code/units/",
+            "params": [
+              {
+                "name": "component__project__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "component__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "language__code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return a list of translation units."
+        },
+        {
+          "info": {
+            "name": "api_translations_units_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http:/api/translations/:component__project__slug/:component__slug/:language__code/units/",
+            "params": [
+              {
+                "name": "component__project__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "component__slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "language__code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Add a new unit."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

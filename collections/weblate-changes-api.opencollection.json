@@ -1,0 +1,94 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Weblate's REST addons changes API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "changes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "api_changes_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http:/api/changes/",
+            "params": [
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "* `0` - Resource updated\n* `1` - Translation completed\n* `2` - Translation changed\n* `3` - Comment added\n* `4` - Suggestion added\n* `5` - Translation added\n* `6` - Automatically translated\n* `7` - Suggestion accepted\n* `8` - Translation reverted\n* `9` - Translation uploaded\n* `13` - Source string added\n* `14` - Component locked\n* `15` - Component unlocked\n* `17` - Changes committed\n* `18` - Changes pushed\n* `19` - Repository reset\n* `20` - Repository merged\n* `21` - Repository rebased\n* `22` - Repository merge failed\n* `23` - Repository rebase failed\n* `24` - Parsing failed\n* `25` - Translation removed\n* `26` - Suggestion removed\n* `27` - Translation replaced\n* `28` - Repository push failed\n* `29` - Suggestion removed during cleanup\n* `30` - Source string changed\n* `31` - String added\n* `32` - Bulk status changed\n* `33` - Visibility changed\n* `34` - User added\n* `35` - User removed\n* `36` - Translation approved\n* `37` - Marked for edit\n* `38` - Component removed\n* `39` - Project removed\n* `41` - Project renamed\n* `42` - Component renamed\n* `43` - Moved component\n* `45` - Contributor joined\n* `46` - Announcement posted\n* `47` - Alert triggered\n* `48` - Language added\n* `49` - Language requested\n* `50` - Project created\n* `51` - Component created\n* `52` - User invited\n* `53` - Repository notification received\n* `54` - Translation replaced file by upload\n* `55` - License changed\n* `56` - Contributor license agreement changed\n* `57` - Screenshot added\n* `58` - Screenshot uploaded\n* `59` - String updated in the repository\n* `60` - Add-on installed\n* `61` - Add-on configuration changed\n* `62` - Add-on uninstalled\n* `63` - String removed\n* `64` - Comment removed\n* `65` - Comment resolved\n* `66` - Explanation updated\n* `67` - Category removed\n* `68` - Category renamed\n* `69` - Category moved\n* `70` - Saving string failed\n* `71` - String added in the repository\n* `72` - String updated in the upload\n* `73` - String added in the upload\n* `74` - Translation updated by source upload\n* `75` - Component translation completed\n* `76` - Applied enforced check\n* `77` - Propagated change\n* `78` - File uploaded\n* `79` - Extra flags updated\n* `80` - Font uploaded\n* `81` - Font changed\n* `82` - Font removed\n* `83` - Forced synchronization of translations\n* `84` - Forced rescan of translations\n* `85` - Screenshot removed\n* `86` - Label added\n* `87` - Label removed\n* `88` - Repository cleanup\n* `89` - Source string added in the upload\n* `90` - Source string added in the repository\n* `91` - Project backed up\n* `92` - Project restored\n* `93` - Component restored\n* `94` - User edit reverted\n* `95` - Project setting changed\n* `96` - Component setting changed\n* `97` - User access changed\n* `98` - Workspace created\n* `99` - Workspace setting changed\n* `100` - Project moved"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "timestamp_after",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "timestamp_before",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return a list of translation changes."
+        },
+        {
+          "info": {
+            "name": "api_changes_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http:/api/changes/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Token",
+              "value": "{{Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return information about a translation change."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

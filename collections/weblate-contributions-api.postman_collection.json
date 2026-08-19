@@ -1,0 +1,891 @@
+{
+  "item": [
+    {
+      "id": "65b5ff18-2f46-47bc-81b1-5a0ab20d5f11",
+      "name": "contributions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "279b1eeb-4ba7-4225-a7a6-3fb4de4c097f",
+          "name": "api users contributions list",
+          "request": {
+            "name": "api users contributions list",
+            "description": {
+              "content": "List translation contributions of a user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "users",
+                ":username",
+                "contributions",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_active",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "username",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "username",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a520ebf7-1d1e-4fcc-af31-1612e21ffc58",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "users",
+                    ":username",
+                    "contributions",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "username",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "(Required) Allowed number of requests to perform",
+                  "key": "X-RateLimit-Limit",
+                  "value": "1191"
+                },
+                {
+                  "disabled": false,
+                  "description": "(Required) Remaining number of requests to perform",
+                  "key": "X-RateLimit-Remaining",
+                  "value": "1191"
+                },
+                {
+                  "disabled": false,
+                  "description": "(Required) Number of seconds until the rate-limit window resets",
+                  "key": "X-RateLimit-Reset",
+                  "value": "1191"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 123,\n  \"results\": [\n    {\n      \"announcements_url\": \"http://DgSUXfzJVKedbwboHFgwp.blzUroqktemoj,stni2O1zYn2,TRB\",\n      \"changes_list_url\": \"https://aqRD.fzzlEIOgiyb7LRj0kDaDiN-gTY2BGFgrHXpiabI5tR3RY,,y\",\n      \"component\": {\n        \"addons\": [\n          \"https://G.bhrwrFeWysh1tU.khK0aaNg.7\",\n          \"http://FYUnhKLSV.galalrGtkC3sAZ\"\n        ],\n        \"announcements_url\": \"http://piwEfkEgADFIifYBQgDgoy.hglcGPeUtvWaTbWRzWIcQlYEz7QLcCT0slu2k4\",\n        \"changes_list_url\": \"https://NA.ksIVIhoVH631d,u9IiLJC8CbYvzsu\",\n        \"credits_url\": \"https://SEGLqMjHqzDcoYq.pmqzGgFFeeeZE,3L2glovmPuveNYuypFXZsTTNMwNhXoN8Enwr,Zx0lYZzLBJ9Yt1rl3vXzU\",\n        \"effective_add_message\": \"string\",\n        \"effective_addon_message\": \"string\",\n        \"effective_agreement\": \"string\",\n        \"effective_check_flags\": \"string\",\n        \"effective_commit_message\": \"string\",\n        \"effective_delete_message\": \"string\",\n        \"effective_language_code_style\": \"string\",\n        \"effective_license\": \"string\",\n        \"effective_merge_message\": \"string\",\n        \"effective_new_lang\": \"string\",\n        \"effective_pull_message\": \"string\",\n        \"effective_secondary_language\": 8021,\n        \"file_format\": \"strings\",\n        \"filemask\": \"string\",\n        \"id\": 5673,\n        \"license_url\": \"string\",\n        \"linked_component\": \"http://sYFbAgsG.vereP9Zeo6P\",\n        \"links_url\": \"http://bLSFiNLNVcRFtMWwxMNXbQQtYpuTRInV.qlgokjW98tpRg6NTu0.3gMsdD\",\n        \"lock_url\": \"http://tqsbkMQJkDTGVOKsHfFXnwsMRCjEvKYV.zwjgXMb\",\n        \"locked\": true,\n        \"name\": \"string\",\n        \"project\": {\n          \"announcements_url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"categories_url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"changes_list_url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"components_list_url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"credits_url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"effective_add_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"effective_addon_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"effective_agreement\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"effective_check_flags\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"effective_commit_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"effective_delete_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"effective_language_code_style\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"effective_license\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"effective_merge_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"effective_new_lang\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"effective_pull_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"effective_secondary_language\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"labels_url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"languages_url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"lock_url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locked\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"machinery_settings\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"repository_url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"slug\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"statistics_url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"web\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"web_url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"check_flags\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"translation_review\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"source_review\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"commit_policy\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"workspace\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"instructions\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"enable_hooks\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"language_aliases\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"license\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"inherit_license\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"agreement\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"inherit_agreement\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"new_lang\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"inherit_new_lang\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"language_code_style\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"inherit_language_code_style\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondary_language\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"inherit_secondary_language\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"commit_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"inherit_commit_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"add_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"inherit_add_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"delete_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"inherit_delete_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"merge_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"inherit_merge_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"addon_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"inherit_addon_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"pull_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"inherit_pull_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"enforced_2fa\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"repo\": \"string\",\n        \"repository_url\": \"https://fhjGssNfwDZkt.gldeK.YLz0TX7sibyzG3wmetdOva96kDJLmQdVXRDiHAANnfI\",\n        \"slug\": \"UDTrmIs20m\",\n        \"statistics_url\": \"https://mdhq.pqnqqUqnaN3+pvqJT-dzb4CHQN\",\n        \"task_url\": \"http://ZVREXcSONHHMsuKdPXjOgviMm.zoydGsQ+a3AjwfcfwUUvdk89YSG\",\n        \"translations_url\": \"https://cITDfoFIBmonRLkZSjiFsQToFiiCGHbpt.zyhhLnz5lCwlK6FEz8tcefNLUyuQ3Cksxh\",\n        \"url\": \"http://CGcAAUKYTkzhocDOmKD.utpaNGKGELasTQuxLSdtAYaVtLR8U\",\n        \"web_url\": \"string\",\n        \"source_language\": {\n          \"aliases\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"code\": \"PrXnHhVk\",\n          \"id\": 704,\n          \"statistics_url\": \"http://caxPhTsNypUceRlnwqCwHaKJYs.trr1sBcmwN\",\n          \"url\": \"http://CrbxdtAjUTIKnVpHEGOodnoJnKHKGM.lqtj.BJFCNBulppTYmnC-Ia-8H6Zh\",\n          \"web_url\": \"string\",\n          \"name\": \"string\",\n          \"plural\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"direction\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"population\": 8051639309444704000\n        },\n        \"vcs\": \"mercurial\",\n        \"git_export\": \"string\",\n        \"branch\": \"string\",\n        \"push_branch\": \"string\",\n        \"screenshot_filemask\": \"string\",\n        \"template\": \"string\",\n        \"edit_template\": false,\n        \"intermediate\": \"string\",\n        \"new_base\": \"string\",\n        \"file_format_params\": {},\n        \"license\": \"MIT\",\n        \"inherit_license\": false,\n        \"agreement\": \"string\",\n        \"inherit_agreement\": false,\n        \"new_lang\": \"contact\",\n        \"inherit_new_lang\": true,\n        \"language_code_style\": \"posix_lowercase\",\n        \"inherit_language_code_style\": false,\n        \"push\": \"string\",\n        \"check_flags\": \"string\",\n        \"priority\": 100,\n        \"enforced_checks\": \"\",\n        \"restricted\": true,\n        \"repoweb\": \"string\",\n        \"report_source_bugs\": \"dDGgJu82QBi@foBcsMZnZFDCzhdILyTpNeJnesFr.lq\",\n        \"merge_style\": \"merge_noff\",\n        \"commit_message\": \"string\",\n        \"inherit_commit_message\": true,\n        \"add_message\": \"string\",\n        \"inherit_add_message\": true,\n        \"delete_message\": \"string\",\n        \"inherit_delete_message\": false,\n        \"merge_message\": \"string\",\n        \"inherit_merge_message\": true,\n        \"addon_message\": \"string\",\n        \"inherit_addon_message\": false,\n        \"pull_message\": \"string\",\n        \"inherit_pull_message\": false,\n        \"allow_translation_propagation\": false,\n        \"manage_units\": true,\n        \"enable_suggestions\": false,\n        \"suggestion_voting\": false,\n        \"suggestion_autoaccept\": 6286,\n        \"push_on_commit\": false,\n        \"commit_pending_age\": -14761,\n        \"auto_lock_error\": true,\n        \"language_regex\": \"string\",\n        \"key_filter\": \"string\",\n        \"secondary_language\": 1839,\n        \"inherit_secondary_language\": true,\n        \"variant_regex\": \"string\",\n        \"zipfile\": \"https://LncTqXStu.hpvcNJ7u,nnDq3cGOIxl3t59+gQpDIp0MRZEX\",\n        \"docfile\": \"https://GABkJqty.zyudCzG+jCwK8JroE\",\n        \"is_glossary\": false,\n        \"glossary_color\": \"gray\",\n        \"disable_autoshare\": true,\n        \"category\": \"https://acxvCrFT.ndcvEgaw3G4QO0t95NL1QPGZ,bL9bCfNzlRuzLj4bh\"\n      },\n      \"failing_checks\": 8503,\n      \"failing_checks_percent\": 961.5861514441259,\n      \"failing_checks_words\": 8639,\n      \"file_url\": \"http://ThmJEpNedCIVIdCzsxpXo.eopsu+rQFxYS6YqQnnmM81xQ-SgBnjcfjutN9\",\n      \"filename\": \"string\",\n      \"fuzzy\": 4041,\n      \"fuzzy_percent\": 8086.668011813288,\n      \"fuzzy_words\": 6146,\n      \"have_comment\": 7093,\n      \"have_suggestion\": 5004,\n      \"id\": 9979,\n      \"is_source\": false,\n      \"is_template\": true,\n      \"language\": {\n        \"code\": \"DBev17F-1v8k6amwx\",\n        \"id\": 660,\n        \"statistics_url\": \"http://bSIHqAZTZM.rkdLgtSAj4GJ1C6nsaYysTV\",\n        \"url\": \"http://pyJTbzywkGwJHXvHUlHVSdnUxwHtShWGL.lvoky2fr\",\n        \"web_url\": \"string\",\n        \"name\": \"string\",\n        \"plural\": {\n          \"id\": 9536,\n          \"type\": 9252,\n          \"source\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"number\": 4,\n          \"formula\": \"string\"\n        },\n        \"direction\": \"rtl\",\n        \"population\": -7587121662244800000\n      },\n      \"last_author\": \"string\",\n      \"last_change\": \"1980-04-16T21:32:55.368Z\",\n      \"repository_url\": \"http://dToRlPWBBQRmwHuTBTPvGnnmfxBf.ujlwKJ3oyufOpu5xLMVquvif9vpu-7HCI-\",\n      \"share_url\": \"string\",\n      \"statistics_url\": \"https://yx.rwmozB9hZ5LDsdQtNlnXpvZmTZvzLHDp5-QRgUJRfenWkBIcyKJOam7-Y+t1HUtBbIIL+X\",\n      \"total\": 1625,\n      \"total_words\": 4833,\n      \"translate_url\": \"string\",\n      \"translated\": 9954,\n      \"translated_percent\": 6733.297798668527,\n      \"translated_words\": 9665,\n      \"units_list_url\": \"https://BQrOJVkuPqHQprDjVnbXwGtHD.ecokQ+ihDcfQJh2UnXaCTRoXpnpB\",\n      \"url\": \"https://fPVRxRtUHoERsJBazFUZmrQjjJWl.ztkj.tM-cuyQyulUyFmSTqWp61.thvd-XA-dkYmHL4\",\n      \"web_url\": \"string\",\n      \"language_code\": \"string\",\n      \"revision\": \"string\"\n    },\n    {\n      \"announcements_url\": \"http://aYNsCbxzGPyNBHY.uodJ6srfSF,9HuEwAs4ssGYRCHX8dSsVDKvb3IACVOJQ+AHns.jgcUwi,z+kBZvPUOGUNdPUa0vX-\",\n      \"changes_list_url\": \"https://nUXjTBthJy.fideyC,TQG5CGCWT9KSz-h7-dHfs4VQvxNILGCcdIEg9KUCNrNMjhxiMDNIG+.AlPYnrIk\",\n      \"component\": {\n        \"addons\": [\n          \"https://hkaTkcd.wirMoRpRFQluHN0ZQhjPr2GYck.Om-Q9UM.-Rc1TOiw.7dPfrvs\",\n          \"http://VhumrJGLU.plbsT5oPoDEeYYgNgdWiFHLoK7uopECE+bH-IENYJZ7SqAdwkfdhpiv9FwjLvx1FkZTxKB3Hv0k\"\n        ],\n        \"announcements_url\": \"https://HxnJagdyW.jverUDHieQMox8kZekZ+XzrgBWJ5wPkJPCptkH-hGmm30x,HDXkdxWl+3iHd\",\n        \"changes_list_url\": \"http://PwpOOPfdUXAoagSJepfH.nobWeBnzJt3xvx5ycI-o5LNEN2IDHb2+egNhfmQzEGLoKNwu\",\n        \"credits_url\": \"http://x.zjiT4YlBM2xS9O7FQmh+BXv3ffpZNI4NOi4yT8vFILVjlnSH+yigTQ2N7o,,D\",\n        \"effective_add_message\": \"string\",\n        \"effective_addon_message\": \"string\",\n        \"effective_agreement\": \"string\",\n        \"effective_check_flags\": \"string\",\n        \"effective_commit_message\": \"string\",\n        \"effective_delete_message\": \"string\",\n        \"effective_language_code_style\": \"string\",\n        \"effective_license\": \"string\",\n        \"effective_merge_message\": \"string\",\n        \"effective_new_lang\": \"string\",\n        \"effective_pull_message\": \"string\",\n        \"effective_secondary_language\": 7115,\n        \"file_format\": \"ass\",\n        \"filemask\": \"string\",\n        \"id\": 8459,\n        \"license_url\": \"string\",\n        \"linked_component\": \"https://fhbsGAxtWTCabhlnnENxqjcVt.wltft77yVtNcbCr.b.u2IsTsNMJr-6.G52Pf\",\n        \"links_url\": \"https://oxTfELerWaCFeQAOwtOzetHGxvtZknEbM.oakaN7FMSqWTPY9Z-COBviXJZtJmFq0nzLu10v-YXTIYNg\",\n        \"lock_url\": \"http://KNJBGZYJjeK.mnsq-.kohsoPKmp9M,1gx9eYX5DSEG+mwCMX\",\n        \"locked\": false,\n        \"name\": \"string\",\n        \"project\": {\n          \"announcements_url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"categories_url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"changes_list_url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"components_list_url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"credits_url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"effective_add_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"effective_addon_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"effective_agreement\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"effective_check_flags\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"effective_commit_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"effective_delete_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"effective_language_code_style\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"effective_license\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"effective_merge_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"effective_new_lang\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"effective_pull_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"effective_secondary_language\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"labels_url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"languages_url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"lock_url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locked\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"machinery_settings\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"repository_url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"slug\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"statistics_url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"web\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"web_url\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"check_flags\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"translation_review\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"source_review\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"commit_policy\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"workspace\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"instructions\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"enable_hooks\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"language_aliases\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"license\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"inherit_license\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"agreement\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"inherit_agreement\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"new_lang\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"inherit_new_lang\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"language_code_style\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"inherit_language_code_style\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"secondary_language\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"inherit_secondary_language\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"commit_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"inherit_commit_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"add_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"inherit_add_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"delete_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"inherit_delete_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"merge_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"inherit_merge_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"addon_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"inherit_addon_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"pull_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"inherit_pull_message\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"enforced_2fa\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"repo\": \"string\",\n        \"repository_url\": \"http://jbKTMzPQw.gwb+y6yi5U\",\n        \"slug\": \"yhg\",\n        \"statistics_url\": \"http://DKfolBJslvHPgZqoDEUtPGqlrdnYSCz.qbdz06zitmfHhsd5ZRS3m9qisUYpM2FR,XUNr6GDuQEanXEi1pB\",\n        \"task_url\": \"http://OoKmeYQAlvStinomwwedvK.snnHSR.PkLLpskXL4ifDkTv,qX2f\",\n        \"translations_url\": \"http://lWtAADNSDhWlLSFNhcFNVCj.fucwZ.RCN0Vxql-dNPoEpWG47.\",\n        \"url\": \"https://SPyQRofVxJwOET.ugxYIVJJVICMyfyRs8,ts\",\n        \"web_url\": \"string\",\n        \"source_language\": {\n          \"aliases\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"code\": \"Ux39uPgr-5e_i5wViSLk@PLOC-Q9_Gn\",\n          \"id\": 3648,\n          \"statistics_url\": \"https://oMgRohHaYylFWN.hplogP.KTGL5lchfIV4fc\",\n          \"url\": \"https://oWoovqUyGtboxGZavwNDavtgltkqz.ynV0oDmbQYXVLVhVzlcYZk3foZkeBMw4sHw-nKG\",\n          \"web_url\": \"string\",\n          \"name\": \"string\",\n          \"plural\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"direction\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"population\": -4892536380857942000\n        },\n        \"vcs\": \"gerrit\",\n        \"git_export\": \"string\",\n        \"branch\": \"string\",\n        \"push_branch\": \"string\",\n        \"screenshot_filemask\": \"string\",\n        \"template\": \"string\",\n        \"edit_template\": false,\n        \"intermediate\": \"string\",\n        \"new_base\": \"string\",\n        \"file_format_params\": {},\n        \"license\": \"MIT\",\n        \"inherit_license\": true,\n        \"agreement\": \"string\",\n        \"inherit_agreement\": false,\n        \"new_lang\": \"url\",\n        \"inherit_new_lang\": true,\n        \"language_code_style\": \"linux_lowercase\",\n        \"inherit_language_code_style\": true,\n        \"push\": \"string\",\n        \"check_flags\": \"string\",\n        \"priority\": 80,\n        \"enforced_checks\": \"\",\n        \"restricted\": true,\n        \"repoweb\": \"string\",\n        \"report_source_bugs\": \"bBEBcX6hi@OVgUpIpvfUAsGzjlYqIxkGB.octb\",\n        \"merge_style\": \"merge_noff\",\n        \"commit_message\": \"string\",\n        \"inherit_commit_message\": true,\n        \"add_message\": \"string\",\n        \"inherit_add_message\": true,\n        \"delete_message\": \"string\",\n        \"inherit_delete_message\": false,\n        \"merge_message\": \"string\",\n        \"inherit_merge_message\": false,\n        \"addon_message\": \"string\",\n        \"inherit_addon_message\": false,\n        \"pull_message\": \"string\",\n        \"inherit_pull_message\": true,\n        \"allow_translation_propagation\": true,\n        \"manage_units\": true,\n        \"enable_suggestions\": true,\n        \"suggestion_voting\": false,\n        \"suggestion_autoaccept\": 857,\n        \"push_on_commit\": false,\n        \"commit_pending_age\": -31615,\n        \"auto_lock_error\": true,\n        \"language_regex\": \"string\",\n        \"key_filter\": \"string\",\n        \"secondary_language\": 646,\n        \"inherit_secondary_language\": true,\n        \"variant_regex\": \"string\",\n        \"zipfile\": \"https://LOfMFTIljAq.inzGh2xu+TJiB0ypF6MMKCrWeSqpBXxY-X\",\n        \"docfile\": \"http://pBlYmJXYGapQXgHnw.cssYME.8YTmUcLmjrw5Cp1dAgk\",\n        \"is_glossary\": false,\n        \"glossary_color\": \"maroon\",\n        \"disable_autoshare\": false,\n        \"category\": \"http://HYorWBifSTAYzahimSTumrkSvm.tbedgr+vDcxIZEaPuzOaRvMNh70UWqp+4gKZLWJpNL0flf1CehPJx\"\n      },\n      \"failing_checks\": 34,\n      \"failing_checks_percent\": 1710.7882114894223,\n      \"failing_checks_words\": 6203,\n      \"file_url\": \"https://agZbSeDaaVWEMymPqbeWdDEKKQ.ldywTNYCfEfJ+pN7TZUwXD1vjShFx3Zz41-jfrXyivvQErvHBGhMGh.fKu\",\n      \"filename\": \"string\",\n      \"fuzzy\": 210,\n      \"fuzzy_percent\": 9935.580812236545,\n      \"fuzzy_words\": 3050,\n      \"have_comment\": 1508,\n      \"have_suggestion\": 8830,\n      \"id\": 4586,\n      \"is_source\": false,\n      \"is_template\": false,\n      \"language\": {\n        \"code\": \"2Q01d-0UZxi-1zyvMi\",\n        \"id\": 6119,\n        \"statistics_url\": \"http://IDhQLEkycHEIkYCPejdagZfrVnJjWwI.ttiiIWPka1Issynv.6Kpwy3PqolAEerV94xwxA17zM.Fu+dYb\",\n        \"url\": \"http://DzmpFGiEgT.rlbqTkvTU35dem9Jf.vuF0OJLDMBfgEkDAqMTClw1V5q2+IRAfm6pP3fIHQKZq+8bTHqmp\",\n        \"web_url\": \"string\",\n        \"name\": \"string\",\n        \"plural\": {\n          \"id\": 5613,\n          \"type\": 6338,\n          \"source\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"number\": 4,\n          \"formula\": \"string\"\n        },\n        \"direction\": \"rtl\",\n        \"population\": 5574267907202136000\n      },\n      \"last_author\": \"string\",\n      \"last_change\": \"1985-07-30T23:03:48.798Z\",\n      \"repository_url\": \"https://nxskChZtunGbsGvWZYvBRrldpXlu.lgmmhCyap+Yl6DQBhAXfO1WhCaoSswopdeCi-nUS\",\n      \"share_url\": \"string\",\n      \"statistics_url\": \"http://AjVSmhkmQUHKiQAqmOTezPQGTVDfGH.vpcMVQiObZCt+l-f2jmnvXuiObjZx6YdUWKe9yE0ZRu+-QcEsc\",\n      \"total\": 3308,\n      \"total_words\": 332,\n      \"translate_url\": \"string\",\n      \"translated\": 7749,\n      \"translated_percent\": 8553.692291610589,\n      \"translated_words\": 7101,\n      \"units_list_url\": \"http://TKaogBcjqzTtlwpPvANgSTajDsIsFDVDd.ryaFvGSv4+x6fhMVfTWLMWJCMCRRpxP-mmmVnaAs\",\n      \"url\": \"https://gaOyosUqqCTeeFODgoAsowriWtdts.nti7EZObDYjLGwrvL7QZWbeXRYcOpiqcqnNAWXotV0f0zumw1eX-6WaHk5agyYCLKT3CqbK\",\n      \"web_url\": \"string\",\n      \"language_code\": \"string\",\n      \"revision\": \"string\"\n    }\n  ],\n  \"next\": \"http://api.example.org/accounts/?page=4\",\n  \"previous\": \"http://api.example.org/accounts/?page=2\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a1ac6bdf-5437-4313-8537-818a5798d358",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "users",
+                    ":username",
+                    "contributions",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "username",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"attr\": \"string\",\n      \"code\": \"blank\",\n      \"detail\": \"string\"\n    },\n    {\n      \"attr\": \"string\",\n      \"code\": \"blank\",\n      \"detail\": \"string\"\n    }\n  ],\n  \"type\": \"validation_error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "be6f109d-0fc5-436e-85fb-c221ce5b9b05",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "users",
+                    ":username",
+                    "contributions",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "username",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"authentication_failed\",\n      \"detail\": \"Incorrect authentication credentials.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "874e8ae9-fc35-4fe9-a5fa-8591e6c95db9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "users",
+                    ":username",
+                    "contributions",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "username",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"permission_denied\",\n      \"detail\": \"You do not have permission to perform this action.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e310882c-a165-4718-bbb0-10816ae58cb7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "users",
+                    ":username",
+                    "contributions",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "username",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"not_found\",\n      \"detail\": \"Not found.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "de52dc68-f5bb-432b-b4ec-8e9c68aa3ea4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "users",
+                    ":username",
+                    "contributions",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "username",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"method_not_allowed\",\n      \"detail\": \"Method \\\"get\\\" not allowed.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "617f59bd-cd79-4c3e-9993-e4ec5a12a3b1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "users",
+                    ":username",
+                    "contributions",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "username",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"not_acceptable\",\n      \"detail\": \"Could not satisfy the request Accept header.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b234a6e1-9b99-43b3-96b2-09db5435299d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "users",
+                    ":username",
+                    "contributions",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "username",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Locked (WebDAV) (RFC 4918)",
+              "code": 423,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"attr\": \"string\",\n      \"code\": \"component-locked\",\n      \"detail\": \"string\"\n    },\n    {\n      \"attr\": \"string\",\n      \"code\": \"repository-locked\",\n      \"detail\": \"string\"\n    }\n  ],\n  \"type\": \"server_error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c528cc28-4602-4b70-a0fe-574dee9396c2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "users",
+                    ":username",
+                    "contributions",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "username",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"client_error\",\n  \"errors\": [\n    {\n      \"code\": \"throttled\",\n      \"detail\": \"Request was throttled.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e48ab84-0294-4dd2-9e39-c821b6cb87fd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "users",
+                    ":username",
+                    "contributions",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "username",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"server_error\",\n  \"errors\": [\n    {\n      \"code\": \"error\",\n      \"detail\": \"A server error occurred.\",\n      \"attr\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http:",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "895b3ff2-4e08-4a6b-b9ae-a32b885ff0bc",
+    "name": "Weblate's REST addons contributions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\nThe API is accessible on the ``/api/`` URL and it is based on [Django REST framework](https://www.django-rest-framework.org/).\n\nThe OpenAPI specification is available as feature preview, feedback welcome!\n\n## Authorization\n\n<!-- Redoc-Inject: <security-definitions> -->\n\n\n    ",
+      "type": "text/plain"
+    }
+  }
+}

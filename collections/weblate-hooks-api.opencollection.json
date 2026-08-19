@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Weblate's REST addons hooks API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "hooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "hooks_incoming",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http:/hooks/:service/",
+            "params": [
+              {
+                "name": "service",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Process incoming webhook from a code hosting site."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
