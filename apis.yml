@@ -32,6 +32,13 @@ tags:
   - Localization
   - Translation
   - Internationalization
+  - Open-Source
+  - Continuous Localization
+  - Version Control
+tags_raw:
+  - Localization
+  - Translation
+  - Internationalization
   - Open Source
   - Continuous Localization
   - Version Control
@@ -42,6 +49,8 @@ apis:
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
   tags:
+  - Addons
+  tags_raw:
   - addons
   properties:
   - type: OpenAPI
@@ -54,6 +63,8 @@ apis:
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
   tags:
+  - Categories
+  tags_raw:
   - categories
   properties:
   - type: OpenAPI
@@ -66,6 +77,8 @@ apis:
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
   tags:
+  - Changes
+  tags_raw:
   - changes
   properties:
   - type: OpenAPI
@@ -90,6 +103,8 @@ apis:
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
   tags:
+  - Components
+  tags_raw:
   - components
   properties:
   - type: OpenAPI
@@ -102,6 +117,8 @@ apis:
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
   tags:
+  - Contributions
+  tags_raw:
   - contributions
   properties:
   - type: OpenAPI
@@ -114,6 +131,8 @@ apis:
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
   tags:
+  - Group
+  tags_raw:
   - groups
   properties:
   - type: OpenAPI
@@ -131,6 +150,8 @@ apis:
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
   tags:
+  - Hooks
+  tags_raw:
   - hooks
   properties:
   - type: OpenAPI
@@ -143,6 +164,8 @@ apis:
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
   tags:
+  - Language
+  tags_raw:
   - languages
   properties:
   - type: OpenAPI
@@ -155,6 +178,8 @@ apis:
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
   tags:
+  - Memory
+  tags_raw:
   - memory
   properties:
   - type: OpenAPI
@@ -167,6 +192,8 @@ apis:
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
   tags:
+  - Metrics
+  tags_raw:
   - metrics
   properties:
   - type: OpenAPI
@@ -179,6 +206,8 @@ apis:
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
   tags:
+  - Project
+  tags_raw:
   - projects
   properties:
   - type: OpenAPI
@@ -191,6 +220,8 @@ apis:
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
   tags:
+  - Roles
+  tags_raw:
   - roles
   properties:
   - type: OpenAPI
@@ -203,6 +234,8 @@ apis:
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
   tags:
+  - Schema
+  tags_raw:
   - schema
   properties:
   - type: OpenAPI
@@ -215,6 +248,8 @@ apis:
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
   tags:
+  - Screenshots
+  tags_raw:
   - screenshots
   properties:
   - type: OpenAPI
@@ -227,6 +262,8 @@ apis:
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
   tags:
+  - Search
+  tags_raw:
   - search
   properties:
   - type: OpenAPI
@@ -239,6 +276,8 @@ apis:
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
   tags:
+  - Statistics
+  tags_raw:
   - statistics
   properties:
   - type: OpenAPI
@@ -255,6 +294,8 @@ apis:
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
   tags:
+  - Task
+  tags_raw:
   - tasks
   properties:
   - type: OpenAPI
@@ -267,6 +308,8 @@ apis:
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
   tags:
+  - Translations
+  tags_raw:
   - translations
   properties:
   - type: OpenAPI
@@ -282,6 +325,8 @@ apis:
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
   tags:
+  - Units
+  tags_raw:
   - units
   properties:
   - type: OpenAPI
@@ -294,6 +339,8 @@ apis:
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
   tags:
+  - User
+  tags_raw:
   - users
   properties:
   - type: OpenAPI
