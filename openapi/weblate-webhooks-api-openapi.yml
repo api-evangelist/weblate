@@ -1,0 +1,187 @@
+openapi: 3.2.0
+info:
+  title: Weblate's REST Webhooks API
+  version: ''
+  x-logo:
+    url: /static/weblate.svg
+  description: "\nThe API is accessible on the ``/api/`` URL and it is based on [Django REST framework](https://www.django-rest-framework.org/).\n\nThe OpenAPI specification is available as feature preview, feedback welcome!\n\n## Authorization\n\n<!-- Redoc-Inject: <security-definitions> -->\n\n\n    "
+  license:
+    name: GNU General Public License v3 or later
+    url: https://docs.weblate.org/en/latest/contributing/license.html
+servers:
+- url: 'http:'
+  description: Weblate
+tags:
+- name: webhooks
+  description: Notifications sent by Weblate.
+paths: {}
+webhooks:
+  AddonWebhook:
+    post:
+      description: Pushes events to a notification URL.
+      summary: A Webhook event for an addon
+      tags:
+      - webhooks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $id: https://weblate.org/schemas/weblate-messaging.schema.json
+              $schema: http://json-schema.org/draft-07/schema#
+              title: Weblate Messaging
+              description: Schema for Weblate Messaging
+              additionalProperties: false
+              definitions: {}
+              type: object
+              required:
+              - change_id
+              - action
+              - timestamp
+              properties:
+                change_id:
+                  title: Change ID
+                  type: integer
+                  description: Numerical ID of change
+                action:
+                  title: Change Action
+                  type: string
+                  description: Verbose name of the change, see Change actions source code for possible values
+                timestamp:
+                  title: Timestamp
+                  type: string
+                  format: date-time
+                  description: ISO formatted timestamp
+                target:
+                  title: Target
+                  type:
+                  - string
+                  - array
+                  description: New value of the change (eg. new translation of the string)
+                old:
+                  title: Old Value
+                  type:
+                  - string
+                  - array
+                  description: Old value of the change (eg. previous translation of the string)
+                source:
+                  title: Source
+                  type:
+                  - string
+                  - array
+                  description: Source string
+                url:
+                  title: URL
+                  type: string
+                  description: Absolute URL to view the related object
+                author:
+                  title: Author
+                  type: string
+                  description: Author username (this can be different from user for example when accepting suggestions)
+                user:
+                  title: Acting username
+                  type: string
+                project:
+                  title: Project slug
+                  type: string
+                component:
+                  title: Component slug
+                  type: string
+                translation:
+                  title: Translation Language Code
+                  type: string
+                category:
+                  title: Category and subcategory slugs
+                  type: array
+                  items:
+                    title: Category slug
+                    type: string
+                context:
+                  title: Translation context or key for monolingual formats
+                  type: string
+            examples:
+              AuthenticationFailed:
+                value:
+                  type: client_error
+                  errors:
+                  - code: authentication_failed
+                    detail: Incorrect authentication credentials.
+                    attr: null
+              NotAuthenticated:
+                value:
+                  type: client_error
+                  errors:
+                  - code: not_authenticated
+                    detail: Authentication credentials were not provided.
+                    attr: null
+              PermissionDenied:
+                value:
+                  type: client_error
+                  errors:
+                  - code: permission_denied
+                    detail: You do not have permission to perform this action.
+                    attr: null
+              NotFound:
+                value:
+                  type: client_error
+                  errors:
+                  - code: not_found
+                    detail: Not found.
+                    attr: null
+              MethodNotAllowed:
+                value:
+                  type: client_error
+                  errors:
+                  - code: method_not_allowed
+                    detail: Method "get" not allowed.
+                    attr: null
+              NotAcceptable:
+                value:
+                  type: client_error
+                  errors:
+                  - code: not_acceptable
+                    detail: Could not satisfy the request Accept header.
+                    attr: null
+              UnsupportedMediaType:
+                value:
+                  type: client_error
+                  errors:
+                  - code: unsupported_media_type
+                    detail: Unsupported media type "application/json" in request.
+                    attr: null
+              Throttled:
+                value:
+                  type: client_error
+                  errors:
+                  - code: throttled
+                    detail: Request was throttled.
+                    attr: null
+              APIException:
+                value:
+                  type: server_error
+                  errors:
+                  - code: error
+                    detail: A server error occurred.
+                    attr: null
+      responses:
+        2XX:
+          description: No response body
+components:
+  securitySchemes:
+    bearerAuth:
+      type: apiKey
+      in: header
+      name: Bearer
+      description: "Token-based authentication with required prefix `Bearer`.\n\n- Each user has a personal access token which they can get from their respective user profile. These tokens have the `wlu_` prefix.\n- It is possible to create project tokens whose access to the API is limited to operations to their associated project. These tokens have the `wlp_` prefix.\n        "
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+      description: Session-based authentication used when user is signed in.
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Token
+      description: "Token-based authentication with required prefix `Token`.\n\n- Each user has a personal access token which they can get from their respective user profile. These tokens have the `wlu_` prefix.\n- It is possible to create project tokens whose access to the API is limited to operations to their associated project. These tokens have the `wlp_` prefix.\n        "
+externalDocs:
+  url: https://docs.weblate.org/en/latest/index.html
+  description: Official Weblate documentation

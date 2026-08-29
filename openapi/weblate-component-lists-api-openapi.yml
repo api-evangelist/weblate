@@ -1,7 +1,7 @@
-openapi: 3.1.1
+openapi: 3.2.0
 info:
-  title: Weblate's REST addons component-lists API
-  version: "1.0"
+  title: Weblate's REST Component Lists API
+  version: ''
   x-logo:
     url: /static/weblate.svg
   description: "\nThe API is accessible on the ``/api/`` URL and it is based on [Django REST framework](https://www.django-rest-framework.org/).\n\nThe OpenAPI specification is available as feature preview, feedback welcome!\n\n## Authorization\n\n<!-- Redoc-Inject: <security-definitions> -->\n\n\n    "
@@ -1401,179 +1401,11 @@ paths:
           description: No response body
 components:
   schemas:
-    Error415:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode415Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    ErrorCode406Enum:
-      enum:
-      - not_acceptable
-      type: string
-      description: '* `not_acceptable` - Not Acceptable'
-    Error423:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode423Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    ErrorResponse403:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error403'
-      required:
-      - errors
-      - type
-    ErrorResponse404:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error404'
-      required:
-      - errors
-      - type
-    ErrorCode429Enum:
-      enum:
-      - throttled
-      type: string
-      description: '* `throttled` - Throttled'
-    ErrorCode401Enum:
-      enum:
-      - authentication_failed
-      - not_authenticated
-      type: string
-      description: '* `authentication_failed` - Authentication Failed
-
-        * `not_authenticated` - Not Authenticated'
-    AutoComponentList:
-      type: object
-      properties:
-        project_match:
-          type: string
-          title: Project regular expression
-          description: Regular expression which is used to match project slug.
-          maxLength: 200
-        component_match:
-          type: string
-          title: Component regular expression
-          description: Regular expression which is used to match component slug.
-          maxLength: 200
-    ErrorCode403Enum:
-      enum:
-      - permission_denied
-      type: string
-      description: '* `permission_denied` - Permission Denied'
-    ErrorResponse415:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error415'
-      required:
-      - errors
-      - type
-    Error429:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode429Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    PatchedComponentList:
-      type: object
-      properties:
-        name:
-          type: string
-          title: Component list name
-          description: Display name
-          maxLength: 100
-        slug:
-          type: string
-          title: URL slug
-          description: Name used in URLs and filenames.
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        id:
-          type: integer
-          readOnly: true
-        show_dashboard:
-          type: boolean
-          title: Show on dashboard
-          description: When enabled this component list will be shown as a tab on the dashboard
-        components:
-          type: array
-          items:
-            type: string
-            format: uri
-          readOnly: true
-        auto_assign:
-          type: array
-          items:
-            $ref: '#/components/schemas/AutoComponentList'
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
     Error406:
       type: object
       properties:
         code:
           $ref: '#/components/schemas/ErrorCode406Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    Error405:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode405Enum'
         detail:
           type: string
         attr:
@@ -1627,11 +1459,229 @@ components:
       - attr
       - code
       - detail
-    Error401:
+    ErrorResponse400TypeEnum:
+      enum:
+      - validation_error
+      - client_error
+      type: string
+      description: '* `validation_error` - Validation Error
+
+        * `client_error` - Client Error'
+    Error415:
       type: object
       properties:
         code:
-          $ref: '#/components/schemas/ErrorCode401Enum'
+          $ref: '#/components/schemas/ErrorCode415Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    Error423:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode423Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    ErrorCode500Enum:
+      enum:
+      - error
+      type: string
+      description: '* `error` - Error'
+    ErrorResponse423:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ServerErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error423'
+      required:
+      - errors
+      - type
+    AutoComponentList:
+      type: object
+      properties:
+        project_match:
+          type: string
+          title: Project regular expression
+          description: Regular expression which is used to match project slug.
+          maxLength: 200
+        component_match:
+          type: string
+          title: Component regular expression
+          description: Regular expression which is used to match component slug.
+          maxLength: 200
+    ErrorResponse429:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error429'
+      required:
+      - errors
+      - type
+    ErrorResponse415:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error415'
+      required:
+      - errors
+      - type
+    ServerErrorEnum:
+      enum:
+      - server_error
+      type: string
+      description: '* `server_error` - Server Error'
+    ClientErrorEnum:
+      enum:
+      - client_error
+      type: string
+      description: '* `client_error` - Client Error'
+    ErrorResponse400:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ErrorResponse400TypeEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error400'
+      required:
+      - errors
+      - type
+    ErrorResponse405:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error405'
+      required:
+      - errors
+      - type
+    PatchedComponentList:
+      type: object
+      properties:
+        name:
+          type: string
+          title: Component list name
+          description: Display name
+          maxLength: 100
+        slug:
+          type: string
+          title: URL slug
+          description: Name used in URLs and filenames.
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        id:
+          type: integer
+          readOnly: true
+        show_dashboard:
+          type: boolean
+          title: Show on dashboard
+          description: When enabled this component list will be shown as a tab on the dashboard
+        components:
+          type: array
+          items:
+            type: string
+            format: uri
+          readOnly: true
+        auto_assign:
+          type: array
+          items:
+            $ref: '#/components/schemas/AutoComponentList'
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+    PaginatedComponentListList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ComponentList'
+    Error500:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode500Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    ErrorCode406Enum:
+      enum:
+      - not_acceptable
+      type: string
+      description: '* `not_acceptable` - Not Acceptable'
+    Error405:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode405Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    Error404:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode404Enum'
         detail:
           type: string
         attr:
@@ -1685,93 +1735,16 @@ components:
       - name
       - slug
       - url
-    ErrorResponse400TypeEnum:
+    ErrorCode403Enum:
       enum:
-      - validation_error
-      - client_error
+      - permission_denied
       type: string
-      description: '* `validation_error` - Validation Error
-
-        * `client_error` - Client Error'
-    Error500:
+      description: '* `permission_denied` - Permission Denied'
+    Error401:
       type: object
       properties:
         code:
-          $ref: '#/components/schemas/ErrorCode500Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    ErrorCode500Enum:
-      enum:
-      - error
-      type: string
-      description: '* `error` - Error'
-    ServerErrorEnum:
-      enum:
-      - server_error
-      type: string
-      description: '* `server_error` - Server Error'
-    Error404:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode404Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    ErrorCode415Enum:
-      enum:
-      - unsupported_media_type
-      type: string
-      description: '* `unsupported_media_type` - Unsupported Media Type'
-    ErrorCode404Enum:
-      enum:
-      - not_found
-      type: string
-      description: '* `not_found` - Not Found'
-    ErrorResponse500:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ServerErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error500'
-      required:
-      - errors
-      - type
-    ErrorResponse423:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ServerErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error423'
-      required:
-      - errors
-      - type
-    Error403:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode403Enum'
+          $ref: '#/components/schemas/ErrorCode401Enum'
         detail:
           type: string
         attr:
@@ -1794,18 +1767,54 @@ components:
       required:
       - errors
       - type
-    ErrorResponse429:
+    ErrorCode415Enum:
+      enum:
+      - unsupported_media_type
+      type: string
+      description: '* `unsupported_media_type` - Unsupported Media Type'
+    ErrorCode401Enum:
+      enum:
+      - authentication_failed
+      - not_authenticated
+      type: string
+      description: '* `authentication_failed` - Authentication Failed
+
+        * `not_authenticated` - Not Authenticated'
+    Error429:
       type: object
       properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error429'
+        code:
+          $ref: '#/components/schemas/ErrorCode429Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
       required:
-      - errors
-      - type
+      - attr
+      - code
+      - detail
+    Error403:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode403Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    ErrorCode429Enum:
+      enum:
+      - throttled
+      type: string
+      description: '* `throttled` - Throttled'
     ErrorCode423Enum:
       enum:
       - repository-locked
@@ -1817,36 +1826,27 @@ components:
         * `component-locked` - Component Locked
 
         * `unknown-locked` - Unknown Locked'
-    PaginatedComponentListList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          format: uri
-          example: http://api.example.org/accounts/?page=4
-        previous:
-          type: string
-          format: uri
-          example: http://api.example.org/accounts/?page=2
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ComponentList'
-    ErrorResponse400:
+    ErrorResponse404:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/ErrorResponse400TypeEnum'
+          $ref: '#/components/schemas/ClientErrorEnum'
         errors:
           type: array
           items:
-            $ref: '#/components/schemas/Error400'
+            $ref: '#/components/schemas/Error404'
+      required:
+      - errors
+      - type
+    ErrorResponse500:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ServerErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error500'
       required:
       - errors
       - type
@@ -1862,7 +1862,12 @@ components:
       required:
       - errors
       - type
-    ErrorResponse405:
+    ErrorCode405Enum:
+      enum:
+      - method_not_allowed
+      type: string
+      description: '* `method_not_allowed` - Method Not Allowed'
+    ErrorResponse403:
       type: object
       properties:
         type:
@@ -1870,26 +1875,16 @@ components:
         errors:
           type: array
           items:
-            $ref: '#/components/schemas/Error405'
+            $ref: '#/components/schemas/Error403'
       required:
       - errors
       - type
-    ErrorCode405Enum:
+    ErrorCode404Enum:
       enum:
-      - method_not_allowed
+      - not_found
       type: string
-      description: '* `method_not_allowed` - Method Not Allowed'
-    ClientErrorEnum:
-      enum:
-      - client_error
-      type: string
-      description: '* `client_error` - Client Error'
+      description: '* `not_found` - Not Found'
   headers:
-    X-RateLimit-Limit:
-      schema:
-        type: integer
-      description: Allowed number of requests to perform
-      required: true
     X-RateLimit-Remaining:
       schema:
         type: integer
@@ -1899,6 +1894,11 @@ components:
       schema:
         type: integer
       description: Number of seconds until the rate-limit window resets
+      required: true
+    X-RateLimit-Limit:
+      schema:
+        type: integer
+      description: Allowed number of requests to perform
       required: true
   securitySchemes:
     bearerAuth:

@@ -359,6 +359,16 @@ apis:
     url: openapi/weblate-users-api-openapi.yml
   - type: Documentation
     url: https://docs.weblate.org/en/latest/api.html
+- aid: weblate:weblate-webhooks-api
+  name: Weblate Webhooks API
+  description: Notifications sent by Weblate.
+  humanURL: https://docs.weblate.org/en/latest/api.html
+  baseURL: https://hosted.weblate.org/api/
+  tags:
+  - webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/weblate-webhooks-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/weblate-agentic-access.yml

@@ -1,27 +1,7 @@
 {
   "provider": "weblate",
   "sources": [
-    "weblate-addons-api-openapi.yml",
-    "weblate-categories-api-openapi.yml",
-    "weblate-changes-api-openapi.yml",
-    "weblate-component-lists-api-openapi.yml",
-    "weblate-components-api-openapi.yml",
-    "weblate-contributions-api-openapi.yml",
-    "weblate-groups-api-openapi.yml",
-    "weblate-hooks-api-openapi.yml",
-    "weblate-languages-api-openapi.yml",
-    "weblate-memory-api-openapi.yml",
-    "weblate-metrics-api-openapi.yml",
-    "weblate-projects-api-openapi.yml",
-    "weblate-roles-api-openapi.yml",
-    "weblate-schema-api-openapi.yml",
-    "weblate-screenshots-api-openapi.yml",
-    "weblate-search-api-openapi.yml",
-    "weblate-statistics-api-openapi.yml",
-    "weblate-tasks-api-openapi.yml",
-    "weblate-translations-api-openapi.yml",
-    "weblate-units-api-openapi.yml",
-    "weblate-users-api-openapi.yml"
+    "_original/weblate-weblate-rest-api-openapi.yml"
   ],
   "outputs": [
     "weblate-addons-api-openapi.yml",
@@ -44,33 +24,41 @@
     "weblate-tasks-api-openapi.yml",
     "weblate-translations-api-openapi.yml",
     "weblate-units-api-openapi.yml",
-    "weblate-users-api-openapi.yml"
+    "weblate-users-api-openapi.yml",
+    "weblate-webhooks-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [
-    "weblate-addons-api-openapi.yml: info.version missing",
-    "weblate-categories-api-openapi.yml: info.version missing",
-    "weblate-changes-api-openapi.yml: info.version missing",
-    "weblate-component-lists-api-openapi.yml: info.version missing",
-    "weblate-components-api-openapi.yml: info.version missing",
-    "weblate-contributions-api-openapi.yml: info.version missing",
-    "weblate-groups-api-openapi.yml: info.version missing",
-    "weblate-hooks-api-openapi.yml: info.version missing",
-    "weblate-languages-api-openapi.yml: info.version missing",
-    "weblate-memory-api-openapi.yml: info.version missing",
-    "weblate-metrics-api-openapi.yml: info.version missing",
-    "weblate-projects-api-openapi.yml: info.version missing",
-    "weblate-roles-api-openapi.yml: info.version missing",
-    "weblate-schema-api-openapi.yml: info.version missing",
-    "weblate-screenshots-api-openapi.yml: info.version missing",
-    "weblate-search-api-openapi.yml: info.version missing",
-    "weblate-statistics-api-openapi.yml: info.version missing",
-    "weblate-tasks-api-openapi.yml: info.version missing",
-    "weblate-translations-api-openapi.yml: info.version missing",
-    "weblate-units-api-openapi.yml: info.version missing",
-    "weblate-users-api-openapi.yml: info.version missing"
+    "weblate-weblate-rest-api-openapi.yml: info.version missing"
   ],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "weblate-weblate-rest-api-openapi.yml: upgraded openapi 3.1.1 -> OpenAPI 3.2.0",
+    "weblate-weblate-rest-api-openapi.yml: declared missing tag: contributions",
+    "weblate-weblate-rest-api-openapi.yml: declared missing tag: schema"
+  ],
+  "skipped": [
+    "weblate-addons-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "weblate-categories-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "weblate-changes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "weblate-component-lists-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "weblate-components-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "weblate-contributions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "weblate-groups-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "weblate-hooks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "weblate-languages-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "weblate-memory-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "weblate-metrics-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "weblate-projects-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "weblate-roles-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "weblate-schema-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "weblate-screenshots-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "weblate-search-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "weblate-statistics-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "weblate-tasks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "weblate-translations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "weblate-units-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "weblate-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

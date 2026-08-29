@@ -1,7 +1,7 @@
-openapi: 3.1.1
+openapi: 3.2.0
 info:
-  title: Weblate's REST addons API
-  version: "1.0"
+  title: Weblate's REST Addons API
+  version: ''
   x-logo:
     url: /static/weblate.svg
   description: "\nThe API is accessible on the ``/api/`` URL and it is based on [Django REST framework](https://www.django-rest-framework.org/).\n\nThe OpenAPI specification is available as feature preview, feedback welcome!\n\n## Authorization\n\n<!-- Redoc-Inject: <security-definitions> -->\n\n\n    "
@@ -929,148 +929,158 @@ paths:
               schema:
                 $ref: '#/components/schemas/AddonTriggerResponse'
           description: ''
+webhooks:
+  AddonWebhook:
+    post:
+      description: Pushes events to a notification URL.
+      summary: A Webhook event for an addon
+      tags:
+      - addons
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $id: https://weblate.org/schemas/weblate-messaging.schema.json
+              $schema: http://json-schema.org/draft-07/schema#
+              title: Weblate Messaging
+              description: Schema for Weblate Messaging
+              additionalProperties: false
+              definitions: {}
+              type: object
+              required:
+              - change_id
+              - action
+              - timestamp
+              properties:
+                change_id:
+                  title: Change ID
+                  type: integer
+                  description: Numerical ID of change
+                action:
+                  title: Change Action
+                  type: string
+                  description: Verbose name of the change, see Change actions source code for possible values
+                timestamp:
+                  title: Timestamp
+                  type: string
+                  format: date-time
+                  description: ISO formatted timestamp
+                target:
+                  title: Target
+                  type:
+                  - string
+                  - array
+                  description: New value of the change (eg. new translation of the string)
+                old:
+                  title: Old Value
+                  type:
+                  - string
+                  - array
+                  description: Old value of the change (eg. previous translation of the string)
+                source:
+                  title: Source
+                  type:
+                  - string
+                  - array
+                  description: Source string
+                url:
+                  title: URL
+                  type: string
+                  description: Absolute URL to view the related object
+                author:
+                  title: Author
+                  type: string
+                  description: Author username (this can be different from user for example when accepting suggestions)
+                user:
+                  title: Acting username
+                  type: string
+                project:
+                  title: Project slug
+                  type: string
+                component:
+                  title: Component slug
+                  type: string
+                translation:
+                  title: Translation Language Code
+                  type: string
+                category:
+                  title: Category and subcategory slugs
+                  type: array
+                  items:
+                    title: Category slug
+                    type: string
+                context:
+                  title: Translation context or key for monolingual formats
+                  type: string
+            examples:
+              AuthenticationFailed:
+                value:
+                  type: client_error
+                  errors:
+                  - code: authentication_failed
+                    detail: Incorrect authentication credentials.
+                    attr: null
+              NotAuthenticated:
+                value:
+                  type: client_error
+                  errors:
+                  - code: not_authenticated
+                    detail: Authentication credentials were not provided.
+                    attr: null
+              PermissionDenied:
+                value:
+                  type: client_error
+                  errors:
+                  - code: permission_denied
+                    detail: You do not have permission to perform this action.
+                    attr: null
+              NotFound:
+                value:
+                  type: client_error
+                  errors:
+                  - code: not_found
+                    detail: Not found.
+                    attr: null
+              MethodNotAllowed:
+                value:
+                  type: client_error
+                  errors:
+                  - code: method_not_allowed
+                    detail: Method "get" not allowed.
+                    attr: null
+              NotAcceptable:
+                value:
+                  type: client_error
+                  errors:
+                  - code: not_acceptable
+                    detail: Could not satisfy the request Accept header.
+                    attr: null
+              UnsupportedMediaType:
+                value:
+                  type: client_error
+                  errors:
+                  - code: unsupported_media_type
+                    detail: Unsupported media type "application/json" in request.
+                    attr: null
+              Throttled:
+                value:
+                  type: client_error
+                  errors:
+                  - code: throttled
+                    detail: Request was throttled.
+                    attr: null
+              APIException:
+                value:
+                  type: server_error
+                  errors:
+                  - code: error
+                    detail: A server error occurred.
+                    attr: null
+      responses:
+        2XX:
+          description: No response body
 components:
   schemas:
-    PaginatedAddonList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          format: uri
-          example: http://api.example.org/accounts/?page=4
-        previous:
-          type: string
-          format: uri
-          example: http://api.example.org/accounts/?page=2
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Addon'
-    Error415:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode415Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    ErrorCode406Enum:
-      enum:
-      - not_acceptable
-      type: string
-      description: '* `not_acceptable` - Not Acceptable'
-    Error423:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode423Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    AddonTriggerResponse:
-      type: object
-      properties:
-        detail:
-          type: string
-        url:
-          type: string
-          format: uri
-        logs_url:
-          type: string
-          format: uri
-      required:
-      - detail
-      - logs_url
-      - url
-    ErrorResponse403:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error403'
-      required:
-      - errors
-      - type
-    ErrorResponse404:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error404'
-      required:
-      - errors
-      - type
-    ErrorCode429Enum:
-      enum:
-      - throttled
-      type: string
-      description: '* `throttled` - Throttled'
-    ErrorCode401Enum:
-      enum:
-      - authentication_failed
-      - not_authenticated
-      type: string
-      description: '* `authentication_failed` - Authentication Failed
-
-        * `not_authenticated` - Not Authenticated'
-    ErrorCode403Enum:
-      enum:
-      - permission_denied
-      type: string
-      description: '* `permission_denied` - Permission Denied'
-    ErrorResponse415:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error415'
-      required:
-      - errors
-      - type
-    Error429:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode429Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
     Error406:
       type: object
       properties:
@@ -1086,49 +1096,6 @@ components:
       - attr
       - code
       - detail
-    Error405:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode405Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    Addon:
-      type: object
-      properties:
-        component:
-          type: string
-          format: uri
-          readOnly: true
-        project:
-          type: string
-          format: uri
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        id:
-          type: integer
-          readOnly: true
-        configuration: {}
-        url:
-          type: string
-          format: uri
-          readOnly: true
-      required:
-      - component
-      - id
-      - name
-      - project
-      - url
     Error400:
       type: object
       properties:
@@ -1172,11 +1139,19 @@ components:
       - attr
       - code
       - detail
-    Error401:
+    ErrorResponse400TypeEnum:
+      enum:
+      - validation_error
+      - client_error
+      type: string
+      description: '* `validation_error` - Validation Error
+
+        * `client_error` - Client Error'
+    Error415:
       type: object
       properties:
         code:
-          $ref: '#/components/schemas/ErrorCode401Enum'
+          $ref: '#/components/schemas/ErrorCode415Enum'
         detail:
           type: string
         attr:
@@ -1187,19 +1162,11 @@ components:
       - attr
       - code
       - detail
-    ErrorResponse400TypeEnum:
-      enum:
-      - validation_error
-      - client_error
-      type: string
-      description: '* `validation_error` - Validation Error
-
-        * `client_error` - Client Error'
-    Error500:
+    Error423:
       type: object
       properties:
         code:
-          $ref: '#/components/schemas/ErrorCode500Enum'
+          $ref: '#/components/schemas/ErrorCode423Enum'
         detail:
           type: string
         attr:
@@ -1215,11 +1182,126 @@ components:
       - error
       type: string
       description: '* `error` - Error'
+    ErrorResponse423:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ServerErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error423'
+      required:
+      - errors
+      - type
+    ErrorResponse429:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error429'
+      required:
+      - errors
+      - type
+    ErrorResponse415:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error415'
+      required:
+      - errors
+      - type
     ServerErrorEnum:
       enum:
       - server_error
       type: string
       description: '* `server_error` - Server Error'
+    ClientErrorEnum:
+      enum:
+      - client_error
+      type: string
+      description: '* `client_error` - Client Error'
+    ErrorResponse400:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ErrorResponse400TypeEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error400'
+      required:
+      - errors
+      - type
+    AddonTriggerResponse:
+      type: object
+      properties:
+        detail:
+          type: string
+        url:
+          type: string
+          format: uri
+        logs_url:
+          type: string
+          format: uri
+      required:
+      - detail
+      - logs_url
+      - url
+    ErrorResponse405:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error405'
+      required:
+      - errors
+      - type
+    Error500:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode500Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    ErrorCode406Enum:
+      enum:
+      - not_acceptable
+      type: string
+      description: '* `not_acceptable` - Not Acceptable'
+    Error405:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode405Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
     Error404:
       type: object
       properties:
@@ -1235,45 +1317,44 @@ components:
       - attr
       - code
       - detail
-    ErrorCode415Enum:
-      enum:
-      - unsupported_media_type
-      type: string
-      description: '* `unsupported_media_type` - Unsupported Media Type'
-    ErrorCode404Enum:
-      enum:
-      - not_found
-      type: string
-      description: '* `not_found` - Not Found'
-    ErrorResponse500:
+    Addon:
       type: object
       properties:
-        type:
-          $ref: '#/components/schemas/ServerErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error500'
+        component:
+          type: string
+          format: uri
+          readOnly: true
+        project:
+          type: string
+          format: uri
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        id:
+          type: integer
+          readOnly: true
+        configuration: {}
+        url:
+          type: string
+          format: uri
+          readOnly: true
       required:
-      - errors
-      - type
-    ErrorResponse423:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ServerErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error423'
-      required:
-      - errors
-      - type
-    Error403:
+      - component
+      - id
+      - name
+      - project
+      - url
+    ErrorCode403Enum:
+      enum:
+      - permission_denied
+      type: string
+      description: '* `permission_denied` - Permission Denied'
+    Error401:
       type: object
       properties:
         code:
-          $ref: '#/components/schemas/ErrorCode403Enum'
+          $ref: '#/components/schemas/ErrorCode401Enum'
         detail:
           type: string
         attr:
@@ -1296,18 +1377,75 @@ components:
       required:
       - errors
       - type
-    ErrorResponse429:
+    ErrorCode415Enum:
+      enum:
+      - unsupported_media_type
+      type: string
+      description: '* `unsupported_media_type` - Unsupported Media Type'
+    ErrorCode401Enum:
+      enum:
+      - authentication_failed
+      - not_authenticated
+      type: string
+      description: '* `authentication_failed` - Authentication Failed
+
+        * `not_authenticated` - Not Authenticated'
+    Error429:
       type: object
       properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
+        code:
+          $ref: '#/components/schemas/ErrorCode429Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    Error403:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode403Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    PaginatedAddonList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
           type: array
           items:
-            $ref: '#/components/schemas/Error429'
-      required:
-      - errors
-      - type
+            $ref: '#/components/schemas/Addon'
+    ErrorCode429Enum:
+      enum:
+      - throttled
+      type: string
+      description: '* `throttled` - Throttled'
     ErrorCode423Enum:
       enum:
       - repository-locked
@@ -1319,15 +1457,27 @@ components:
         * `component-locked` - Component Locked
 
         * `unknown-locked` - Unknown Locked'
-    ErrorResponse400:
+    ErrorResponse404:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/ErrorResponse400TypeEnum'
+          $ref: '#/components/schemas/ClientErrorEnum'
         errors:
           type: array
           items:
-            $ref: '#/components/schemas/Error400'
+            $ref: '#/components/schemas/Error404'
+      required:
+      - errors
+      - type
+    ErrorResponse500:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ServerErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error500'
       required:
       - errors
       - type
@@ -1340,18 +1490,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Error406'
-      required:
-      - errors
-      - type
-    ErrorResponse405:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error405'
       required:
       - errors
       - type
@@ -1382,17 +1520,24 @@ components:
       - method_not_allowed
       type: string
       description: '* `method_not_allowed` - Method Not Allowed'
-    ClientErrorEnum:
+    ErrorResponse403:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error403'
+      required:
+      - errors
+      - type
+    ErrorCode404Enum:
       enum:
-      - client_error
+      - not_found
       type: string
-      description: '* `client_error` - Client Error'
+      description: '* `not_found` - Not Found'
   headers:
-    X-RateLimit-Limit:
-      schema:
-        type: integer
-      description: Allowed number of requests to perform
-      required: true
     X-RateLimit-Remaining:
       schema:
         type: integer
@@ -1402,6 +1547,11 @@ components:
       schema:
         type: integer
       description: Number of seconds until the rate-limit window resets
+      required: true
+    X-RateLimit-Limit:
+      schema:
+        type: integer
+      description: Allowed number of requests to perform
       required: true
   securitySchemes:
     bearerAuth:

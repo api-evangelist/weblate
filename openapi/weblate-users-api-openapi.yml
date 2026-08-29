@@ -1,7 +1,7 @@
-openapi: 3.1.1
+openapi: 3.2.0
 info:
-  title: Weblate's REST addons users API
-  version: "1.0"
+  title: Weblate's REST Users API
+  version: ''
   x-logo:
     url: /static/weblate.svg
   description: "\nThe API is accessible on the ``/api/`` URL and it is based on [Django REST framework](https://www.django-rest-framework.org/).\n\nThe OpenAPI specification is available as feature preview, feedback welcome!\n\n## Authorization\n\n<!-- Redoc-Inject: <security-definitions> -->\n\n\n    "
@@ -2606,380 +2606,75 @@ paths:
               $ref: '#/components/headers/X-RateLimit-Reset'
 components:
   schemas:
-    Error415:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode415Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    UserGroupDeleteRequest:
-      type: object
-      properties:
-        group_id:
-          type: integer
-      required:
-      - group_id
-    ErrorCode406Enum:
-      enum:
-      - not_acceptable
-      type: string
-      description: '* `not_acceptable` - Not Acceptable'
-    Translation:
-      type: object
-      properties:
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-          readOnly: true
-        component:
-          allOf:
-          - $ref: '#/components/schemas/Component'
-          readOnly: true
-        language_code:
-          type: string
-          maxLength: 50
-        id:
-          type: integer
-          readOnly: true
-        filename:
-          type: string
-          maxLength: 400
-        revision:
-          type: string
-          maxLength: 200
-        web_url:
-          type: string
-          readOnly: true
-        share_url:
-          type: string
-          readOnly: true
-        translate_url:
-          type: string
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        is_template:
-          type: boolean
-          readOnly: true
-        is_source:
-          type: boolean
-          readOnly: true
-        total:
-          type: integer
-          readOnly: true
-        total_words:
-          type: integer
-          readOnly: true
-        translated:
-          type: integer
-          readOnly: true
-        translated_words:
-          type: integer
-          readOnly: true
-        translated_percent:
-          type: number
-          format: double
-          readOnly: true
-        fuzzy:
-          type: integer
-          readOnly: true
-        fuzzy_words:
-          type: integer
-          readOnly: true
-        fuzzy_percent:
-          type: number
-          format: double
-          readOnly: true
-        failing_checks:
-          type: integer
-          readOnly: true
-        failing_checks_words:
-          type: integer
-          readOnly: true
-        failing_checks_percent:
-          type: number
-          format: double
-          readOnly: true
-        have_suggestion:
-          type: integer
-          readOnly: true
-        have_comment:
-          type: integer
-          readOnly: true
-        last_change:
-          type: string
-          format: date-time
-          readOnly: true
-        last_author:
-          type: string
-          readOnly: true
-        repository_url:
-          type: string
-          format: uri
-          readOnly: true
-        file_url:
-          type: string
-          format: uri
-          readOnly: true
-        statistics_url:
-          type: string
-          format: uri
-          readOnly: true
-        changes_list_url:
-          type: string
-          format: uri
-          readOnly: true
-        units_list_url:
-          type: string
-          format: uri
-          readOnly: true
-        announcements_url:
-          type: string
-          format: uri
-          readOnly: true
-      required:
-      - announcements_url
-      - changes_list_url
-      - component
-      - failing_checks
-      - failing_checks_percent
-      - failing_checks_words
-      - file_url
-      - filename
-      - fuzzy
-      - fuzzy_percent
-      - fuzzy_words
-      - have_comment
-      - have_suggestion
-      - id
-      - is_source
-      - is_template
-      - language
-      - last_author
-      - last_change
-      - repository_url
-      - share_url
-      - statistics_url
-      - total
-      - total_words
-      - translate_url
-      - translated
-      - translated_percent
-      - translated_words
-      - units_list_url
-      - url
-      - web_url
-    Error423:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode423Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    ColorEnum:
-      enum:
-      - navy
-      - blue
-      - aqua
-      - teal
-      - olive
-      - green
-      - lime
-      - yellow
-      - orange
-      - red
-      - maroon
-      - fuchsia
-      - purple
-      - black
-      - gray
-      - silver
-      type: string
-      description: '* `navy` - Navy
-
-        * `blue` - Blue
-
-        * `aqua` - Aqua
-
-        * `teal` - Teal
-
-        * `olive` - Olive
-
-        * `green` - Green
-
-        * `lime` - Lime
-
-        * `yellow` - Yellow
-
-        * `orange` - Orange
-
-        * `red` - Red
-
-        * `maroon` - Maroon
-
-        * `fuchsia` - Fuchsia
-
-        * `purple` - Purple
-
-        * `black` - Black
-
-        * `gray` - Gray
-
-        * `silver` - Silver'
-    ErrorResponse403:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error403'
-      required:
-      - errors
-      - type
-    ErrorResponse404:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error404'
-      required:
-      - errors
-      - type
-    ErrorCode429Enum:
-      enum:
-      - throttled
-      type: string
-      description: '* `throttled` - Throttled'
-    Notification:
-      type: object
-      properties:
-        notification:
-          $ref: '#/components/schemas/NotificationEnum'
-        id:
-          type: integer
-          readOnly: true
-        scope:
-          allOf:
-          - $ref: '#/components/schemas/NotificationScopeEnum'
-          minimum: -2147483648
-          maximum: 2147483647
-        frequency:
-          allOf:
-          - $ref: '#/components/schemas/FrequencyEnum'
-          minimum: -2147483648
-          maximum: 2147483647
-        project:
-          allOf:
-          - $ref: '#/components/schemas/Project'
-          readOnly: true
-        component:
-          allOf:
-          - $ref: '#/components/schemas/Component'
-          readOnly: true
-      required:
-      - component
-      - frequency
-      - id
-      - notification
-      - project
-      - scope
-    Language:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        code:
-          type: string
-          title: Language code
-          pattern: ^[A-Za-z0-9]+(?:[-_@][A-Za-z0-9]+)*$
-          maxLength: 50
-        name:
-          type: string
-          maxLength: 100
-        plural:
-          $ref: '#/components/schemas/LanguagePlural'
-        aliases:
-          type: array
-          items: {}
-          readOnly: true
-        direction:
-          title: Text direction
-          oneOf:
-          - $ref: '#/components/schemas/DirectionEnum'
-          - $ref: '#/components/schemas/BlankEnum'
-        population:
-          type: integer
-          maximum: 9223372036854775807
-          minimum: -9223372036854775808
-          format: int64
-          title: Number of speakers
-          description: Number of people speaking this language.
-        web_url:
-          type: string
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        statistics_url:
-          type: string
-          format: uri
-          readOnly: true
-      required:
-      - aliases
-      - code
-      - id
-      - statistics_url
-      - url
-      - web_url
-    SourceEnum:
+    CommitPolicyEnum:
       enum:
       - 0
-      - 1
-      - 3
-      - 4
-      - 5
-      - 6
-      - 2
+      - 20
+      - 30
       type: integer
-      description: '* `0` - Default plural
+      description: '* `0` - Commit all translations regardless of quality
 
-        * `1` - gettext plural formula
+        * `20` - Skip translations marked as needing editing
 
-        * `3` - CLDR plural with zero
-
-        * `4` - CLDR v38+ plural
-
-        * `5` - Android plural
-
-        * `6` - Qt Linguist plural
-
-        * `2` - Manually entered formula'
+        * `30` - Only include approved translations'
+    Error406:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode406Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    Error400:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code. The examples list common validation and parse error codes.
+          examples:
+          - blank
+          - date
+          - datetime
+          - does_not_exist
+          - empty
+          - incorrect_match
+          - incorrect_type
+          - invalid
+          - invalid_choice
+          - invalid_image
+          - invalid_list
+          - make_aware
+          - max_length
+          - max_string_length
+          - max_value
+          - min_value
+          - no_match
+          - no_name
+          - not_a_list
+          - 'null'
+          - null_characters_not_allowed
+          - overflow
+          - parse_error
+          - required
+          - surrogate_characters_not_allowed
+          - unique
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
     LanguagePlural:
       type: object
       properties:
@@ -3007,56 +2702,25 @@ components:
       required:
       - id
       - type
-    ErrorCode401Enum:
+    ErrorResponse400TypeEnum:
       enum:
-      - authentication_failed
-      - not_authenticated
+      - validation_error
+      - client_error
       type: string
-      description: '* `authentication_failed` - Authentication Failed
+      description: '* `validation_error` - Validation Error
 
-        * `not_authenticated` - Not Authenticated'
-    ErrorCode403Enum:
+        * `client_error` - Client Error'
+    MergeStyleEnum:
       enum:
-      - permission_denied
+      - merge
+      - rebase
+      - merge_noff
       type: string
-      description: '* `permission_denied` - Permission Denied'
-    ErrorResponse415:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error415'
-      required:
-      - errors
-      - type
-    DirectionEnum:
-      enum:
-      - ltr
-      - rtl
-      type: string
-      description: '* `` - Automatically detect text direction
+      description: '* `merge` - Merge
 
-        * `ltr` - Left to right
+        * `rebase` - Rebase
 
-        * `rtl` - Right to left'
-    Error429:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode429Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
+        * `merge_noff` - Merge without fast-forward'
     NewLangEnum:
       enum:
       - contact
@@ -3071,30 +2735,11 @@ components:
         * `add` - Create new language file
 
         * `none` - Disable adding new translations'
-    UserStatistics:
-      type: object
-      properties:
-        translated:
-          type: integer
-        suggested:
-          type: integer
-        uploaded:
-          type: integer
-        commented:
-          type: integer
-        languages:
-          type: integer
-      required:
-      - commented
-      - languages
-      - suggested
-      - translated
-      - uploaded
-    Error406:
+    Error415:
       type: object
       properties:
         code:
-          $ref: '#/components/schemas/ErrorCode406Enum'
+          $ref: '#/components/schemas/ErrorCode415Enum'
         detail:
           type: string
         attr:
@@ -3105,11 +2750,11 @@ components:
       - attr
       - code
       - detail
-    Error405:
+    Error423:
       type: object
       properties:
         code:
-          $ref: '#/components/schemas/ErrorCode405Enum'
+          $ref: '#/components/schemas/ErrorCode423Enum'
         detail:
           type: string
         attr:
@@ -3120,6 +2765,156 @@ components:
       - attr
       - code
       - detail
+    ErrorCode500Enum:
+      enum:
+      - error
+      type: string
+      description: '* `error` - Error'
+    ErrorResponse423:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ServerErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error423'
+      required:
+      - errors
+      - type
+    PriorityEnum:
+      enum:
+      - 60
+      - 80
+      - 100
+      - 120
+      - 140
+      type: integer
+      description: '* `60` - Very high
+
+        * `80` - High
+
+        * `100` - Medium
+
+        * `120` - Low
+
+        * `140` - Very low'
+    SourceEnum:
+      enum:
+      - 0
+      - 1
+      - 3
+      - 4
+      - 5
+      - 6
+      - 2
+      type: integer
+      description: '* `0` - Default plural
+
+        * `1` - gettext plural formula
+
+        * `3` - CLDR plural with zero
+
+        * `4` - CLDR v38+ plural
+
+        * `5` - Android plural
+
+        * `6` - Qt Linguist plural
+
+        * `2` - Manually entered formula'
+    UserGroupRequest:
+      type: object
+      properties:
+        group_id:
+          type: integer
+        limit_language_codes:
+          type: array
+          items:
+            type: string
+      required:
+      - group_id
+    ErrorResponse429:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error429'
+      required:
+      - errors
+      - type
+    UserGroupDeleteRequest:
+      type: object
+      properties:
+        group_id:
+          type: integer
+      required:
+      - group_id
+    ErrorResponse415:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error415'
+      required:
+      - errors
+      - type
+    ServerErrorEnum:
+      enum:
+      - server_error
+      type: string
+      description: '* `server_error` - Server Error'
+    LanguageCodeStyleEnum:
+      enum:
+      - posix
+      - posix_lowercase
+      - bcp
+      - posix_long
+      - posix_long_lowercase
+      - bcp_long
+      - bcp_legacy
+      - bcp_lower
+      - android
+      - appstore
+      - googleplay
+      - linux
+      - linux_lowercase
+      type: string
+      description: '* `` - Default based on the file format
+
+        * `posix` - POSIX style using underscore as a separator
+
+        * `posix_lowercase` - POSIX style using underscore as a separator, lower cased
+
+        * `bcp` - BCP style using hyphen as a separator
+
+        * `posix_long` - POSIX style using underscore as a separator, including country code
+
+        * `posix_long_lowercase` - POSIX style using underscore as a separator, including country code, lower cased
+
+        * `bcp_long` - BCP style using hyphen as a separator, including country code
+
+        * `bcp_legacy` - BCP style using hyphen as a separator, legacy language codes
+
+        * `bcp_lower` - BCP style using hyphen as a separator, lower cased
+
+        * `android` - Android style
+
+        * `appstore` - Apple App Store metadata style
+
+        * `googleplay` - Google Play metadata style
+
+        * `linux` - Linux style
+
+        * `linux_lowercase` - Linux style, lower cased'
+    BlankEnum:
+      enum:
+      - ''
     PatchedFullUser:
       type: object
       properties:
@@ -3196,54 +2991,630 @@ components:
           type: string
           format: uri
           readOnly: true
-    Error400:
+    PaginatedFullUserList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/FullUser'
+    Project:
       type: object
       properties:
-        code:
+        name:
           type: string
-          description: Error code. The examples list common validation and parse error codes.
+          title: Project name
+          description: Display name
+          maxLength: 60
+        slug:
+          type: string
+          title: URL slug
+          description: Name used in URLs and filenames.
+          maxLength: 60
+          pattern: ^[-a-zA-Z0-9_]+$
+        id:
+          type: integer
+          readOnly: true
+        web:
+          type: string
+          format: uri
+          title: Project website
+          description: Main website of translated project.
+          maxLength: 200
+        web_url:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        check_flags:
+          type: string
+          title: Translation flags
+          description: Additional comma-separated flags to influence Weblate behavior.
+        effective_check_flags:
+          type: string
+          readOnly: true
+        components_list_url:
+          type: string
+          format: uri
+          readOnly: true
+        repository_url:
+          type: string
+          format: uri
+          readOnly: true
+        statistics_url:
+          type: string
+          format: uri
+          readOnly: true
+        categories_url:
+          type: string
+          format: uri
+          readOnly: true
+        changes_list_url:
+          type: string
+          format: uri
+          readOnly: true
+        languages_url:
+          type: string
+          format: uri
+          readOnly: true
+        labels_url:
+          type: string
+          format: uri
+          readOnly: true
+        credits_url:
+          type: string
+          format: uri
+          readOnly: true
+        lock_url:
+          type: string
+          format: uri
+          readOnly: true
+        translation_review:
+          type: boolean
+          title: Enable reviews
+          description: Requires dedicated reviewers to approve translations.
+        source_review:
+          type: boolean
+          title: Enable source reviews
+          description: Requires dedicated reviewers to approve source strings.
+        commit_policy:
+          allOf:
+          - $ref: '#/components/schemas/CommitPolicyEnum'
+          title: Translation quality filter
+          description: 'Select which translations should be included when committing changes. More restrictive options will skip translations with potential quality issues.
+
+
+            * `0` - Commit all translations regardless of quality
+
+            * `20` - Skip translations marked as needing editing
+
+            * `30` - Only include approved translations'
+          minimum: -2147483648
+          maximum: 2147483647
+        workspace:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        instructions:
+          type: string
+          title: Translation instructions
+          description: You can use Markdown and mention users by @username.
+        enable_hooks:
+          type: boolean
+          description: Whether to allow updating this repository by remote hooks.
+        language_aliases:
+          type: string
+          description: 'Comma-separated list of language code mappings, for example: en_GB:en,en_US:en'
+        license:
+          title: Translation license
+          type: string
+          maxLength: 150
           examples:
-          - blank
-          - date
-          - datetime
-          - does_not_exist
-          - empty
-          - incorrect_match
-          - incorrect_type
-          - invalid
-          - invalid_choice
-          - invalid_image
-          - invalid_list
-          - make_aware
-          - max_length
-          - max_string_length
-          - max_value
-          - min_value
-          - no_match
-          - no_name
-          - not_a_list
-          - 'null'
-          - null_characters_not_allowed
-          - overflow
-          - parse_error
-          - required
-          - surrogate_characters_not_allowed
-          - unique
-        detail:
+          - MIT
+          - GPL-3.0-or-later
+          - Apache-2.0
+          - BSD-3-Clause
+          - proprietary
+        inherit_license:
+          type: boolean
+          title: Inherit translation license
+          description: Use the translation license configured in the workspace.
+        effective_license:
           type: string
-        attr:
+          readOnly: true
+        agreement:
+          type: string
+          title: Contributor license agreement
+          description: Contributor license agreement which needs to be approved before a user can translate components in this project.
+        inherit_agreement:
+          type: boolean
+          title: Inherit contributor license agreement
+          description: Use the contributor license agreement configured in the workspace.
+        effective_agreement:
+          type: string
+          readOnly: true
+        new_lang:
+          allOf:
+          - $ref: '#/components/schemas/NewLangEnum'
+          title: Adding new translation
+          description: 'How to handle requests for creating new translations.
+
+
+            * `contact` - Contact maintainers
+
+            * `url` - Point to translation instructions URL
+
+            * `add` - Create new language file
+
+            * `none` - Disable adding new translations'
+        inherit_new_lang:
+          type: boolean
+          title: Inherit adding new translations
+          description: Use the adding new translations setting configured in the workspace.
+        effective_new_lang:
+          type: string
+          readOnly: true
+        language_code_style:
+          description: 'Customize language code used to generate the filename for translations created by Weblate.
+
+
+            * `` - Default based on the file format
+
+            * `posix` - POSIX style using underscore as a separator
+
+            * `posix_lowercase` - POSIX style using underscore as a separator, lower cased
+
+            * `bcp` - BCP style using hyphen as a separator
+
+            * `posix_long` - POSIX style using underscore as a separator, including country code
+
+            * `posix_long_lowercase` - POSIX style using underscore as a separator, including country code, lower cased
+
+            * `bcp_long` - BCP style using hyphen as a separator, including country code
+
+            * `bcp_legacy` - BCP style using hyphen as a separator, legacy language codes
+
+            * `bcp_lower` - BCP style using hyphen as a separator, lower cased
+
+            * `android` - Android style
+
+            * `appstore` - Apple App Store metadata style
+
+            * `googleplay` - Google Play metadata style
+
+            * `linux` - Linux style
+
+            * `linux_lowercase` - Linux style, lower cased'
+          oneOf:
+          - $ref: '#/components/schemas/LanguageCodeStyleEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+        inherit_language_code_style:
+          type: boolean
+          description: Use the language code style configured in the workspace.
+        effective_language_code_style:
+          type: string
+          readOnly: true
+        secondary_language:
+          type:
+          - integer
+          - 'null'
+          description: Additional language to show together with the source language while translating.
+        inherit_secondary_language:
+          type: boolean
+          description: Use the secondary language configured in the workspace.
+        effective_secondary_language:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+        commit_message:
+          type: string
+          title: Commit message when translating
+          description: You can use template language for various info, please consult the documentation for more details.
+        inherit_commit_message:
+          type: boolean
+          title: Inherit commit message when translating
+          description: Use the commit message when translating configured in the workspace.
+        effective_commit_message:
+          type: string
+          readOnly: true
+        add_message:
+          type: string
+          title: Commit message when adding translation
+          description: You can use template language for various info, please consult the documentation for more details.
+        inherit_add_message:
+          type: boolean
+          title: Inherit commit message when adding translation
+          description: Use the commit message when adding translation configured in the workspace.
+        effective_add_message:
+          type: string
+          readOnly: true
+        delete_message:
+          type: string
+          title: Commit message when removing translation
+          description: You can use template language for various info, please consult the documentation for more details.
+        inherit_delete_message:
+          type: boolean
+          title: Inherit commit message when removing translation
+          description: Use the commit message when removing translation configured in the workspace.
+        effective_delete_message:
+          type: string
+          readOnly: true
+        merge_message:
+          type: string
+          title: Commit message when merging translation
+          description: You can use template language for various info, please consult the documentation for more details.
+        inherit_merge_message:
+          type: boolean
+          title: Inherit commit message when merging translation
+          description: Use the commit message when merging translation configured in the workspace.
+        effective_merge_message:
+          type: string
+          readOnly: true
+        addon_message:
+          type: string
+          title: Commit message when add-on makes a change
+          description: You can use template language for various info, please consult the documentation for more details.
+        inherit_addon_message:
+          type: boolean
+          title: Inherit commit message when add-on makes a change
+          description: Use the commit message when add-on makes a change configured in the workspace.
+        effective_addon_message:
+          type: string
+          readOnly: true
+        pull_message:
+          type: string
+          title: Merge request message
+          description: You can use template language for various info, please consult the documentation for more details.
+        inherit_pull_message:
+          type: boolean
+          title: Inherit merge request message
+          description: Use the merge request message configured in the workspace.
+        effective_pull_message:
+          type: string
+          readOnly: true
+        enforced_2fa:
+          type: boolean
+          title: Enforced two-factor authentication
+          description: Requires contributors to have two-factor authentication configured before being able to contribute.
+        machinery_settings:
+          type: string
+          format: uri
+          readOnly: true
+        locked:
+          type: boolean
+          readOnly: true
+        announcements_url:
+          type: string
+          format: uri
+          readOnly: true
+      required:
+      - announcements_url
+      - categories_url
+      - changes_list_url
+      - components_list_url
+      - credits_url
+      - effective_add_message
+      - effective_addon_message
+      - effective_agreement
+      - effective_check_flags
+      - effective_commit_message
+      - effective_delete_message
+      - effective_language_code_style
+      - effective_license
+      - effective_merge_message
+      - effective_new_lang
+      - effective_pull_message
+      - effective_secondary_language
+      - id
+      - labels_url
+      - languages_url
+      - lock_url
+      - locked
+      - machinery_settings
+      - name
+      - repository_url
+      - slug
+      - statistics_url
+      - url
+      - web
+      - web_url
+    ClientErrorEnum:
+      enum:
+      - client_error
+      type: string
+      description: '* `client_error` - Client Error'
+    UserStatistics:
+      type: object
+      properties:
+        translated:
+          type: integer
+        suggested:
+          type: integer
+        uploaded:
+          type: integer
+        commented:
+          type: integer
+        languages:
+          type: integer
+      required:
+      - commented
+      - languages
+      - suggested
+      - translated
+      - uploaded
+    ErrorResponse400:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ErrorResponse400TypeEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error400'
+      required:
+      - errors
+      - type
+    VcsEnum:
+      enum:
+      - gerrit
+      - git
+      - git-force-push
+      - local
+      - mercurial
+      - subversion
+      type: string
+      description: '* `gerrit` - Gerrit
+
+        * `git` - Git
+
+        * `git-force-push` - Git with force push
+
+        * `local` - No remote repository
+
+        * `mercurial` - Mercurial
+
+        * `subversion` - Subversion'
+    ErrorResponse405:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error405'
+      required:
+      - errors
+      - type
+    FullUser:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        email:
           type:
           - string
           - 'null'
+          title: E-mail
+          format: email
+          maxLength: 190
+        full_name:
+          type: string
+          maxLength: 150
+        username:
+          type: string
+          description: 'Username may only contain letters, numbers or the following characters: @ . + - _'
+          maxLength: 150
+        groups:
+          type: array
+          items:
+            type: string
+            format: uri
+          readOnly: true
+        languages:
+          type: array
+          items:
+            type: string
+            format: uri
+          readOnly: true
+        notifications:
+          type: string
+          format: uri
+          readOnly: true
+        is_superuser:
+          type: boolean
+          title: Superuser status
+          description: User has all possible permissions.
+        is_active:
+          type: boolean
+          title: Active
+          description: Mark user as inactive instead of removing.
+        is_bot:
+          type: boolean
+          title: Robot user
+        date_joined:
+          type: string
+          format: date-time
+          readOnly: true
+        date_expires:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          title: Expires
+          description: The account will be disabled after the expiry.
+        last_login:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        statistics_url:
+          type: string
+          format: uri
+          readOnly: true
+        contributions_url:
+          type: string
+          format: uri
+          readOnly: true
       required:
-      - attr
-      - code
-      - detail
-    Error401:
+      - contributions_url
+      - date_joined
+      - full_name
+      - groups
+      - id
+      - languages
+      - last_login
+      - notifications
+      - statistics_url
+      - url
+      - username
+    NotificationEnum:
+      enum:
+      - RepositoryNotification
+      - LockNotification
+      - LicenseNotification
+      - ParseErrorNotification
+      - NewStringNotificaton
+      - TranslationActivitySummaryNotification
+      - NewContributorNotificaton
+      - NewSuggestionNotificaton
+      - LanguageTranslatedNotificaton
+      - ComponentTranslatedNotificaton
+      - NewCommentNotificaton
+      - MentionCommentNotificaton
+      - LastAuthorCommentNotificaton
+      - TranslatedStringNotificaton
+      - ApprovedStringNotificaton
+      - ChangedStringNotificaton
+      - NewTranslationNotificaton
+      - NewComponentNotificaton
+      - NewAnnouncementNotificaton
+      - NewAlertNotificaton
+      - MergeFailureNotification
+      - PendingSuggestionsNotification
+      - ToDoStringsNotification
+      type: string
+      description: '* `RepositoryNotification` - Operation was performed in the repository
+
+        * `LockNotification` - Component was locked or unlocked
+
+        * `LicenseNotification` - License was changed
+
+        * `ParseErrorNotification` - Parse error occurred
+
+        * `NewStringNotificaton` - String is available for translation
+
+        * `TranslationActivitySummaryNotification` - Translation activity summary
+
+        * `NewContributorNotificaton` - Contributor made their first translation
+
+        * `NewSuggestionNotificaton` - Suggestion was added
+
+        * `LanguageTranslatedNotificaton` - Language was translated
+
+        * `ComponentTranslatedNotificaton` - Component was translated
+
+        * `NewCommentNotificaton` - Comment was added
+
+        * `MentionCommentNotificaton` - You were mentioned in a comment
+
+        * `LastAuthorCommentNotificaton` - Your translation received a comment
+
+        * `TranslatedStringNotificaton` - String was edited by user
+
+        * `ApprovedStringNotificaton` - String was approved
+
+        * `ChangedStringNotificaton` - String was changed
+
+        * `NewTranslationNotificaton` - New language was added or requested
+
+        * `NewComponentNotificaton` - New translation component was created
+
+        * `NewAnnouncementNotificaton` - Announcement was published
+
+        * `NewAlertNotificaton` - New alert emerged in a component
+
+        * `MergeFailureNotification` - Repository operation failed
+
+        * `PendingSuggestionsNotification` - Pending suggestions exist
+
+        * `ToDoStringsNotification` - Unfinished strings exist'
+    PatchedNotification:
+      type: object
+      properties:
+        notification:
+          $ref: '#/components/schemas/NotificationEnum'
+        id:
+          type: integer
+          readOnly: true
+        scope:
+          allOf:
+          - $ref: '#/components/schemas/NotificationScopeEnum'
+          minimum: -2147483648
+          maximum: 2147483647
+        frequency:
+          allOf:
+          - $ref: '#/components/schemas/FrequencyEnum'
+          minimum: -2147483648
+          maximum: 2147483647
+        project:
+          allOf:
+          - $ref: '#/components/schemas/Project'
+          readOnly: true
+        component:
+          allOf:
+          - $ref: '#/components/schemas/Component'
+          readOnly: true
+    PaginatedTranslationList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Translation'
+    Error500:
       type: object
       properties:
         code:
-          $ref: '#/components/schemas/ErrorCode401Enum'
+          $ref: '#/components/schemas/ErrorCode500Enum'
         detail:
           type: string
         attr:
@@ -3254,6 +3625,11 @@ components:
       - attr
       - code
       - detail
+    ErrorCode406Enum:
+      enum:
+      - not_acceptable
+      type: string
+      description: '* `not_acceptable` - Not Acceptable'
     FileFormatEnum:
       enum:
       - apple-xliff
@@ -3460,14 +3836,496 @@ components:
         * `xwiki-page-properties` - XWiki Page Properties
 
         * `yaml` - YAML file'
-    ErrorResponse400TypeEnum:
+    Error404:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode404Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    Notification:
+      type: object
+      properties:
+        notification:
+          $ref: '#/components/schemas/NotificationEnum'
+        id:
+          type: integer
+          readOnly: true
+        scope:
+          allOf:
+          - $ref: '#/components/schemas/NotificationScopeEnum'
+          minimum: -2147483648
+          maximum: 2147483647
+        frequency:
+          allOf:
+          - $ref: '#/components/schemas/FrequencyEnum'
+          minimum: -2147483648
+          maximum: 2147483647
+        project:
+          allOf:
+          - $ref: '#/components/schemas/Project'
+          readOnly: true
+        component:
+          allOf:
+          - $ref: '#/components/schemas/Component'
+          readOnly: true
+      required:
+      - component
+      - frequency
+      - id
+      - notification
+      - project
+      - scope
+    Error405:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode405Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    PaginatedNotificationList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Notification'
+    ErrorCode403Enum:
       enum:
-      - validation_error
-      - client_error
+      - permission_denied
       type: string
-      description: '* `validation_error` - Validation Error
+      description: '* `permission_denied` - Permission Denied'
+    Error401:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode401Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    ErrorCode405Enum:
+      enum:
+      - method_not_allowed
+      type: string
+      description: '* `method_not_allowed` - Method Not Allowed'
+    FrequencyEnum:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      type: integer
+      description: '* `0` - No notification
 
-        * `client_error` - Client Error'
+        * `1` - Instant notification
+
+        * `2` - Daily digest
+
+        * `3` - Weekly digest
+
+        * `4` - Monthly digest'
+    ErrorResponse401:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error401'
+      required:
+      - errors
+      - type
+    ErrorCode415Enum:
+      enum:
+      - unsupported_media_type
+      type: string
+      description: '* `unsupported_media_type` - Unsupported Media Type'
+    ErrorCode401Enum:
+      enum:
+      - authentication_failed
+      - not_authenticated
+      type: string
+      description: '* `authentication_failed` - Authentication Failed
+
+        * `not_authenticated` - Not Authenticated'
+    DirectionEnum:
+      enum:
+      - ltr
+      - rtl
+      type: string
+      description: '* `` - Automatically detect text direction
+
+        * `ltr` - Left to right
+
+        * `rtl` - Right to left'
+    ColorEnum:
+      enum:
+      - navy
+      - blue
+      - aqua
+      - teal
+      - olive
+      - green
+      - lime
+      - yellow
+      - orange
+      - red
+      - maroon
+      - fuchsia
+      - purple
+      - black
+      - gray
+      - silver
+      type: string
+      description: '* `navy` - Navy
+
+        * `blue` - Blue
+
+        * `aqua` - Aqua
+
+        * `teal` - Teal
+
+        * `olive` - Olive
+
+        * `green` - Green
+
+        * `lime` - Lime
+
+        * `yellow` - Yellow
+
+        * `orange` - Orange
+
+        * `red` - Red
+
+        * `maroon` - Maroon
+
+        * `fuchsia` - Fuchsia
+
+        * `purple` - Purple
+
+        * `black` - Black
+
+        * `gray` - Gray
+
+        * `silver` - Silver'
+    Error429:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode429Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    Error403:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode403Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    ErrorCode429Enum:
+      enum:
+      - throttled
+      type: string
+      description: '* `throttled` - Throttled'
+    ErrorResponse404:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error404'
+      required:
+      - errors
+      - type
+    Language:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        code:
+          type: string
+          title: Language code
+          pattern: ^[A-Za-z0-9]+(?:[-_@][A-Za-z0-9]+)*$
+          maxLength: 50
+        name:
+          type: string
+          maxLength: 100
+        plural:
+          $ref: '#/components/schemas/LanguagePlural'
+        aliases:
+          type: array
+          items: {}
+          readOnly: true
+        direction:
+          title: Text direction
+          oneOf:
+          - $ref: '#/components/schemas/DirectionEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+        population:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+          title: Number of speakers
+          description: Number of people speaking this language.
+        web_url:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        statistics_url:
+          type: string
+          format: uri
+          readOnly: true
+      required:
+      - aliases
+      - code
+      - id
+      - statistics_url
+      - url
+      - web_url
+    ErrorCode423Enum:
+      enum:
+      - repository-locked
+      - component-locked
+      - unknown-locked
+      type: string
+      description: '* `repository-locked` - Repository Locked
+
+        * `component-locked` - Component Locked
+
+        * `unknown-locked` - Unknown Locked'
+    ErrorResponse500:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ServerErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error500'
+      required:
+      - errors
+      - type
+    ErrorResponse406:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error406'
+      required:
+      - errors
+      - type
+    Translation:
+      type: object
+      properties:
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+          readOnly: true
+        component:
+          allOf:
+          - $ref: '#/components/schemas/Component'
+          readOnly: true
+        language_code:
+          type: string
+          maxLength: 50
+        id:
+          type: integer
+          readOnly: true
+        filename:
+          type: string
+          maxLength: 400
+        revision:
+          type: string
+          maxLength: 200
+        web_url:
+          type: string
+          readOnly: true
+        share_url:
+          type: string
+          readOnly: true
+        translate_url:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        is_template:
+          type: boolean
+          readOnly: true
+        is_source:
+          type: boolean
+          readOnly: true
+        total:
+          type: integer
+          readOnly: true
+        total_words:
+          type: integer
+          readOnly: true
+        translated:
+          type: integer
+          readOnly: true
+        translated_words:
+          type: integer
+          readOnly: true
+        translated_percent:
+          type: number
+          format: double
+          readOnly: true
+        fuzzy:
+          type: integer
+          readOnly: true
+        fuzzy_words:
+          type: integer
+          readOnly: true
+        fuzzy_percent:
+          type: number
+          format: double
+          readOnly: true
+        failing_checks:
+          type: integer
+          readOnly: true
+        failing_checks_words:
+          type: integer
+          readOnly: true
+        failing_checks_percent:
+          type: number
+          format: double
+          readOnly: true
+        have_suggestion:
+          type: integer
+          readOnly: true
+        have_comment:
+          type: integer
+          readOnly: true
+        last_change:
+          type: string
+          format: date-time
+          readOnly: true
+        last_author:
+          type: string
+          readOnly: true
+        repository_url:
+          type: string
+          format: uri
+          readOnly: true
+        file_url:
+          type: string
+          format: uri
+          readOnly: true
+        statistics_url:
+          type: string
+          format: uri
+          readOnly: true
+        changes_list_url:
+          type: string
+          format: uri
+          readOnly: true
+        units_list_url:
+          type: string
+          format: uri
+          readOnly: true
+        announcements_url:
+          type: string
+          format: uri
+          readOnly: true
+      required:
+      - announcements_url
+      - changes_list_url
+      - component
+      - failing_checks
+      - failing_checks_percent
+      - failing_checks_words
+      - file_url
+      - filename
+      - fuzzy
+      - fuzzy_percent
+      - fuzzy_words
+      - have_comment
+      - have_suggestion
+      - id
+      - is_source
+      - is_template
+      - language
+      - last_author
+      - last_change
+      - repository_url
+      - share_url
+      - statistics_url
+      - total
+      - total_words
+      - translate_url
+      - translated
+      - translated_percent
+      - translated_words
+      - units_list_url
+      - url
+      - web_url
     NotificationScopeEnum:
       enum:
       - 0
@@ -3485,81 +4343,6 @@ components:
         * `30` - Project
 
         * `40` - Component'
-    LanguageCodeStyleEnum:
-      enum:
-      - posix
-      - posix_lowercase
-      - bcp
-      - posix_long
-      - posix_long_lowercase
-      - bcp_long
-      - bcp_legacy
-      - bcp_lower
-      - android
-      - appstore
-      - googleplay
-      - linux
-      - linux_lowercase
-      type: string
-      description: '* `` - Default based on the file format
-
-        * `posix` - POSIX style using underscore as a separator
-
-        * `posix_lowercase` - POSIX style using underscore as a separator, lower cased
-
-        * `bcp` - BCP style using hyphen as a separator
-
-        * `posix_long` - POSIX style using underscore as a separator, including country code
-
-        * `posix_long_lowercase` - POSIX style using underscore as a separator, including country code, lower cased
-
-        * `bcp_long` - BCP style using hyphen as a separator, including country code
-
-        * `bcp_legacy` - BCP style using hyphen as a separator, legacy language codes
-
-        * `bcp_lower` - BCP style using hyphen as a separator, lower cased
-
-        * `android` - Android style
-
-        * `appstore` - Apple App Store metadata style
-
-        * `googleplay` - Google Play metadata style
-
-        * `linux` - Linux style
-
-        * `linux_lowercase` - Linux style, lower cased'
-    PriorityEnum:
-      enum:
-      - 60
-      - 80
-      - 100
-      - 120
-      - 140
-      type: integer
-      description: '* `60` - Very high
-
-        * `80` - High
-
-        * `100` - Medium
-
-        * `120` - Low
-
-        * `140` - Very low'
-    Error500:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode500Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
     Component:
       type: object
       properties:
@@ -4037,812 +4820,24 @@ components:
       - translations_url
       - url
       - web_url
-    NotificationEnum:
-      enum:
-      - RepositoryNotification
-      - LockNotification
-      - LicenseNotification
-      - ParseErrorNotification
-      - NewStringNotificaton
-      - TranslationActivitySummaryNotification
-      - NewContributorNotificaton
-      - NewSuggestionNotificaton
-      - LanguageTranslatedNotificaton
-      - ComponentTranslatedNotificaton
-      - NewCommentNotificaton
-      - MentionCommentNotificaton
-      - LastAuthorCommentNotificaton
-      - TranslatedStringNotificaton
-      - ApprovedStringNotificaton
-      - ChangedStringNotificaton
-      - NewTranslationNotificaton
-      - NewComponentNotificaton
-      - NewAnnouncementNotificaton
-      - NewAlertNotificaton
-      - MergeFailureNotification
-      - PendingSuggestionsNotification
-      - ToDoStringsNotification
-      type: string
-      description: '* `RepositoryNotification` - Operation was performed in the repository
-
-        * `LockNotification` - Component was locked or unlocked
-
-        * `LicenseNotification` - License was changed
-
-        * `ParseErrorNotification` - Parse error occurred
-
-        * `NewStringNotificaton` - String is available for translation
-
-        * `TranslationActivitySummaryNotification` - Translation activity summary
-
-        * `NewContributorNotificaton` - Contributor made their first translation
-
-        * `NewSuggestionNotificaton` - Suggestion was added
-
-        * `LanguageTranslatedNotificaton` - Language was translated
-
-        * `ComponentTranslatedNotificaton` - Component was translated
-
-        * `NewCommentNotificaton` - Comment was added
-
-        * `MentionCommentNotificaton` - You were mentioned in a comment
-
-        * `LastAuthorCommentNotificaton` - Your translation received a comment
-
-        * `TranslatedStringNotificaton` - String was edited by user
-
-        * `ApprovedStringNotificaton` - String was approved
-
-        * `ChangedStringNotificaton` - String was changed
-
-        * `NewTranslationNotificaton` - New language was added or requested
-
-        * `NewComponentNotificaton` - New translation component was created
-
-        * `NewAnnouncementNotificaton` - Announcement was published
-
-        * `NewAlertNotificaton` - New alert emerged in a component
-
-        * `MergeFailureNotification` - Repository operation failed
-
-        * `PendingSuggestionsNotification` - Pending suggestions exist
-
-        * `ToDoStringsNotification` - Unfinished strings exist'
-    ErrorCode500Enum:
-      enum:
-      - error
-      type: string
-      description: '* `error` - Error'
-    CommitPolicyEnum:
-      enum:
-      - 0
-      - 20
-      - 30
-      type: integer
-      description: '* `0` - Commit all translations regardless of quality
-
-        * `20` - Skip translations marked as needing editing
-
-        * `30` - Only include approved translations'
-    ServerErrorEnum:
-      enum:
-      - server_error
-      type: string
-      description: '* `server_error` - Server Error'
-    ErrorCode415Enum:
-      enum:
-      - unsupported_media_type
-      type: string
-      description: '* `unsupported_media_type` - Unsupported Media Type'
-    Error404:
+    ErrorResponse403:
       type: object
       properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode404Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error403'
       required:
-      - attr
-      - code
-      - detail
-    Project:
-      type: object
-      properties:
-        name:
-          type: string
-          title: Project name
-          description: Display name
-          maxLength: 60
-        slug:
-          type: string
-          title: URL slug
-          description: Name used in URLs and filenames.
-          maxLength: 60
-          pattern: ^[-a-zA-Z0-9_]+$
-        id:
-          type: integer
-          readOnly: true
-        web:
-          type: string
-          format: uri
-          title: Project website
-          description: Main website of translated project.
-          maxLength: 200
-        web_url:
-          type: string
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        check_flags:
-          type: string
-          title: Translation flags
-          description: Additional comma-separated flags to influence Weblate behavior.
-        effective_check_flags:
-          type: string
-          readOnly: true
-        components_list_url:
-          type: string
-          format: uri
-          readOnly: true
-        repository_url:
-          type: string
-          format: uri
-          readOnly: true
-        statistics_url:
-          type: string
-          format: uri
-          readOnly: true
-        categories_url:
-          type: string
-          format: uri
-          readOnly: true
-        changes_list_url:
-          type: string
-          format: uri
-          readOnly: true
-        languages_url:
-          type: string
-          format: uri
-          readOnly: true
-        labels_url:
-          type: string
-          format: uri
-          readOnly: true
-        credits_url:
-          type: string
-          format: uri
-          readOnly: true
-        lock_url:
-          type: string
-          format: uri
-          readOnly: true
-        translation_review:
-          type: boolean
-          title: Enable reviews
-          description: Requires dedicated reviewers to approve translations.
-        source_review:
-          type: boolean
-          title: Enable source reviews
-          description: Requires dedicated reviewers to approve source strings.
-        commit_policy:
-          allOf:
-          - $ref: '#/components/schemas/CommitPolicyEnum'
-          title: Translation quality filter
-          description: 'Select which translations should be included when committing changes. More restrictive options will skip translations with potential quality issues.
-
-
-            * `0` - Commit all translations regardless of quality
-
-            * `20` - Skip translations marked as needing editing
-
-            * `30` - Only include approved translations'
-          minimum: -2147483648
-          maximum: 2147483647
-        workspace:
-          type:
-          - string
-          - 'null'
-          format: uuid
-        instructions:
-          type: string
-          title: Translation instructions
-          description: You can use Markdown and mention users by @username.
-        enable_hooks:
-          type: boolean
-          description: Whether to allow updating this repository by remote hooks.
-        language_aliases:
-          type: string
-          description: 'Comma-separated list of language code mappings, for example: en_GB:en,en_US:en'
-        license:
-          title: Translation license
-          type: string
-          maxLength: 150
-          examples:
-          - MIT
-          - GPL-3.0-or-later
-          - Apache-2.0
-          - BSD-3-Clause
-          - proprietary
-        inherit_license:
-          type: boolean
-          title: Inherit translation license
-          description: Use the translation license configured in the workspace.
-        effective_license:
-          type: string
-          readOnly: true
-        agreement:
-          type: string
-          title: Contributor license agreement
-          description: Contributor license agreement which needs to be approved before a user can translate components in this project.
-        inherit_agreement:
-          type: boolean
-          title: Inherit contributor license agreement
-          description: Use the contributor license agreement configured in the workspace.
-        effective_agreement:
-          type: string
-          readOnly: true
-        new_lang:
-          allOf:
-          - $ref: '#/components/schemas/NewLangEnum'
-          title: Adding new translation
-          description: 'How to handle requests for creating new translations.
-
-
-            * `contact` - Contact maintainers
-
-            * `url` - Point to translation instructions URL
-
-            * `add` - Create new language file
-
-            * `none` - Disable adding new translations'
-        inherit_new_lang:
-          type: boolean
-          title: Inherit adding new translations
-          description: Use the adding new translations setting configured in the workspace.
-        effective_new_lang:
-          type: string
-          readOnly: true
-        language_code_style:
-          description: 'Customize language code used to generate the filename for translations created by Weblate.
-
-
-            * `` - Default based on the file format
-
-            * `posix` - POSIX style using underscore as a separator
-
-            * `posix_lowercase` - POSIX style using underscore as a separator, lower cased
-
-            * `bcp` - BCP style using hyphen as a separator
-
-            * `posix_long` - POSIX style using underscore as a separator, including country code
-
-            * `posix_long_lowercase` - POSIX style using underscore as a separator, including country code, lower cased
-
-            * `bcp_long` - BCP style using hyphen as a separator, including country code
-
-            * `bcp_legacy` - BCP style using hyphen as a separator, legacy language codes
-
-            * `bcp_lower` - BCP style using hyphen as a separator, lower cased
-
-            * `android` - Android style
-
-            * `appstore` - Apple App Store metadata style
-
-            * `googleplay` - Google Play metadata style
-
-            * `linux` - Linux style
-
-            * `linux_lowercase` - Linux style, lower cased'
-          oneOf:
-          - $ref: '#/components/schemas/LanguageCodeStyleEnum'
-          - $ref: '#/components/schemas/BlankEnum'
-        inherit_language_code_style:
-          type: boolean
-          description: Use the language code style configured in the workspace.
-        effective_language_code_style:
-          type: string
-          readOnly: true
-        secondary_language:
-          type:
-          - integer
-          - 'null'
-          description: Additional language to show together with the source language while translating.
-        inherit_secondary_language:
-          type: boolean
-          description: Use the secondary language configured in the workspace.
-        effective_secondary_language:
-          type:
-          - integer
-          - 'null'
-          readOnly: true
-        commit_message:
-          type: string
-          title: Commit message when translating
-          description: You can use template language for various info, please consult the documentation for more details.
-        inherit_commit_message:
-          type: boolean
-          title: Inherit commit message when translating
-          description: Use the commit message when translating configured in the workspace.
-        effective_commit_message:
-          type: string
-          readOnly: true
-        add_message:
-          type: string
-          title: Commit message when adding translation
-          description: You can use template language for various info, please consult the documentation for more details.
-        inherit_add_message:
-          type: boolean
-          title: Inherit commit message when adding translation
-          description: Use the commit message when adding translation configured in the workspace.
-        effective_add_message:
-          type: string
-          readOnly: true
-        delete_message:
-          type: string
-          title: Commit message when removing translation
-          description: You can use template language for various info, please consult the documentation for more details.
-        inherit_delete_message:
-          type: boolean
-          title: Inherit commit message when removing translation
-          description: Use the commit message when removing translation configured in the workspace.
-        effective_delete_message:
-          type: string
-          readOnly: true
-        merge_message:
-          type: string
-          title: Commit message when merging translation
-          description: You can use template language for various info, please consult the documentation for more details.
-        inherit_merge_message:
-          type: boolean
-          title: Inherit commit message when merging translation
-          description: Use the commit message when merging translation configured in the workspace.
-        effective_merge_message:
-          type: string
-          readOnly: true
-        addon_message:
-          type: string
-          title: Commit message when add-on makes a change
-          description: You can use template language for various info, please consult the documentation for more details.
-        inherit_addon_message:
-          type: boolean
-          title: Inherit commit message when add-on makes a change
-          description: Use the commit message when add-on makes a change configured in the workspace.
-        effective_addon_message:
-          type: string
-          readOnly: true
-        pull_message:
-          type: string
-          title: Merge request message
-          description: You can use template language for various info, please consult the documentation for more details.
-        inherit_pull_message:
-          type: boolean
-          title: Inherit merge request message
-          description: Use the merge request message configured in the workspace.
-        effective_pull_message:
-          type: string
-          readOnly: true
-        enforced_2fa:
-          type: boolean
-          title: Enforced two-factor authentication
-          description: Requires contributors to have two-factor authentication configured before being able to contribute.
-        machinery_settings:
-          type: string
-          format: uri
-          readOnly: true
-        locked:
-          type: boolean
-          readOnly: true
-        announcements_url:
-          type: string
-          format: uri
-          readOnly: true
-      required:
-      - announcements_url
-      - categories_url
-      - changes_list_url
-      - components_list_url
-      - credits_url
-      - effective_add_message
-      - effective_addon_message
-      - effective_agreement
-      - effective_check_flags
-      - effective_commit_message
-      - effective_delete_message
-      - effective_language_code_style
-      - effective_license
-      - effective_merge_message
-      - effective_new_lang
-      - effective_pull_message
-      - effective_secondary_language
-      - id
-      - labels_url
-      - languages_url
-      - lock_url
-      - locked
-      - machinery_settings
-      - name
-      - repository_url
-      - slug
-      - statistics_url
-      - url
-      - web
-      - web_url
+      - errors
+      - type
     ErrorCode404Enum:
       enum:
       - not_found
       type: string
       description: '* `not_found` - Not Found'
-    ErrorResponse500:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ServerErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error500'
-      required:
-      - errors
-      - type
-    ErrorResponse423:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ServerErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error423'
-      required:
-      - errors
-      - type
-    PaginatedFullUserList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          format: uri
-          example: http://api.example.org/accounts/?page=4
-        previous:
-          type: string
-          format: uri
-          example: http://api.example.org/accounts/?page=2
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/FullUser'
-    Error403:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode403Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    PaginatedTranslationList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          format: uri
-          example: http://api.example.org/accounts/?page=4
-        previous:
-          type: string
-          format: uri
-          example: http://api.example.org/accounts/?page=2
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Translation'
-    ErrorResponse401:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error401'
-      required:
-      - errors
-      - type
-    PatchedNotification:
-      type: object
-      properties:
-        notification:
-          $ref: '#/components/schemas/NotificationEnum'
-        id:
-          type: integer
-          readOnly: true
-        scope:
-          allOf:
-          - $ref: '#/components/schemas/NotificationScopeEnum'
-          minimum: -2147483648
-          maximum: 2147483647
-        frequency:
-          allOf:
-          - $ref: '#/components/schemas/FrequencyEnum'
-          minimum: -2147483648
-          maximum: 2147483647
-        project:
-          allOf:
-          - $ref: '#/components/schemas/Project'
-          readOnly: true
-        component:
-          allOf:
-          - $ref: '#/components/schemas/Component'
-          readOnly: true
-    ErrorResponse429:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error429'
-      required:
-      - errors
-      - type
-    ErrorCode423Enum:
-      enum:
-      - repository-locked
-      - component-locked
-      - unknown-locked
-      type: string
-      description: '* `repository-locked` - Repository Locked
-
-        * `component-locked` - Component Locked
-
-        * `unknown-locked` - Unknown Locked'
-    PaginatedNotificationList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          format: uri
-          example: http://api.example.org/accounts/?page=4
-        previous:
-          type: string
-          format: uri
-          example: http://api.example.org/accounts/?page=2
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Notification'
-    FullUser:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        email:
-          type:
-          - string
-          - 'null'
-          title: E-mail
-          format: email
-          maxLength: 190
-        full_name:
-          type: string
-          maxLength: 150
-        username:
-          type: string
-          description: 'Username may only contain letters, numbers or the following characters: @ . + - _'
-          maxLength: 150
-        groups:
-          type: array
-          items:
-            type: string
-            format: uri
-          readOnly: true
-        languages:
-          type: array
-          items:
-            type: string
-            format: uri
-          readOnly: true
-        notifications:
-          type: string
-          format: uri
-          readOnly: true
-        is_superuser:
-          type: boolean
-          title: Superuser status
-          description: User has all possible permissions.
-        is_active:
-          type: boolean
-          title: Active
-          description: Mark user as inactive instead of removing.
-        is_bot:
-          type: boolean
-          title: Robot user
-        date_joined:
-          type: string
-          format: date-time
-          readOnly: true
-        date_expires:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          title: Expires
-          description: The account will be disabled after the expiry.
-        last_login:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        statistics_url:
-          type: string
-          format: uri
-          readOnly: true
-        contributions_url:
-          type: string
-          format: uri
-          readOnly: true
-      required:
-      - contributions_url
-      - date_joined
-      - full_name
-      - groups
-      - id
-      - languages
-      - last_login
-      - notifications
-      - statistics_url
-      - url
-      - username
-    ErrorResponse400:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ErrorResponse400TypeEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error400'
-      required:
-      - errors
-      - type
-    VcsEnum:
-      enum:
-      - gerrit
-      - git
-      - git-force-push
-      - local
-      - mercurial
-      - subversion
-      type: string
-      description: '* `gerrit` - Gerrit
-
-        * `git` - Git
-
-        * `git-force-push` - Git with force push
-
-        * `local` - No remote repository
-
-        * `mercurial` - Mercurial
-
-        * `subversion` - Subversion'
-    ErrorResponse406:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error406'
-      required:
-      - errors
-      - type
-    ErrorResponse405:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error405'
-      required:
-      - errors
-      - type
-    BlankEnum:
-      enum:
-      - ''
-    FrequencyEnum:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      type: integer
-      description: '* `0` - No notification
-
-        * `1` - Instant notification
-
-        * `2` - Daily digest
-
-        * `3` - Weekly digest
-
-        * `4` - Monthly digest'
-    MergeStyleEnum:
-      enum:
-      - merge
-      - rebase
-      - merge_noff
-      type: string
-      description: '* `merge` - Merge
-
-        * `rebase` - Rebase
-
-        * `merge_noff` - Merge without fast-forward'
-    UserGroupRequest:
-      type: object
-      properties:
-        group_id:
-          type: integer
-        limit_language_codes:
-          type: array
-          items:
-            type: string
-      required:
-      - group_id
-    ErrorCode405Enum:
-      enum:
-      - method_not_allowed
-      type: string
-      description: '* `method_not_allowed` - Method Not Allowed'
-    ClientErrorEnum:
-      enum:
-      - client_error
-      type: string
-      description: '* `client_error` - Client Error'
   headers:
-    X-RateLimit-Limit:
-      schema:
-        type: integer
-      description: Allowed number of requests to perform
-      required: true
     X-RateLimit-Remaining:
       schema:
         type: integer
@@ -4852,6 +4847,11 @@ components:
       schema:
         type: integer
       description: Number of seconds until the rate-limit window resets
+      required: true
+    X-RateLimit-Limit:
+      schema:
+        type: integer
+      description: Allowed number of requests to perform
       required: true
   securitySchemes:
     bearerAuth:

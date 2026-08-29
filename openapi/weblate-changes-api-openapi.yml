@@ -1,7 +1,7 @@
-openapi: 3.1.1
+openapi: 3.2.0
 info:
-  title: Weblate's REST addons changes API
-  version: "1.0"
+  title: Weblate's REST Changes API
+  version: ''
   x-logo:
     url: /static/weblate.svg
   description: "\nThe API is accessible on the ``/api/`` URL and it is based on [Django REST framework](https://www.django-rest-framework.org/).\n\nThe OpenAPI specification is available as feature preview, feedback welcome!\n\n## Authorization\n\n<!-- Redoc-Inject: <security-definitions> -->\n\n\n    "
@@ -627,124 +627,11 @@ paths:
               $ref: '#/components/headers/X-RateLimit-Reset'
 components:
   schemas:
-    ErrorCode405Enum:
-      enum:
-      - method_not_allowed
-      type: string
-      description: '* `method_not_allowed` - Method Not Allowed'
-    Error423:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode423Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    ErrorResponse403:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error403'
-      required:
-      - errors
-      - type
-    ErrorResponse404:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error404'
-      required:
-      - errors
-      - type
-    ErrorCode429Enum:
-      enum:
-      - throttled
-      type: string
-      description: '* `throttled` - Throttled'
-    PaginatedChangeList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          format: uri
-          example: http://api.example.org/accounts/?page=4
-        previous:
-          type: string
-          format: uri
-          example: http://api.example.org/accounts/?page=2
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Change'
-    ErrorCode401Enum:
-      enum:
-      - authentication_failed
-      - not_authenticated
-      type: string
-      description: '* `authentication_failed` - Authentication Failed
-
-        * `not_authenticated` - Not Authenticated'
-    ErrorCode403Enum:
-      enum:
-      - permission_denied
-      type: string
-      description: '* `permission_denied` - Permission Denied'
-    Error429:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode429Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
     Error406:
       type: object
       properties:
         code:
           $ref: '#/components/schemas/ErrorCode406Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    Error405:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode405Enum'
         detail:
           type: string
         attr:
@@ -798,78 +685,6 @@ components:
       - attr
       - code
       - detail
-    Error401:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode401Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    Change:
-      type: object
-      properties:
-        unit:
-          type: string
-          format: uri
-          readOnly: true
-        component:
-          type: string
-          format: uri
-          readOnly: true
-        translation:
-          type: string
-          format: uri
-          readOnly: true
-        user:
-          type: string
-          format: uri
-          readOnly: true
-        author:
-          type: string
-          format: uri
-          readOnly: true
-        timestamp:
-          type: string
-          format: date-time
-          readOnly: true
-        action:
-          allOf:
-          - $ref: '#/components/schemas/ActionEnum'
-          minimum: -2147483648
-          maximum: 2147483647
-        target:
-          type: string
-        old:
-          type: string
-        details: {}
-        id:
-          type: integer
-          readOnly: true
-        action_name:
-          type: string
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-      required:
-      - action_name
-      - author
-      - component
-      - id
-      - timestamp
-      - translation
-      - unit
-      - url
-      - user
     ErrorResponse400TypeEnum:
       enum:
       - validation_error
@@ -878,11 +693,11 @@ components:
       description: '* `validation_error` - Validation Error
 
         * `client_error` - Client Error'
-    Error500:
+    Error423:
       type: object
       properties:
         code:
-          $ref: '#/components/schemas/ErrorCode500Enum'
+          $ref: '#/components/schemas/ErrorCode423Enum'
         detail:
           type: string
         attr:
@@ -898,32 +713,7 @@ components:
       - error
       type: string
       description: '* `error` - Error'
-    ServerErrorEnum:
-      enum:
-      - server_error
-      type: string
-      description: '* `server_error` - Server Error'
-    Error404:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode404Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    ErrorCode404Enum:
-      enum:
-      - not_found
-      type: string
-      description: '* `not_found` - Not Found'
-    ErrorResponse500:
+    ErrorResponse423:
       type: object
       properties:
         type:
@@ -931,10 +721,27 @@ components:
         errors:
           type: array
           items:
-            $ref: '#/components/schemas/Error500'
+            $ref: '#/components/schemas/Error423'
       required:
       - errors
       - type
+    ErrorResponse429:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error429'
+      required:
+      - errors
+      - type
+    ServerErrorEnum:
+      enum:
+      - server_error
+      type: string
+      description: '* `server_error` - Server Error'
     ActionEnum:
       enum:
       - 0
@@ -1222,23 +1029,95 @@ components:
         * `99` - Workspace setting changed
 
         * `100` - Project moved'
-    ErrorResponse423:
+    ClientErrorEnum:
+      enum:
+      - client_error
+      type: string
+      description: '* `client_error` - Client Error'
+    ErrorResponse400:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/ServerErrorEnum'
+          $ref: '#/components/schemas/ErrorResponse400TypeEnum'
         errors:
           type: array
           items:
-            $ref: '#/components/schemas/Error423'
+            $ref: '#/components/schemas/Error400'
       required:
       - errors
       - type
-    Error403:
+    ErrorResponse405:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error405'
+      required:
+      - errors
+      - type
+    Error500:
       type: object
       properties:
         code:
-          $ref: '#/components/schemas/ErrorCode403Enum'
+          $ref: '#/components/schemas/ErrorCode500Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    ErrorCode406Enum:
+      enum:
+      - not_acceptable
+      type: string
+      description: '* `not_acceptable` - Not Acceptable'
+    Error405:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode405Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    Error404:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode404Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    ErrorCode403Enum:
+      enum:
+      - permission_denied
+      type: string
+      description: '* `permission_denied` - Permission Denied'
+    Error401:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode401Enum'
         detail:
           type: string
         attr:
@@ -1261,18 +1140,70 @@ components:
       required:
       - errors
       - type
-    ErrorResponse429:
+    PaginatedChangeList:
       type: object
+      required:
+      - count
+      - results
       properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
           type: array
           items:
-            $ref: '#/components/schemas/Error429'
+            $ref: '#/components/schemas/Change'
+    ErrorCode401Enum:
+      enum:
+      - authentication_failed
+      - not_authenticated
+      type: string
+      description: '* `authentication_failed` - Authentication Failed
+
+        * `not_authenticated` - Not Authenticated'
+    Error429:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode429Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
       required:
-      - errors
-      - type
+      - attr
+      - code
+      - detail
+    Error403:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode403Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    ErrorCode429Enum:
+      enum:
+      - throttled
+      type: string
+      description: '* `throttled` - Throttled'
     ErrorCode423Enum:
       enum:
       - repository-locked
@@ -1284,15 +1215,84 @@ components:
         * `component-locked` - Component Locked
 
         * `unknown-locked` - Unknown Locked'
-    ErrorResponse400:
+    Change:
+      type: object
+      properties:
+        unit:
+          type: string
+          format: uri
+          readOnly: true
+        component:
+          type: string
+          format: uri
+          readOnly: true
+        translation:
+          type: string
+          format: uri
+          readOnly: true
+        user:
+          type: string
+          format: uri
+          readOnly: true
+        author:
+          type: string
+          format: uri
+          readOnly: true
+        timestamp:
+          type: string
+          format: date-time
+          readOnly: true
+        action:
+          allOf:
+          - $ref: '#/components/schemas/ActionEnum'
+          minimum: -2147483648
+          maximum: 2147483647
+        target:
+          type: string
+        old:
+          type: string
+        details: {}
+        id:
+          type: integer
+          readOnly: true
+        action_name:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+      required:
+      - action_name
+      - author
+      - component
+      - id
+      - timestamp
+      - translation
+      - unit
+      - url
+      - user
+    ErrorResponse404:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/ErrorResponse400TypeEnum'
+          $ref: '#/components/schemas/ClientErrorEnum'
         errors:
           type: array
           items:
-            $ref: '#/components/schemas/Error400'
+            $ref: '#/components/schemas/Error404'
+      required:
+      - errors
+      - type
+    ErrorResponse500:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ServerErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error500'
       required:
       - errors
       - type
@@ -1308,7 +1308,12 @@ components:
       required:
       - errors
       - type
-    ErrorResponse405:
+    ErrorCode405Enum:
+      enum:
+      - method_not_allowed
+      type: string
+      description: '* `method_not_allowed` - Method Not Allowed'
+    ErrorResponse403:
       type: object
       properties:
         type:
@@ -1316,26 +1321,16 @@ components:
         errors:
           type: array
           items:
-            $ref: '#/components/schemas/Error405'
+            $ref: '#/components/schemas/Error403'
       required:
       - errors
       - type
-    ErrorCode406Enum:
+    ErrorCode404Enum:
       enum:
-      - not_acceptable
+      - not_found
       type: string
-      description: '* `not_acceptable` - Not Acceptable'
-    ClientErrorEnum:
-      enum:
-      - client_error
-      type: string
-      description: '* `client_error` - Client Error'
+      description: '* `not_found` - Not Found'
   headers:
-    X-RateLimit-Limit:
-      schema:
-        type: integer
-      description: Allowed number of requests to perform
-      required: true
     X-RateLimit-Remaining:
       schema:
         type: integer
@@ -1345,6 +1340,11 @@ components:
       schema:
         type: integer
       description: Number of seconds until the rate-limit window resets
+      required: true
+    X-RateLimit-Limit:
+      schema:
+        type: integer
+      description: Allowed number of requests to perform
       required: true
   securitySchemes:
     bearerAuth:
