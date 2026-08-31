@@ -61,7 +61,7 @@ apis:
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
   tags:
-  - Addons
+  - addons
   tags_raw:
   - addons
   properties:
@@ -89,7 +89,7 @@ apis:
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
   tags:
-  - Changes
+  - changes
   tags_raw:
   - changes
   properties:
@@ -129,7 +129,7 @@ apis:
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
   tags:
-  - Contributions
+  - contributions
   tags_raw:
   - contributions
   properties:
@@ -162,7 +162,7 @@ apis:
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
   tags:
-  - Hooks
+  - hooks
   tags_raw:
   - hooks
   properties:
@@ -176,7 +176,7 @@ apis:
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
   tags:
-  - Language
+  - languages
   tags_raw:
   - languages
   properties:
@@ -337,7 +337,7 @@ apis:
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
   tags:
-  - Units
+  - units
   tags_raw:
   - units
   properties:
@@ -365,6 +365,8 @@ apis:
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
   tags:
+  - Webhook
+  tags_raw:
   - webhooks
   properties:
   - type: OpenAPI
