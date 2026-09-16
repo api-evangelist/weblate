@@ -47,7 +47,6 @@ tags:
   - Open-Source
   - Continuous Localization
   - Version Control
-  - Developer Tools
 tags_raw:
   - Localization
   - Translation
@@ -56,20 +55,6 @@ tags_raw:
   - Continuous Localization
   - Version Control
 apis:
-- aid: weblate:weblate-addons-api
-  name: Weblate addons API
-  description: Added in version 4.4.1.
-  humanURL: https://docs.weblate.org/en/latest/api.html
-  baseURL: https://hosted.weblate.org/api/
-  tags:
-  - Addons
-  tags_raw:
-  - addons
-  properties:
-  - type: OpenAPI
-    url: openapi/weblate-addons-api-openapi.yml
-  - type: Documentation
-    url: https://docs.weblate.org/en/latest/api.html
 - aid: weblate:weblate-categories-api
   name: Weblate categories API
   description: The categories API from Weblate — 5 operation(s) for categories.
@@ -372,6 +357,18 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/weblate-webhooks-api-openapi.yml
+- aid: weblate:weblate-add-ons-api
+  name: Weblate Add Ons API
+  description: Added in version 4.4.1.
+  humanURL: https://docs.weblate.org/en/latest/api.html
+  baseURL: https://hosted.weblate.org/api/
+  tags:
+  - Add Ons
+  properties:
+  - type: OpenAPI
+    url: openapi/weblate-add-ons-api-openapi.yml
+  - type: Documentation
+    url: https://docs.weblate.org/en/latest/api.html
 common:
   - type: AgenticAccess
     url: agentic-access/weblate-agentic-access.yml
