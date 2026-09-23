@@ -27,7 +27,9 @@
     "weblate-users-api-openapi.yml",
     "weblate-webhooks-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [
     "weblate-weblate-rest-api-openapi.yml: info.version missing"
@@ -36,10 +38,12 @@
     "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "weblate-weblate-rest-api-openapi.yml: upgraded openapi 3.1.1 -> OpenAPI 3.2.0",
     "weblate-weblate-rest-api-openapi.yml: declared missing tag: contributions",
-    "weblate-weblate-rest-api-openapi.yml: declared missing tag: schema"
+    "weblate-weblate-rest-api-openapi.yml: declared missing tag: schema",
+    "superseded outputs removed: weblate-add-ons-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 22 total)"
   ],
   "skipped": [
-    "weblate-addons-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "weblate-add-ons-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "weblate-categories-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "weblate-changes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "weblate-component-lists-api-openapi.yml: previously refined output, superseded by openapi/_original/",
@@ -59,6 +63,7 @@
     "weblate-tasks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "weblate-translations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "weblate-units-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "weblate-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+    "weblate-users-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "weblate-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]
 }

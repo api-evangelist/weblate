@@ -4,7 +4,16 @@ info:
   version: ''
   x-logo:
     url: /static/weblate.svg
-  description: "\nThe API is accessible on the ``/api/`` URL and it is based on [Django REST framework](https://www.django-rest-framework.org/).\n\nThe OpenAPI specification is available as feature preview, feedback welcome!\n\n## Authorization\n\n<!-- Redoc-Inject: <security-definitions> -->\n\n\n    "
+  description: 'The API is accessible on the ``/api/`` URL and it is based on Django REST framework.
+
+
+    The OpenAPI specification is available as feature preview, feedback welcome!
+
+
+    ## Authorization
+
+
+    -->'
   license:
     name: GNU General Public License v3 or later
     url: https://docs.weblate.org/en/latest/contributing/license.html
@@ -12,7 +21,7 @@ servers:
 - url: 'http:'
   description: Weblate
 tags:
-- name: webhooks
+- name: Webhooks
   description: Notifications sent by Weblate.
 paths: {}
 webhooks:
@@ -21,7 +30,7 @@ webhooks:
       description: Pushes events to a notification URL.
       summary: A Webhook event for an addon
       tags:
-      - webhooks
+      - Webhooks
       requestBody:
         content:
           application/json:
