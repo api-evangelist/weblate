@@ -44,7 +44,7 @@ tags:
   - Localization
   - Translation
   - Internationalization
-  - Open-Source
+  - Open Source
   - Continuous Localization
   - Version Control
 tags_raw:
@@ -54,9 +54,10 @@ tags_raw:
   - Open Source
   - Continuous Localization
   - Version Control
+  - Open-Source
 apis:
 - aid: weblate:weblate-categories-api
-  name: Weblate categories API
+  name: Weblate Categories API
   description: The categories API from Weblate — 5 operation(s) for categories.
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
@@ -70,7 +71,7 @@ apis:
   - type: Documentation
     url: https://docs.weblate.org/en/latest/api.html
 - aid: weblate:weblate-changes-api
-  name: Weblate changes API
+  name: Weblate Changes API
   description: The changes API from Weblate — 2 operation(s) for changes.
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
@@ -84,7 +85,7 @@ apis:
   - type: Documentation
     url: https://docs.weblate.org/en/latest/api.html
 - aid: weblate:weblate-component-lists-api
-  name: Weblate component-lists API
+  name: Weblate Component Lists API
   description: Added in version 4.0.
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
@@ -96,7 +97,7 @@ apis:
   - type: Documentation
     url: https://docs.weblate.org/en/latest/api.html
 - aid: weblate:weblate-components-api
-  name: Weblate components API
+  name: Weblate Components API
   description: The components API from Weblate — 17 operation(s) for components.
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
@@ -110,7 +111,7 @@ apis:
   - type: Documentation
     url: https://docs.weblate.org/en/latest/api.html
 - aid: weblate:weblate-contributions-api
-  name: Weblate contributions API
+  name: Weblate Contributions API
   description: The contributions API from Weblate — 1 operation(s) for contributions.
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
@@ -124,7 +125,7 @@ apis:
   - type: Documentation
     url: https://docs.weblate.org/en/latest/api.html
 - aid: weblate:weblate-groups-api
-  name: Weblate groups API
+  name: Weblate Groups API
   description: Added in version 4.0.
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
@@ -138,7 +139,7 @@ apis:
   - type: Documentation
     url: https://docs.weblate.org/en/latest/api.html
 - aid: weblate:weblate-hooks-api
-  name: Weblate hooks API
+  name: Weblate Hooks API
   description: >-
     Notification hooks allow external applications to notify Weblate that the VCS repository has been
     updated.
@@ -157,7 +158,7 @@ apis:
   - type: Documentation
     url: https://docs.weblate.org/en/latest/api.html
 - aid: weblate:weblate-languages-api
-  name: Weblate languages API
+  name: Weblate Languages API
   description: The languages API from Weblate — 3 operation(s) for languages.
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
@@ -171,7 +172,7 @@ apis:
   - type: Documentation
     url: https://docs.weblate.org/en/latest/api.html
 - aid: weblate:weblate-memory-api
-  name: Weblate memory API
+  name: Weblate Memory API
   description: Added in version 4.14.
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
@@ -185,7 +186,7 @@ apis:
   - type: Documentation
     url: https://docs.weblate.org/en/latest/api.html
 - aid: weblate:weblate-metrics-api
-  name: Weblate metrics API
+  name: Weblate Metrics API
   description: The metrics API from Weblate — 1 operation(s) for metrics.
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
@@ -199,7 +200,7 @@ apis:
   - type: Documentation
     url: https://docs.weblate.org/en/latest/api.html
 - aid: weblate:weblate-projects-api
-  name: Weblate projects API
+  name: Weblate Projects API
   description: The projects API from Weblate — 20 operation(s) for projects.
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
@@ -213,7 +214,7 @@ apis:
   - type: Documentation
     url: https://docs.weblate.org/en/latest/api.html
 - aid: weblate:weblate-roles-api
-  name: Weblate roles API
+  name: Weblate Roles API
   description: The roles API from Weblate — 2 operation(s) for roles.
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
@@ -227,7 +228,7 @@ apis:
   - type: Documentation
     url: https://docs.weblate.org/en/latest/api.html
 - aid: weblate:weblate-schema-api
-  name: Weblate schema API
+  name: Weblate Schema API
   description: The schema API from Weblate — 1 operation(s) for schema.
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
@@ -241,7 +242,7 @@ apis:
   - type: Documentation
     url: https://docs.weblate.org/en/latest/api.html
 - aid: weblate:weblate-screenshots-api
-  name: Weblate screenshots API
+  name: Weblate Screenshots API
   description: The screenshots API from Weblate — 5 operation(s) for screenshots.
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
@@ -255,7 +256,7 @@ apis:
   - type: Documentation
     url: https://docs.weblate.org/en/latest/api.html
 - aid: weblate:weblate-search-api
-  name: Weblate search API
+  name: Weblate Search API
   description: Added in version 4.18.
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
@@ -269,7 +270,7 @@ apis:
   - type: Documentation
     url: https://docs.weblate.org/en/latest/api.html
 - aid: weblate:weblate-statistics-api
-  name: Weblate statistics API
+  name: Weblate Statistics API
   description: Many endpoints support displaying statistics for their objects.
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
@@ -283,7 +284,7 @@ apis:
   - type: Documentation
     url: https://docs.weblate.org/en/latest/api.html
 - aid: weblate:weblate-tasks-api
-  name: Weblate tasks API
+  name: Weblate Tasks API
   description: >-
     Added in version 4.4.
 
@@ -301,7 +302,7 @@ apis:
   - type: Documentation
     url: https://docs.weblate.org/en/latest/api.html
 - aid: weblate:weblate-translations-api
-  name: Weblate translations API
+  name: Weblate Translations API
   description: The translations API from Weblate — 10 operation(s) for translations.
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
@@ -315,7 +316,7 @@ apis:
   - type: Documentation
     url: https://docs.weblate.org/en/latest/api.html
 - aid: weblate:weblate-units-api
-  name: Weblate units API
+  name: Weblate Units API
   description: >-
     A unit is a single piece of a translation which pairs a source string with a corresponding translated
     string and also contains some related metadata. The term is derived from the Translate Toolkit and
@@ -332,7 +333,7 @@ apis:
   - type: Documentation
     url: https://docs.weblate.org/en/latest/api.html
 - aid: weblate:weblate-users-api
-  name: Weblate users API
+  name: Weblate Users API
   description: Added in version 4.0.
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
@@ -363,8 +364,6 @@ apis:
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
   tags:
-  - Addons
-  tags_raw:
   - Add Ons
   properties:
   - type: OpenAPI
