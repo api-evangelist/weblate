@@ -618,11 +618,52 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ErrorCode429Enum:
-      enum:
-      - throttled
-      type: string
-      description: '* `throttled` - Throttled'
+    Memory:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        source:
+          type: string
+        target:
+          type: string
+        source_language:
+          type: integer
+        target_language:
+          type: integer
+        origin:
+          type: string
+        project:
+          type:
+          - integer
+          - 'null'
+        from_file:
+          type: boolean
+        shared:
+          type: boolean
+      required:
+      - id
+      - origin
+      - source
+      - source_language
+      - target
+      - target_language
+    Error429:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode429Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
     Error406:
       type: object
       properties:
@@ -638,6 +679,171 @@ components:
       - attr
       - code
       - detail
+    ErrorResponse406:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error406'
+      required:
+      - errors
+      - type
+    Error423:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode423Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    ServerErrorEnum:
+      enum:
+      - server_error
+      type: string
+      description: '* `server_error` - Server Error'
+    MemoryLookupMatch:
+      type: object
+      properties:
+        id:
+          type: integer
+        source:
+          type: string
+        target:
+          type: string
+        origin:
+          type: string
+        exact:
+          type: boolean
+        quality:
+          type: integer
+      required:
+      - exact
+      - id
+      - origin
+      - quality
+      - source
+      - target
+    ErrorCode405Enum:
+      enum:
+      - method_not_allowed
+      type: string
+      description: '* `method_not_allowed` - Method Not Allowed'
+    ErrorResponse500:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ServerErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error500'
+      required:
+      - errors
+      - type
+    Error405:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode405Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    Error404:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode404Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    ErrorResponse405:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error405'
+      required:
+      - errors
+      - type
+    Error500:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode500Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    ErrorResponse404:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error404'
+      required:
+      - errors
+      - type
+    ErrorCode415Enum:
+      enum:
+      - unsupported_media_type
+      type: string
+      description: '* `unsupported_media_type` - Unsupported Media Type'
+    Error415:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode415Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    ErrorCode429Enum:
+      enum:
+      - throttled
+      type: string
+      description: '* `throttled` - Throttled'
     MemoryLookupRequest:
       type: object
       properties:
@@ -670,6 +876,18 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Memory'
+    ErrorResponse400:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ErrorResponse400TypeEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error400'
+      required:
+      - errors
+      - type
     ErrorResponse423:
       type: object
       properties:
@@ -679,35 +897,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Error423'
-      required:
-      - errors
-      - type
-    ErrorResponse401:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error401'
-      required:
-      - errors
-      - type
-    ErrorCode406Enum:
-      enum:
-      - not_acceptable
-      type: string
-      description: '* `not_acceptable` - Not Acceptable'
-    ErrorResponse405:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error405'
       required:
       - errors
       - type
@@ -723,62 +912,11 @@ components:
       required:
       - errors
       - type
-    Error415:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode415Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    ErrorCode405Enum:
+    ErrorCode406Enum:
       enum:
-      - method_not_allowed
+      - not_acceptable
       type: string
-      description: '* `method_not_allowed` - Method Not Allowed'
-    Memory:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        source:
-          type: string
-        target:
-          type: string
-        source_language:
-          type: integer
-        target_language:
-          type: integer
-        origin:
-          type: string
-        project:
-          type:
-          - integer
-          - 'null'
-        from_file:
-          type: boolean
-        shared:
-          type: boolean
-      required:
-      - id
-      - origin
-      - source
-      - source_language
-      - target
-      - target_language
-    ServerErrorEnum:
-      enum:
-      - server_error
-      type: string
-      description: '* `server_error` - Server Error'
+      description: '* `not_acceptable` - Not Acceptable'
     Error401:
       type: object
       properties:
@@ -794,21 +932,52 @@ components:
       - attr
       - code
       - detail
-    Error405:
+    MemoryLookupResult:
       type: object
       properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode405Enum'
-        detail:
+        query:
           type: string
-        attr:
-          type:
-          - string
-          - 'null'
+        match:
+          oneOf:
+          - $ref: '#/components/schemas/MemoryLookupMatch'
+          - type: 'null'
       required:
-      - attr
-      - code
-      - detail
+      - match
+      - query
+    ErrorResponse401:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error401'
+      required:
+      - errors
+      - type
+    ClientErrorEnum:
+      enum:
+      - client_error
+      type: string
+      description: '* `client_error` - Client Error'
+    ErrorCode404Enum:
+      enum:
+      - not_found
+      type: string
+      description: '* `not_found` - Not Found'
+    ErrorResponse429:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error429'
+      required:
+      - errors
+      - type
     ErrorCode401Enum:
       enum:
       - authentication_failed
@@ -817,50 +986,6 @@ components:
       description: '* `authentication_failed` - Authentication Failed
 
         * `not_authenticated` - Not Authenticated'
-    ErrorResponse404:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error404'
-      required:
-      - errors
-      - type
-    Error429:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode429Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    ErrorResponse400:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ErrorResponse400TypeEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error400'
-      required:
-      - errors
-      - type
-    ErrorCode404Enum:
-      enum:
-      - not_found
-      type: string
-      description: '* `not_found` - Not Found'
     Error400:
       type: object
       properties:
@@ -904,121 +1029,19 @@ components:
       - attr
       - code
       - detail
-    MemoryLookupMatch:
-      type: object
-      properties:
-        id:
-          type: integer
-        source:
-          type: string
-        target:
-          type: string
-        origin:
-          type: string
-        exact:
-          type: boolean
-        quality:
-          type: integer
-      required:
-      - exact
-      - id
-      - origin
-      - quality
-      - source
-      - target
-    ClientErrorEnum:
-      enum:
-      - client_error
-      type: string
-      description: '* `client_error` - Client Error'
-    Error404:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode404Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    Error500:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode500Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    ErrorCode415Enum:
-      enum:
-      - unsupported_media_type
-      type: string
-      description: '* `unsupported_media_type` - Unsupported Media Type'
-    ErrorResponse406:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error406'
-      required:
-      - errors
-      - type
-    ErrorResponse429:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error429'
-      required:
-      - errors
-      - type
-    MemoryLookupResult:
-      type: object
-      properties:
-        query:
-          type: string
-        match:
-          oneOf:
-          - $ref: '#/components/schemas/MemoryLookupMatch'
-          - type: 'null'
-      required:
-      - match
-      - query
-    ErrorResponse500:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ServerErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error500'
-      required:
-      - errors
-      - type
     ErrorCode500Enum:
       enum:
       - error
       type: string
       description: '* `error` - Error'
+    ErrorResponse400TypeEnum:
+      enum:
+      - validation_error
+      - client_error
+      type: string
+      description: '* `validation_error` - Validation Error
+
+        * `client_error` - Client Error'
     ErrorCode423Enum:
       enum:
       - repository-locked
@@ -1030,44 +1053,21 @@ components:
         * `component-locked` - Component Locked
 
         * `unknown-locked` - Unknown Locked'
-    ErrorResponse400TypeEnum:
-      enum:
-      - validation_error
-      - client_error
-      type: string
-      description: '* `validation_error` - Validation Error
-
-        * `client_error` - Client Error'
-    Error423:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode423Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
   headers:
     X-RateLimit-Limit:
       schema:
         type: integer
       description: Allowed number of requests to perform
       required: true
-    X-RateLimit-Reset:
-      schema:
-        type: integer
-      description: Number of seconds until the rate-limit window resets
-      required: true
     X-RateLimit-Remaining:
       schema:
         type: integer
       description: Remaining number of requests to perform
+      required: true
+    X-RateLimit-Reset:
+      schema:
+        type: integer
+      description: Number of seconds until the rate-limit window resets
       required: true
   securitySchemes:
     bearerAuth:

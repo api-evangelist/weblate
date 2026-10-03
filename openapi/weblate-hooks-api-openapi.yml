@@ -151,24 +151,7 @@ components:
       - attr
       - code
       - detail
-    ErrorResponse423:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ServerErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error423'
-      required:
-      - errors
-      - type
-    ErrorCode406Enum:
-      enum:
-      - not_acceptable
-      type: string
-      description: '* `not_acceptable` - Not Acceptable'
-    ErrorResponse405:
+    ErrorResponse406:
       type: object
       properties:
         type:
@@ -176,48 +159,47 @@ components:
         errors:
           type: array
           items:
-            $ref: '#/components/schemas/Error405'
+            $ref: '#/components/schemas/Error406'
       required:
       - errors
       - type
-    ErrorCode405Enum:
-      enum:
-      - method_not_allowed
-      type: string
-      description: '* `method_not_allowed` - Method Not Allowed'
+    Error423:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode423Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
     ServerErrorEnum:
       enum:
       - server_error
       type: string
       description: '* `server_error` - Server Error'
-    HookResponse:
+    ErrorCode405Enum:
+      enum:
+      - method_not_allowed
+      type: string
+      description: '* `method_not_allowed` - Method Not Allowed'
+    ErrorResponse500:
       type: object
       properties:
-        message:
-          type: string
-          maxLength: 200
-        status:
-          $ref: '#/components/schemas/StatusEnum'
-        match_status:
-          $ref: '#/components/schemas/HookMatch'
-        updated_components:
+        type:
+          $ref: '#/components/schemas/ServerErrorEnum'
+        errors:
           type: array
           items:
-            type: string
-            format: uri
-          readOnly: true
+            $ref: '#/components/schemas/Error500'
       required:
-      - message
-      - status
-      - updated_components
-    StatusEnum:
-      enum:
-      - success
-      - failure
-      type: string
-      description: '* `success` - success
-
-        * `failure` - failure'
+      - errors
+      - type
     Error405:
       type: object
       properties:
@@ -233,6 +215,61 @@ components:
       - attr
       - code
       - detail
+    Error404:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode404Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    ErrorResponse405:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error405'
+      required:
+      - errors
+      - type
+    Error500:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode500Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    HookMatch:
+      type: object
+      properties:
+        repository_matches:
+          type: integer
+        branch_matches:
+          type: integer
+        enabled_hook_matches:
+          type: integer
+      required:
+      - branch_matches
+      - enabled_hook_matches
+      - repository_matches
     ErrorResponse404:
       type: object
       properties:
@@ -257,11 +294,41 @@ components:
       required:
       - errors
       - type
+    ErrorResponse423:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ServerErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error423'
+      required:
+      - errors
+      - type
+    ErrorCode406Enum:
+      enum:
+      - not_acceptable
+      type: string
+      description: '* `not_acceptable` - Not Acceptable'
+    ClientErrorEnum:
+      enum:
+      - client_error
+      type: string
+      description: '* `client_error` - Client Error'
     ErrorCode404Enum:
       enum:
       - not_found
       type: string
       description: '* `not_found` - Not Found'
+    StatusEnum:
+      enum:
+      - success
+      - failure
+      type: string
+      description: '* `success` - success
+
+        * `failure` - failure'
     Error400:
       type: object
       properties:
@@ -305,83 +372,39 @@ components:
       - attr
       - code
       - detail
-    ClientErrorEnum:
-      enum:
-      - client_error
-      type: string
-      description: '* `client_error` - Client Error'
-    Error404:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode404Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    Error500:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode500Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    ErrorResponse406:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error406'
-      required:
-      - errors
-      - type
-    ErrorResponse500:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ServerErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error500'
-      required:
-      - errors
-      - type
     ErrorCode500Enum:
       enum:
       - error
       type: string
       description: '* `error` - Error'
-    HookMatch:
+    HookResponse:
       type: object
       properties:
-        repository_matches:
-          type: integer
-        branch_matches:
-          type: integer
-        enabled_hook_matches:
-          type: integer
+        message:
+          type: string
+          maxLength: 200
+        status:
+          $ref: '#/components/schemas/StatusEnum'
+        match_status:
+          $ref: '#/components/schemas/HookMatch'
+        updated_components:
+          type: array
+          items:
+            type: string
+            format: uri
+          readOnly: true
       required:
-      - branch_matches
-      - enabled_hook_matches
-      - repository_matches
+      - message
+      - status
+      - updated_components
+    ErrorResponse400TypeEnum:
+      enum:
+      - validation_error
+      - client_error
+      type: string
+      description: '* `validation_error` - Validation Error
+
+        * `client_error` - Client Error'
     ErrorCode423Enum:
       enum:
       - repository-locked
@@ -393,44 +416,21 @@ components:
         * `component-locked` - Component Locked
 
         * `unknown-locked` - Unknown Locked'
-    ErrorResponse400TypeEnum:
-      enum:
-      - validation_error
-      - client_error
-      type: string
-      description: '* `validation_error` - Validation Error
-
-        * `client_error` - Client Error'
-    Error423:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode423Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
   headers:
     X-RateLimit-Limit:
       schema:
         type: integer
       description: Allowed number of requests to perform
       required: true
-    X-RateLimit-Reset:
-      schema:
-        type: integer
-      description: Number of seconds until the rate-limit window resets
-      required: true
     X-RateLimit-Remaining:
       schema:
         type: integer
       description: Remaining number of requests to perform
+      required: true
+    X-RateLimit-Reset:
+      schema:
+        type: integer
+      description: Number of seconds until the rate-limit window resets
       required: true
   securitySchemes:
     bearerAuth:

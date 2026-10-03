@@ -1292,11 +1292,41 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ErrorCode429Enum:
+    ErrorResponse400TypeEnum:
       enum:
-      - throttled
+      - validation_error
+      - client_error
       type: string
-      description: '* `throttled` - Throttled'
+      description: '* `validation_error` - Validation Error
+
+        * `client_error` - Client Error'
+    ErrorResponse403:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error403'
+      required:
+      - errors
+      - type
+    Error429:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode429Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
     Error406:
       type: object
       properties:
@@ -1312,43 +1342,45 @@ components:
       - attr
       - code
       - detail
-    PatchedUnitWrite:
+    StringStateEnum:
+      enum:
+      - 0
+      - 10
+      - 11
+      - 12
+      - 20
+      - 30
+      - 100
+      type: integer
+      description: '* `0` - Empty
+
+        * `10` - Needs editing
+
+        * `11` - Needs editing (Needs rewriting)
+
+        * `12` - Needs editing (Needs checking)
+
+        * `20` - Translated
+
+        * `30` - Approved
+
+        * `100` - Read-only'
+    Error423:
       type: object
-      description: Serializer for updating source unit.
       properties:
-        target:
-          type: array
-          items:
-            type: string
-        state:
-          allOf:
-          - $ref: '#/components/schemas/StringStateEnum'
-          minimum: -2147483648
-          maximum: 2147483647
-        explanation:
+        code:
+          $ref: '#/components/schemas/ErrorCode423Enum'
+        detail:
           type: string
-          description: Additional explanation to clarify meaning or usage of the string.
-        extra_flags:
-          type: string
-          title: Translation flags
-          description: Additional comma-separated flags to influence Weblate behavior.
-        labels:
-          type: array
-          items:
-            type: integer
-    ErrorResponse423:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ServerErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error423'
+        attr:
+          type:
+          - string
+          - 'null'
       required:
-      - errors
-      - type
-    ErrorResponse401:
+      - attr
+      - code
+      - detail
+    ErrorResponse406:
       type: object
       properties:
         type:
@@ -1356,36 +1388,15 @@ components:
         errors:
           type: array
           items:
-            $ref: '#/components/schemas/Error401'
+            $ref: '#/components/schemas/Error406'
       required:
       - errors
       - type
-    PaginatedUnitList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          format: uri
-          example: http://api.example.org/accounts/?page=4
-        previous:
-          type: string
-          format: uri
-          example: http://api.example.org/accounts/?page=2
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Unit'
-    ErrorCode406Enum:
+    ErrorCode403Enum:
       enum:
-      - not_acceptable
+      - permission_denied
       type: string
-      description: '* `not_acceptable` - Not Acceptable'
+      description: '* `permission_denied` - Permission Denied'
     ColorEnum:
       enum:
       - navy
@@ -1436,18 +1447,11 @@ components:
         * `gray` - Gray
 
         * `silver` - Silver'
-    ErrorResponse405:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error405'
-      required:
-      - errors
-      - type
+    ServerErrorEnum:
+      enum:
+      - server_error
+      type: string
+      description: '* `server_error` - Server Error'
     Unit:
       type: object
       properties:
@@ -1580,78 +1584,23 @@ components:
       - translation
       - url
       - web_url
-    ErrorResponse415:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error415'
-      required:
-      - errors
-      - type
-    Error415:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode415Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
     ErrorCode405Enum:
       enum:
       - method_not_allowed
       type: string
       description: '* `method_not_allowed` - Method Not Allowed'
-    ServerErrorEnum:
-      enum:
-      - server_error
-      type: string
-      description: '* `server_error` - Server Error'
-    Error401:
+    ErrorResponse500:
       type: object
       properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode401Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
+        type:
+          $ref: '#/components/schemas/ServerErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error500'
       required:
-      - attr
-      - code
-      - detail
-    Error403:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode403Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    ErrorCode403Enum:
-      enum:
-      - permission_denied
-      type: string
-      description: '* `permission_denied` - Permission Denied'
+      - errors
+      - type
     Error405:
       type: object
       properties:
@@ -1667,29 +1616,30 @@ components:
       - attr
       - code
       - detail
-    StringStateEnum:
-      enum:
-      - 0
-      - 10
-      - 11
-      - 12
-      - 20
-      - 30
-      - 100
-      type: integer
-      description: '* `0` - Empty
-
-        * `10` - Needs editing
-
-        * `11` - Needs editing (Needs rewriting)
-
-        * `12` - Needs editing (Needs checking)
-
-        * `20` - Translated
-
-        * `30` - Approved
-
-        * `100` - Read-only'
+    PatchedUnitWrite:
+      type: object
+      description: Serializer for updating source unit.
+      properties:
+        target:
+          type: array
+          items:
+            type: string
+        state:
+          allOf:
+          - $ref: '#/components/schemas/StringStateEnum'
+          minimum: -2147483648
+          maximum: 2147483647
+        explanation:
+          type: string
+          description: Additional explanation to clarify meaning or usage of the string.
+        extra_flags:
+          type: string
+          title: Translation flags
+          description: Additional comma-separated flags to influence Weblate behavior.
+        labels:
+          type: array
+          items:
+            type: integer
     Label:
       type: object
       properties:
@@ -1709,14 +1659,64 @@ components:
       required:
       - id
       - name
-    ErrorCode401Enum:
+    CommentScopeEnum:
       enum:
-      - authentication_failed
-      - not_authenticated
+      - report
+      - global
+      - translation
       type: string
-      description: '* `authentication_failed` - Authentication Failed
+      description: '* `report` - report
 
-        * `not_authenticated` - Not Authenticated'
+        * `global` - global
+
+        * `translation` - translation'
+    Error404:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode404Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    ErrorResponse405:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error405'
+      required:
+      - errors
+      - type
+    Error500:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode500Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    ErrorCode415Enum:
+      enum:
+      - unsupported_media_type
+      type: string
+      description: '* `unsupported_media_type` - Unsupported Media Type'
     ErrorResponse404:
       type: object
       properties:
@@ -1729,11 +1729,31 @@ components:
       required:
       - errors
       - type
-    Error429:
+    Error415:
       type: object
       properties:
         code:
-          $ref: '#/components/schemas/ErrorCode429Enum'
+          $ref: '#/components/schemas/ErrorCode415Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    ErrorCode429Enum:
+      enum:
+      - throttled
+      type: string
+      description: '* `throttled` - Throttled'
+    Error403:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode403Enum'
         detail:
           type: string
         attr:
@@ -1756,7 +1776,51 @@ components:
       required:
       - errors
       - type
-    PaginatedCommentList:
+    ErrorResponse423:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ServerErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error423'
+      required:
+      - errors
+      - type
+    ErrorResponse415:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error415'
+      required:
+      - errors
+      - type
+    ErrorCode406Enum:
+      enum:
+      - not_acceptable
+      type: string
+      description: '* `not_acceptable` - Not Acceptable'
+    Error401:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode401Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    PaginatedUnitList:
       type: object
       required:
       - count
@@ -1776,87 +1840,7 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/Comment'
-    ErrorCode404Enum:
-      enum:
-      - not_found
-      type: string
-      description: '* `not_found` - Not Found'
-    Error400:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code. The examples list common validation and parse error codes.
-          examples:
-          - blank
-          - date
-          - datetime
-          - does_not_exist
-          - empty
-          - incorrect_match
-          - incorrect_type
-          - invalid
-          - invalid_choice
-          - invalid_image
-          - invalid_list
-          - make_aware
-          - max_length
-          - max_string_length
-          - max_value
-          - min_value
-          - no_match
-          - no_name
-          - not_a_list
-          - 'null'
-          - null_characters_not_allowed
-          - overflow
-          - parse_error
-          - required
-          - surrogate_characters_not_allowed
-          - unique
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    ErrorResponse403:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error403'
-      required:
-      - errors
-      - type
-    ClientErrorEnum:
-      enum:
-      - client_error
-      type: string
-      description: '* `client_error` - Client Error'
-    Error404:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode404Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
+            $ref: '#/components/schemas/Unit'
     Comment:
       type: object
       properties:
@@ -1900,22 +1884,7 @@ components:
       - id
       - scope
       - user
-    Error500:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode500Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    ErrorResponse406:
+    ErrorResponse401:
       type: object
       properties:
         type:
@@ -1923,10 +1892,15 @@ components:
         errors:
           type: array
           items:
-            $ref: '#/components/schemas/Error406'
+            $ref: '#/components/schemas/Error401'
       required:
       - errors
       - type
+    ClientErrorEnum:
+      enum:
+      - client_error
+      type: string
+      description: '* `client_error` - Client Error'
     ErrorResponse429:
       type: object
       properties:
@@ -1939,11 +1913,88 @@ components:
       required:
       - errors
       - type
-    ErrorCode415Enum:
+    ErrorCode404Enum:
       enum:
-      - unsupported_media_type
+      - not_found
       type: string
-      description: '* `unsupported_media_type` - Unsupported Media Type'
+      description: '* `not_found` - Not Found'
+    ErrorCode401Enum:
+      enum:
+      - authentication_failed
+      - not_authenticated
+      type: string
+      description: '* `authentication_failed` - Authentication Failed
+
+        * `not_authenticated` - Not Authenticated'
+    PaginatedCommentList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comment'
+    Error400:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code. The examples list common validation and parse error codes.
+          examples:
+          - blank
+          - date
+          - datetime
+          - does_not_exist
+          - empty
+          - incorrect_match
+          - incorrect_type
+          - invalid
+          - invalid_choice
+          - invalid_image
+          - invalid_list
+          - make_aware
+          - max_length
+          - max_string_length
+          - max_value
+          - min_value
+          - no_match
+          - no_name
+          - not_a_list
+          - 'null'
+          - null_characters_not_allowed
+          - overflow
+          - parse_error
+          - required
+          - surrogate_characters_not_allowed
+          - unique
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    ErrorCode500Enum:
+      enum:
+      - error
+      type: string
+      description: '* `error` - Error'
     UnitWrite:
       type: object
       description: Serializer for updating source unit.
@@ -1971,34 +2022,6 @@ components:
       required:
       - labels
       - target
-    CommentScopeEnum:
-      enum:
-      - report
-      - global
-      - translation
-      type: string
-      description: '* `report` - report
-
-        * `global` - global
-
-        * `translation` - translation'
-    ErrorResponse500:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ServerErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error500'
-      required:
-      - errors
-      - type
-    ErrorCode500Enum:
-      enum:
-      - error
-      type: string
-      description: '* `error` - Error'
     ErrorCode423Enum:
       enum:
       - repository-locked
@@ -2010,44 +2033,21 @@ components:
         * `component-locked` - Component Locked
 
         * `unknown-locked` - Unknown Locked'
-    ErrorResponse400TypeEnum:
-      enum:
-      - validation_error
-      - client_error
-      type: string
-      description: '* `validation_error` - Validation Error
-
-        * `client_error` - Client Error'
-    Error423:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode423Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
   headers:
     X-RateLimit-Limit:
       schema:
         type: integer
       description: Allowed number of requests to perform
       required: true
-    X-RateLimit-Reset:
-      schema:
-        type: integer
-      description: Number of seconds until the rate-limit window resets
-      required: true
     X-RateLimit-Remaining:
       schema:
         type: integer
       description: Remaining number of requests to perform
+      required: true
+    X-RateLimit-Reset:
+      schema:
+        type: integer
+      description: Number of seconds until the rate-limit window resets
       required: true
   securitySchemes:
     bearerAuth:
