@@ -1114,133 +1114,261 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ErrorResponse403:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error403'
-      required:
-      - errors
-      - type
-    Error429:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode429Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    Error406:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode406Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    ErrorResponse406:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error406'
-      required:
-      - errors
-      - type
-    Error423:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode423Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    ErrorCode403Enum:
+    ErrorCode423Enum:
       enum:
-      - permission_denied
+      - repository-locked
+      - component-locked
+      - unknown-locked
       type: string
-      description: '* `permission_denied` - Permission Denied'
-    LanguagePlural:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        source:
-          allOf:
-          - $ref: '#/components/schemas/SourceEnum'
-          title: Plural definition source
-          minimum: -32768
-          maximum: 32767
-        number:
-          type: integer
-          maximum: 10
-          minimum: 1
-          title: Number of plurals
-        formula:
-          type: string
-          title: Plural formula
-        type:
-          type: integer
-          readOnly: true
-          title: Plural type
-      required:
-      - id
-      - type
-    PaginatedLanguageList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          format: uri
-          example: http://api.example.org/accounts/?page=4
-        previous:
-          type: string
-          format: uri
-          example: http://api.example.org/accounts/?page=2
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Language'
+      description: '* `repository-locked` - Repository Locked
+
+        * `component-locked` - Component Locked
+
+        * `unknown-locked` - Unknown Locked'
     ServerErrorEnum:
       enum:
       - server_error
       type: string
       description: '* `server_error` - Server Error'
+    ErrorResponse401:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error401'
+      required:
+      - errors
+      - type
+    PatchedLanguage:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        code:
+          type: string
+          title: Language code
+          pattern: ^[A-Za-z0-9]+(?:[-_@][A-Za-z0-9]+)*$
+          maxLength: 50
+        name:
+          type: string
+          maxLength: 100
+        plural:
+          $ref: '#/components/schemas/LanguagePlural'
+        aliases:
+          type: array
+          items: {}
+          readOnly: true
+        direction:
+          title: Text direction
+          oneOf:
+          - $ref: '#/components/schemas/DirectionEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+        population:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+          title: Number of speakers
+          description: Number of people speaking this language.
+        web_url:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        statistics_url:
+          type: string
+          format: uri
+          readOnly: true
+    ErrorCode405Enum:
+      enum:
+      - method_not_allowed
+      type: string
+      description: '* `method_not_allowed` - Method Not Allowed'
+    ErrorResponse405:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error405'
+      required:
+      - errors
+      - type
+    SourceEnum:
+      enum:
+      - 0
+      - 1
+      - 3
+      - 4
+      - 5
+      - 6
+      - 2
+      type: integer
+      description: '* `0` - Default plural
+
+        * `1` - gettext plural formula
+
+        * `3` - CLDR plural with zero
+
+        * `4` - CLDR v38+ plural
+
+        * `5` - Android plural
+
+        * `6` - Qt Linguist plural
+
+        * `2` - Manually entered formula'
+    Error405:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode405Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    ErrorResponse400:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ErrorResponse400TypeEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error400'
+      required:
+      - errors
+      - type
+    ErrorCode415Enum:
+      enum:
+      - unsupported_media_type
+      type: string
+      description: '* `unsupported_media_type` - Unsupported Media Type'
+    DirectionEnum:
+      enum:
+      - ltr
+      - rtl
+      type: string
+      description: '* `` - Automatically detect text direction
+
+        * `ltr` - Left to right
+
+        * `rtl` - Right to left'
+    ErrorResponse415:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error415'
+      required:
+      - errors
+      - type
+    ErrorResponse429:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error429'
+      required:
+      - errors
+      - type
+    ErrorResponse404:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error404'
+      required:
+      - errors
+      - type
+    Error415:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode415Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    Error400:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code. The examples list common validation and parse error codes.
+          examples:
+          - blank
+          - date
+          - datetime
+          - does_not_exist
+          - empty
+          - incorrect_match
+          - incorrect_type
+          - invalid
+          - invalid_choice
+          - invalid_image
+          - invalid_list
+          - make_aware
+          - max_length
+          - max_string_length
+          - max_value
+          - min_value
+          - no_match
+          - no_name
+          - not_a_list
+          - 'null'
+          - null_characters_not_allowed
+          - overflow
+          - parse_error
+          - required
+          - surrogate_characters_not_allowed
+          - unique
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    ErrorCode401Enum:
+      enum:
+      - authentication_failed
+      - not_authenticated
+      type: string
+      description: '* `authentication_failed` - Authentication Failed
+
+        * `not_authenticated` - Not Authenticated'
     Statistics:
       type: object
       properties:
@@ -1370,31 +1498,16 @@ components:
       - translated_percent
       - translated_words
       - translated_words_percent
-    BlankEnum:
+    ErrorCode406Enum:
       enum:
-      - ''
-    ErrorCode405Enum:
-      enum:
-      - method_not_allowed
+      - not_acceptable
       type: string
-      description: '* `method_not_allowed` - Method Not Allowed'
-    ErrorResponse500:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ServerErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error500'
-      required:
-      - errors
-      - type
-    Error405:
+      description: '* `not_acceptable` - Not Acceptable'
+    Error429:
       type: object
       properties:
         code:
-          $ref: '#/components/schemas/ErrorCode405Enum'
+          $ref: '#/components/schemas/ErrorCode429Enum'
         detail:
           type: string
         attr:
@@ -1405,6 +1518,33 @@ components:
       - attr
       - code
       - detail
+    LanguagePlural:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        source:
+          allOf:
+          - $ref: '#/components/schemas/SourceEnum'
+          title: Plural definition source
+          minimum: -32768
+          maximum: 32767
+        number:
+          type: integer
+          maximum: 10
+          minimum: 1
+          title: Number of plurals
+        formula:
+          type: string
+          title: Plural formula
+        type:
+          type: integer
+          readOnly: true
+          title: Plural type
+      required:
+      - id
+      - type
     Error404:
       type: object
       properties:
@@ -1420,18 +1560,14 @@ components:
       - attr
       - code
       - detail
-    ErrorResponse405:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error405'
-      required:
-      - errors
-      - type
+    ErrorResponse400TypeEnum:
+      enum:
+      - validation_error
+      - client_error
+      type: string
+      description: '* `validation_error` - Validation Error
+
+        * `client_error` - Client Error'
     Error500:
       type: object
       properties:
@@ -1447,167 +1583,14 @@ components:
       - attr
       - code
       - detail
-    ErrorCode415Enum:
+    ErrorCode403Enum:
       enum:
-      - unsupported_media_type
+      - permission_denied
       type: string
-      description: '* `unsupported_media_type` - Unsupported Media Type'
-    ErrorResponse404:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error404'
-      required:
-      - errors
-      - type
-    Error415:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode415Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    ErrorCode429Enum:
+      description: '* `permission_denied` - Permission Denied'
+    BlankEnum:
       enum:
-      - throttled
-      type: string
-      description: '* `throttled` - Throttled'
-    PatchedLanguage:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        code:
-          type: string
-          title: Language code
-          pattern: ^[A-Za-z0-9]+(?:[-_@][A-Za-z0-9]+)*$
-          maxLength: 50
-        name:
-          type: string
-          maxLength: 100
-        plural:
-          $ref: '#/components/schemas/LanguagePlural'
-        aliases:
-          type: array
-          items: {}
-          readOnly: true
-        direction:
-          title: Text direction
-          oneOf:
-          - $ref: '#/components/schemas/DirectionEnum'
-          - $ref: '#/components/schemas/BlankEnum'
-        population:
-          type: integer
-          maximum: 9223372036854775807
-          minimum: -9223372036854775808
-          format: int64
-          title: Number of speakers
-          description: Number of people speaking this language.
-        web_url:
-          type: string
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        statistics_url:
-          type: string
-          format: uri
-          readOnly: true
-    Error403:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode403Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    ErrorResponse400:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ErrorResponse400TypeEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error400'
-      required:
-      - errors
-      - type
-    ErrorResponse423:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ServerErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error423'
-      required:
-      - errors
-      - type
-    DirectionEnum:
-      enum:
-      - ltr
-      - rtl
-      type: string
-      description: '* `` - Automatically detect text direction
-
-        * `ltr` - Left to right
-
-        * `rtl` - Right to left'
-    ErrorResponse415:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error415'
-      required:
-      - errors
-      - type
-    ErrorCode406Enum:
-      enum:
-      - not_acceptable
-      type: string
-      description: '* `not_acceptable` - Not Acceptable'
-    Error401:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode401Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
+      - ''
     Language:
       type: object
       properties:
@@ -1658,104 +1641,21 @@ components:
       - statistics_url
       - url
       - web_url
-    ErrorResponse401:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error401'
-      required:
-      - errors
-      - type
-    ClientErrorEnum:
-      enum:
-      - client_error
-      type: string
-      description: '* `client_error` - Client Error'
-    SourceEnum:
-      enum:
-      - 0
-      - 1
-      - 3
-      - 4
-      - 5
-      - 6
-      - 2
-      type: integer
-      description: '* `0` - Default plural
-
-        * `1` - gettext plural formula
-
-        * `3` - CLDR plural with zero
-
-        * `4` - CLDR v38+ plural
-
-        * `5` - Android plural
-
-        * `6` - Qt Linguist plural
-
-        * `2` - Manually entered formula'
     ErrorCode404Enum:
       enum:
       - not_found
       type: string
       description: '* `not_found` - Not Found'
-    ErrorResponse429:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error429'
-      required:
-      - errors
-      - type
-    ErrorCode401Enum:
+    ClientErrorEnum:
       enum:
-      - authentication_failed
-      - not_authenticated
+      - client_error
       type: string
-      description: '* `authentication_failed` - Authentication Failed
-
-        * `not_authenticated` - Not Authenticated'
-    Error400:
+      description: '* `client_error` - Client Error'
+    Error423:
       type: object
       properties:
         code:
-          type: string
-          description: Error code. The examples list common validation and parse error codes.
-          examples:
-          - blank
-          - date
-          - datetime
-          - does_not_exist
-          - empty
-          - incorrect_match
-          - incorrect_type
-          - invalid
-          - invalid_choice
-          - invalid_image
-          - invalid_list
-          - make_aware
-          - max_length
-          - max_string_length
-          - max_value
-          - min_value
-          - no_match
-          - no_name
-          - not_a_list
-          - 'null'
-          - null_characters_not_allowed
-          - overflow
-          - parse_error
-          - required
-          - surrogate_characters_not_allowed
-          - unique
+          $ref: '#/components/schemas/ErrorCode423Enum'
         detail:
           type: string
         attr:
@@ -1766,30 +1666,130 @@ components:
       - attr
       - code
       - detail
+    ErrorCode429Enum:
+      enum:
+      - throttled
+      type: string
+      description: '* `throttled` - Throttled'
+    Error401:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode401Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    PaginatedLanguageList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Language'
+    ErrorResponse500:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ServerErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error500'
+      required:
+      - errors
+      - type
+    Error403:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode403Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    ErrorResponse406:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error406'
+      required:
+      - errors
+      - type
+    ErrorResponse423:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ServerErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error423'
+      required:
+      - errors
+      - type
+    ErrorResponse403:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error403'
+      required:
+      - errors
+      - type
     ErrorCode500Enum:
       enum:
       - error
       type: string
       description: '* `error` - Error'
-    ErrorResponse400TypeEnum:
-      enum:
-      - validation_error
-      - client_error
-      type: string
-      description: '* `validation_error` - Validation Error
-
-        * `client_error` - Client Error'
-    ErrorCode423Enum:
-      enum:
-      - repository-locked
-      - component-locked
-      - unknown-locked
-      type: string
-      description: '* `repository-locked` - Repository Locked
-
-        * `component-locked` - Component Locked
-
-        * `unknown-locked` - Unknown Locked'
+    Error406:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode406Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
   headers:
     X-RateLimit-Limit:
       schema:

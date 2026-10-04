@@ -364,8 +364,6 @@ apis:
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
   tags:
-  - Addons
-  tags_raw:
   - Add Ons
   properties:
   - type: OpenAPI

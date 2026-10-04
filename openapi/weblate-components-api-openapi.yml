@@ -4121,23 +4121,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Lock:
-      type: object
-      properties:
-        locked:
-          type: boolean
-          description: Locked component will not get any translation updates.
-    MergeStyleEnum:
-      enum:
-      - merge
-      - rebase
-      - merge_noff
-      type: string
-      description: '* `merge` - Merge
-
-        * `rebase` - Rebase
-
-        * `merge_noff` - Merge without fast-forward'
     ActionEnum:
       enum:
       - 0
@@ -4425,46 +4408,6 @@ components:
         * `99` - Workspace setting changed
 
         * `100` - Project moved'
-    ErrorCode405Enum:
-      enum:
-      - method_not_allowed
-      type: string
-      description: '* `method_not_allowed` - Method Not Allowed'
-    Error405:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode405Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    VcsEnum:
-      enum:
-      - gerrit
-      - git
-      - git-force-push
-      - local
-      - mercurial
-      - subversion
-      type: string
-      description: '* `gerrit` - Gerrit
-
-        * `git` - Git
-
-        * `git-force-push` - Git with force push
-
-        * `local` - No remote repository
-
-        * `mercurial` - Mercurial
-
-        * `subversion` - Subversion'
     Component:
       type: object
       properties:
@@ -4942,35 +4885,94 @@ components:
       - translations_url
       - url
       - web_url
-    CommitPolicyEnum:
-      enum:
-      - 0
-      - 20
-      - 30
-      type: integer
-      description: '* `0` - Commit all translations regardless of quality
-
-        * `20` - Skip translations marked as needing editing
-
-        * `30` - Only include approved translations'
-    ErrorCode429Enum:
-      enum:
-      - throttled
-      type: string
-      description: '* `throttled` - Throttled'
-    TranslationCreate:
+    ErrorResponse405:
       type: object
       properties:
-        language_code:
-          type: string
-        from_component:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
           type: array
           items:
-            oneOf:
-            - type: integer
-            - type: string
+            $ref: '#/components/schemas/Error405'
       required:
-      - language_code
+      - errors
+      - type
+    PendingUnits:
+      type: object
+      description: Detailed breakdown of pending translation units.
+      properties:
+        total:
+          type: integer
+          description: Total number of translation units with pending changes.
+        errors_skipped:
+          type: integer
+          description: Number of units skipped due to commit errors (blocked by retry policy).
+        commit_policy_skipped:
+          type: integer
+          description: Number of units skipped by the commit policy (e.g., needs editing, not approved).
+        eligible_for_commit:
+          type: integer
+          description: Number of units eligible to be committed based on the current policy.
+      required:
+      - commit_policy_skipped
+      - eligible_for_commit
+      - errors_skipped
+      - total
+    LanguageCodeStyleEnum:
+      enum:
+      - posix
+      - posix_lowercase
+      - bcp
+      - posix_long
+      - posix_long_lowercase
+      - bcp_long
+      - bcp_legacy
+      - bcp_lower
+      - android
+      - appstore
+      - googleplay
+      - linux
+      - linux_lowercase
+      type: string
+      description: '* `` - Default based on the file format
+
+        * `posix` - POSIX style using underscore as a separator
+
+        * `posix_lowercase` - POSIX style using underscore as a separator, lower cased
+
+        * `bcp` - BCP style using hyphen as a separator
+
+        * `posix_long` - POSIX style using underscore as a separator, including country code
+
+        * `posix_long_lowercase` - POSIX style using underscore as a separator, including country code, lower cased
+
+        * `bcp_long` - BCP style using hyphen as a separator, including country code
+
+        * `bcp_legacy` - BCP style using hyphen as a separator, legacy language codes
+
+        * `bcp_lower` - BCP style using hyphen as a separator, lower cased
+
+        * `android` - Android style
+
+        * `appstore` - Apple App Store metadata style
+
+        * `googleplay` - Google Play metadata style
+
+        * `linux` - Linux style
+
+        * `linux_lowercase` - Linux style, lower cased'
+    ErrorResponse400:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ErrorResponse400TypeEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error400'
+      required:
+      - errors
+      - type
     ErrorResponse415:
       type: object
       properties:
@@ -4983,153 +4985,11 @@ components:
       required:
       - errors
       - type
-    ComponentTranslation:
-      type: object
-      properties:
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-          readOnly: true
-        language_code:
-          type: string
-          maxLength: 50
-        id:
-          type: integer
-          readOnly: true
-        filename:
-          type: string
-          maxLength: 400
-        revision:
-          type: string
-          maxLength: 200
-        web_url:
-          type: string
-          readOnly: true
-        share_url:
-          type: string
-          readOnly: true
-        translate_url:
-          type: string
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        is_template:
-          type: boolean
-          readOnly: true
-        is_source:
-          type: boolean
-          readOnly: true
-        total:
-          type: integer
-          readOnly: true
-        total_words:
-          type: integer
-          readOnly: true
-        translated:
-          type: integer
-          readOnly: true
-        translated_words:
-          type: integer
-          readOnly: true
-        translated_percent:
-          type: number
-          format: double
-          readOnly: true
-        fuzzy:
-          type: integer
-          readOnly: true
-        fuzzy_words:
-          type: integer
-          readOnly: true
-        fuzzy_percent:
-          type: number
-          format: double
-          readOnly: true
-        failing_checks:
-          type: integer
-          readOnly: true
-        failing_checks_words:
-          type: integer
-          readOnly: true
-        failing_checks_percent:
-          type: number
-          format: double
-          readOnly: true
-        have_suggestion:
-          type: integer
-          readOnly: true
-        have_comment:
-          type: integer
-          readOnly: true
-        last_change:
-          type: string
-          format: date-time
-          readOnly: true
-        last_author:
-          type: string
-          readOnly: true
-        repository_url:
-          type: string
-          format: uri
-          readOnly: true
-        file_url:
-          type: string
-          format: uri
-          readOnly: true
-        statistics_url:
-          type: string
-          format: uri
-          readOnly: true
-        changes_list_url:
-          type: string
-          format: uri
-          readOnly: true
-        units_list_url:
-          type: string
-          format: uri
-          readOnly: true
-        announcements_url:
-          type: string
-          format: uri
-          readOnly: true
-      required:
-      - announcements_url
-      - changes_list_url
-      - failing_checks
-      - failing_checks_percent
-      - failing_checks_words
-      - file_url
-      - filename
-      - fuzzy
-      - fuzzy_percent
-      - fuzzy_words
-      - have_comment
-      - have_suggestion
-      - id
-      - is_source
-      - is_template
-      - language
-      - last_author
-      - last_change
-      - repository_url
-      - share_url
-      - statistics_url
-      - total
-      - total_words
-      - translate_url
-      - translated
-      - translated_percent
-      - translated_words
-      - units_list_url
-      - url
-      - web_url
-    Error401:
+    Error500:
       type: object
       properties:
         code:
-          $ref: '#/components/schemas/ErrorCode401Enum'
+          $ref: '#/components/schemas/ErrorCode500Enum'
         detail:
           type: string
         attr:
@@ -5140,290 +5000,67 @@ components:
       - attr
       - code
       - detail
-    ComponentLinkRequest:
-      type: object
-      properties:
-        project_slug:
-          type: string
-          pattern: ^[-a-zA-Z0-9_]+$
-        category_id:
-          type:
-          - integer
-          - 'null'
-      required:
-      - project_slug
-    ClientErrorEnum:
-      enum:
-      - client_error
-      type: string
-      description: '* `client_error` - Client Error'
-    ComponentTranslationResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/ComponentTranslation'
-      required:
-      - data
-    Announcement:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        message:
-          type: string
-          description: You can use Markdown and mention users by @username.
-        severity:
-          allOf:
-          - $ref: '#/components/schemas/SeverityEnum'
-          description: 'Severity defines color used for the message.
-
-
-            * `info` - Info (light blue)
-
-            * `warning` - Warning (yellow)
-
-            * `danger` - Danger (red)
-
-            * `success` - Success (green)'
-        expiry:
-          type:
-          - string
-          - 'null'
-          format: date
-          title: Expiry date
-          description: The message will be not shown after this date. Use it to announce string freeze and translation deadline for next release.
-        notify:
-          type: boolean
-          title: Notify users
-          description: Send notification to subscribed users.
-      required:
-      - id
-      - message
-    Error406:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode406Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    Error423:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode423Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    Statistics:
-      type: object
-      properties:
-        total:
-          type: integer
-        total_words:
-          type: integer
-        total_chars:
-          type: integer
-        last_change:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        recent_changes:
-          type: integer
-        translated:
-          type: integer
-        translated_words:
-          type: integer
-        translated_percent:
-          type: number
-          format: double
-        translated_words_percent:
-          type: number
-          format: double
-        translated_chars:
-          type: integer
-        translated_chars_percent:
-          type: number
-          format: double
-        fuzzy:
-          type: integer
-        fuzzy_percent:
-          type: number
-          format: double
-        fuzzy_words:
-          type: integer
-        fuzzy_words_percent:
-          type: number
-          format: double
-        fuzzy_chars:
-          type: integer
-        fuzzy_chars_percent:
-          type: number
-          format: double
-        failing:
-          type: integer
-        failing_percent:
-          type: number
-          format: double
-        approved:
-          type: integer
-        approved_percent:
-          type: number
-          format: double
-        approved_words:
-          type: integer
-        approved_words_percent:
-          type: number
-          format: double
-        approved_chars:
-          type: integer
-        approved_chars_percent:
-          type: number
-          format: double
-        readonly:
-          type: integer
-        readonly_percent:
-          type: number
-          format: double
-        readonly_words:
-          type: integer
-        readonly_words_percent:
-          type: number
-          format: double
-        readonly_chars:
-          type: integer
-        readonly_chars_percent:
-          type: number
-          format: double
-        suggestions:
-          type: integer
-        comments:
-          type: integer
-        code:
-          type: string
-        name:
-          type: string
-        url:
-          type: string
-          format: uri
-        translate_url:
-          type: string
-          format: uri
-      required:
-      - approved
-      - approved_chars
-      - approved_chars_percent
-      - approved_percent
-      - approved_words
-      - approved_words_percent
-      - comments
-      - failing
-      - failing_percent
-      - fuzzy
-      - fuzzy_chars
-      - fuzzy_chars_percent
-      - fuzzy_percent
-      - fuzzy_words
-      - fuzzy_words_percent
-      - last_change
-      - readonly
-      - readonly_chars
-      - readonly_chars_percent
-      - readonly_percent
-      - readonly_words
-      - readonly_words_percent
-      - recent_changes
-      - suggestions
-      - total
-      - total_chars
-      - total_words
-      - translated
-      - translated_chars
-      - translated_chars_percent
-      - translated_percent
-      - translated_words
-      - translated_words_percent
     BlankEnum:
       enum:
       - ''
-    Repository:
+    Change:
       type: object
-      description: Serializer for repository status information.
       properties:
-        needs_commit:
-          type: boolean
-          description: Whether the repository has pending changes that need to be committed.
-        needs_merge:
-          type: boolean
-          description: Whether the repository needs to pull changes from upstream.
-        needs_push:
-          type: boolean
-          description: Whether the repository has commits that need to be pushed.
+        unit:
+          type: string
+          format: uri
+          readOnly: true
+        component:
+          type: string
+          format: uri
+          readOnly: true
+        translation:
+          type: string
+          format: uri
+          readOnly: true
+        user:
+          type: string
+          format: uri
+          readOnly: true
+        author:
+          type: string
+          format: uri
+          readOnly: true
+        timestamp:
+          type: string
+          format: date-time
+          readOnly: true
+        action:
+          allOf:
+          - $ref: '#/components/schemas/ActionEnum'
+          minimum: -2147483648
+          maximum: 2147483647
+        target:
+          type: string
+        old:
+          type: string
+        details: {}
+        id:
+          type: integer
+          readOnly: true
+        action_name:
+          type: string
+          readOnly: true
         url:
           type: string
-          description: URL to the repository API endpoint.
-        remote_commit:
-          oneOf:
-          - $ref: '#/components/schemas/CommitInfo'
-          - type: 'null'
-          description: Detailed information about the last commit in the remote repository (component/translation only).
-        weblate_commit:
-          oneOf:
-          - $ref: '#/components/schemas/CommitInfo'
-          - type: 'null'
-          description: Detailed information about the last commit in the Weblate repository (component/translation only).
-        status:
-          type:
-          - string
-          - 'null'
-          description: Full repository status text (component/translation only).
-        merge_failure:
-          type:
-          - string
-          - 'null'
-          description: Details about merge failure if any (component/translation only).
-        pending_units:
-          oneOf:
-          - $ref: '#/components/schemas/PendingUnits'
-          - type: 'null'
-          description: Detailed breakdown of translation units with pending changes.
-        outgoing_commits:
-          type:
-          - integer
-          - 'null'
-          description: Number of commits ready to be pushed to the remote repository (component/translation only).
-        missing_commits:
-          type:
-          - integer
-          - 'null'
-          description: Number of commits in the remote repository that need to be pulled (component/translation only).
+          format: uri
+          readOnly: true
       required:
-      - needs_commit
-      - needs_merge
-      - needs_push
+      - action_name
+      - author
+      - component
+      - id
+      - timestamp
+      - translation
+      - unit
       - url
-    ErrorCode415Enum:
-      enum:
-      - unsupported_media_type
-      type: string
-      description: '* `unsupported_media_type` - Unsupported Media Type'
-    PaginatedComponentList:
+      - user
+    PaginatedStatisticsList:
       type: object
       required:
       - count
@@ -5443,7 +5080,191 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/Component'
+            $ref: '#/components/schemas/Statistics'
+    ErrorResponse423:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ServerErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error423'
+      required:
+      - errors
+      - type
+    ErrorCode500Enum:
+      enum:
+      - error
+      type: string
+      description: '* `error` - Error'
+    TranslationCreate:
+      type: object
+      properties:
+        language_code:
+          type: string
+        from_component:
+          type: array
+          items:
+            oneOf:
+            - type: integer
+            - type: string
+      required:
+      - language_code
+    PaginatedChangeList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Change'
+    PaginatedAnnouncementList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Announcement'
+    ErrorCode423Enum:
+      enum:
+      - repository-locked
+      - component-locked
+      - unknown-locked
+      type: string
+      description: '* `repository-locked` - Repository Locked
+
+        * `component-locked` - Component Locked
+
+        * `unknown-locked` - Unknown Locked'
+    RepositoryOperation:
+      type: object
+      properties:
+        result:
+          type: boolean
+        detail:
+          type: string
+      required:
+      - result
+    PaginatedComponentTranslationList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ComponentTranslation'
+    PriorityEnum:
+      enum:
+      - 60
+      - 80
+      - 100
+      - 120
+      - 140
+      type: integer
+      description: '* `60` - Very high
+
+        * `80` - High
+
+        * `100` - Medium
+
+        * `120` - Low
+
+        * `140` - Very low'
+    ErrorCode405Enum:
+      enum:
+      - method_not_allowed
+      type: string
+      description: '* `method_not_allowed` - Method Not Allowed'
+    ComponentLinkRequest:
+      type: object
+      properties:
+        project_slug:
+          type: string
+          pattern: ^[-a-zA-Z0-9_]+$
+        category_id:
+          type:
+          - integer
+          - 'null'
+      required:
+      - project_slug
+    VcsEnum:
+      enum:
+      - gerrit
+      - git
+      - git-force-push
+      - local
+      - mercurial
+      - subversion
+      type: string
+      description: '* `gerrit` - Gerrit
+
+        * `git` - Git
+
+        * `git-force-push` - Git with force push
+
+        * `local` - No remote repository
+
+        * `mercurial` - Mercurial
+
+        * `subversion` - Subversion'
+    ErrorCode415Enum:
+      enum:
+      - unsupported_media_type
+      type: string
+      description: '* `unsupported_media_type` - Unsupported Media Type'
+    ErrorResponse404:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error404'
+      required:
+      - errors
+      - type
     Project:
       type: object
       properties:
@@ -5768,199 +5589,21 @@ components:
       - url
       - web
       - web_url
-    SeverityEnum:
-      enum:
-      - info
-      - warning
-      - danger
-      - success
-      type: string
-      description: '* `info` - Info (light blue)
-
-        * `warning` - Warning (yellow)
-
-        * `danger` - Danger (red)
-
-        * `success` - Success (green)'
-    CommitInfo:
-      type: object
-      description: Detailed information about a Git commit.
-      properties:
-        revision:
-          type:
-          - string
-          - 'null'
-          description: Full commit hash.
-        shortrevision:
-          type:
-          - string
-          - 'null'
-          description: Abbreviated commit hash.
-        author:
-          type:
-          - string
-          - 'null'
-          description: Commit author with email (e.g., 'Name <email@example.com>').
-        author_name:
-          type:
-          - string
-          - 'null'
-          description: Author name.
-        author_email:
-          type:
-          - string
-          - 'null'
-          description: Author email address.
-        authordate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: Date when the commit was authored.
-        commit:
-          type:
-          - string
-          - 'null'
-          description: Committer with email (e.g., 'Name <email@example.com>').
-        commit_name:
-          type:
-          - string
-          - 'null'
-          description: Committer name.
-        commit_email:
-          type:
-          - string
-          - 'null'
-          description: Committer email address.
-        commitdate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: Date when the commit was committed.
-        message:
-          type:
-          - string
-          - 'null'
-          description: Full commit message.
-        summary:
-          type:
-          - string
-          - 'null'
-          description: First line of the commit message.
-    ErrorCode406Enum:
-      enum:
-      - not_acceptable
-      type: string
-      description: '* `not_acceptable` - Not Acceptable'
-    Language:
+    Error415:
       type: object
       properties:
-        id:
-          type: integer
-          readOnly: true
         code:
+          $ref: '#/components/schemas/ErrorCode415Enum'
+        detail:
           type: string
-          title: Language code
-          pattern: ^[A-Za-z0-9]+(?:[-_@][A-Za-z0-9]+)*$
-          maxLength: 50
-        name:
-          type: string
-          maxLength: 100
-        plural:
-          $ref: '#/components/schemas/LanguagePlural'
-        aliases:
-          type: array
-          items: {}
-          readOnly: true
-        direction:
-          title: Text direction
-          oneOf:
-          - $ref: '#/components/schemas/DirectionEnum'
-          - $ref: '#/components/schemas/BlankEnum'
-        population:
-          type: integer
-          maximum: 9223372036854775807
-          minimum: -9223372036854775808
-          format: int64
-          title: Number of speakers
-          description: Number of people speaking this language.
-        web_url:
-          type: string
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        statistics_url:
-          type: string
-          format: uri
-          readOnly: true
+        attr:
+          type:
+          - string
+          - 'null'
       required:
-      - aliases
+      - attr
       - code
-      - id
-      - statistics_url
-      - url
-      - web_url
-    PaginatedProjectList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          format: uri
-          example: http://api.example.org/accounts/?page=4
-        previous:
-          type: string
-          format: uri
-          example: http://api.example.org/accounts/?page=2
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Project'
-    ErrorResponse429:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error429'
-      required:
-      - errors
-      - type
-    PriorityEnum:
-      enum:
-      - 60
-      - 80
-      - 100
-      - 120
-      - 140
-      type: integer
-      description: '* `60` - Very high
-
-        * `80` - High
-
-        * `100` - Medium
-
-        * `120` - Low
-
-        * `140` - Very low'
-    ErrorCode401Enum:
-      enum:
-      - authentication_failed
-      - not_authenticated
-      type: string
-      description: '* `authentication_failed` - Authentication Failed
-
-        * `not_authenticated` - Not Authenticated'
+      - detail
     Error400:
       type: object
       properties:
@@ -6004,12 +5647,80 @@ components:
       - attr
       - code
       - detail
-    ErrorCode500Enum:
+    ErrorCode401Enum:
       enum:
-      - error
+      - authentication_failed
+      - not_authenticated
       type: string
-      description: '* `error` - Error'
-    PaginatedAnnouncementList:
+      description: '* `authentication_failed` - Authentication Failed
+
+        * `not_authenticated` - Not Authenticated'
+    ErrorCode406Enum:
+      enum:
+      - not_acceptable
+      type: string
+      description: '* `not_acceptable` - Not Acceptable'
+    OperationEnum:
+      enum:
+      - commit
+      - pull
+      - pull-rebase
+      - pull-merge
+      - pull-merge-noff
+      - push
+      - reset
+      - reset-keep
+      - cleanup
+      - file-sync
+      - file-scan
+      type: string
+      description: '* `commit` - Commit
+
+        * `pull` - Update
+
+        * `pull-rebase` - Update with rebase
+
+        * `pull-merge` - Update with merge
+
+        * `pull-merge-noff` - Update with merge without fast-forward
+
+        * `push` - Push
+
+        * `reset` - Reset all changes in the Weblate repository
+
+        * `reset-keep` - Reset the Weblate repository and reapply translations
+
+        * `cleanup` - Cleanup all untracked files in the Weblate repository
+
+        * `file-sync` - Force writing all translations to the Weblate repository
+
+        * `file-scan` - Rescan all translation files in the Weblate repository'
+    NewLangEnum:
+      enum:
+      - contact
+      - url
+      - add
+      - none
+      type: string
+      description: '* `contact` - Contact maintainers
+
+        * `url` - Point to translation instructions URL
+
+        * `add` - Create new language file
+
+        * `none` - Disable adding new translations'
+    CommitPolicyEnum:
+      enum:
+      - 0
+      - 20
+      - 30
+      type: integer
+      description: '* `0` - Commit all translations regardless of quality
+
+        * `20` - Skip translations marked as needing editing
+
+        * `30` - Only include approved translations'
+    PaginatedComponentList:
       type: object
       required:
       - count
@@ -6029,24 +5740,48 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/Announcement'
-    ErrorResponse403:
+            $ref: '#/components/schemas/Component'
+    Announcement:
       type: object
       properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error403'
+        id:
+          type: integer
+          readOnly: true
+        message:
+          type: string
+          description: You can use Markdown and mention users by @username.
+        severity:
+          allOf:
+          - $ref: '#/components/schemas/SeverityEnum'
+          description: 'Severity defines color used for the message.
+
+
+            * `info` - Info (light blue)
+
+            * `warning` - Warning (yellow)
+
+            * `danger` - Danger (red)
+
+            * `success` - Success (green)'
+        expiry:
+          type:
+          - string
+          - 'null'
+          format: date
+          title: Expiry date
+          description: The message will be not shown after this date. Use it to announce string freeze and translation deadline for next release.
+        notify:
+          type: boolean
+          title: Notify users
+          description: Send notification to subscribed users.
       required:
-      - errors
-      - type
-    Error429:
+      - id
+      - message
+    Error406:
       type: object
       properties:
         code:
-          $ref: '#/components/schemas/ErrorCode429Enum'
+          $ref: '#/components/schemas/ErrorCode406Enum'
         detail:
           type: string
         attr:
@@ -6057,85 +5792,11 @@ components:
       - attr
       - code
       - detail
-    ColorEnum:
-      enum:
-      - navy
-      - blue
-      - aqua
-      - teal
-      - olive
-      - green
-      - lime
-      - yellow
-      - orange
-      - red
-      - maroon
-      - fuchsia
-      - purple
-      - black
-      - gray
-      - silver
-      type: string
-      description: '* `navy` - Navy
-
-        * `blue` - Blue
-
-        * `aqua` - Aqua
-
-        * `teal` - Teal
-
-        * `olive` - Olive
-
-        * `green` - Green
-
-        * `lime` - Lime
-
-        * `yellow` - Yellow
-
-        * `orange` - Orange
-
-        * `red` - Red
-
-        * `maroon` - Maroon
-
-        * `fuchsia` - Fuchsia
-
-        * `purple` - Purple
-
-        * `black` - Black
-
-        * `gray` - Gray
-
-        * `silver` - Silver'
     ServerErrorEnum:
       enum:
       - server_error
       type: string
       description: '* `server_error` - Server Error'
-    Error415:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode415Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    RepositoryOperation:
-      type: object
-      properties:
-        result:
-          type: boolean
-        detail:
-          type: string
-      required:
-      - result
     FileFormatEnum:
       enum:
       - apple-xliff
@@ -6342,63 +6003,6 @@ components:
         * `xwiki-page-properties` - XWiki Page Properties
 
         * `yaml` - YAML file'
-    PendingUnits:
-      type: object
-      description: Detailed breakdown of pending translation units.
-      properties:
-        total:
-          type: integer
-          description: Total number of translation units with pending changes.
-        errors_skipped:
-          type: integer
-          description: Number of units skipped due to commit errors (blocked by retry policy).
-        commit_policy_skipped:
-          type: integer
-          description: Number of units skipped by the commit policy (e.g., needs editing, not approved).
-        eligible_for_commit:
-          type: integer
-          description: Number of units eligible to be committed based on the current policy.
-      required:
-      - commit_policy_skipped
-      - eligible_for_commit
-      - errors_skipped
-      - total
-    ErrorResponse423:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ServerErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error423'
-      required:
-      - errors
-      - type
-    DirectionEnum:
-      enum:
-      - ltr
-      - rtl
-      type: string
-      description: '* `` - Automatically detect text direction
-
-        * `ltr` - Left to right
-
-        * `rtl` - Right to left'
-    NewLangEnum:
-      enum:
-      - contact
-      - url
-      - add
-      - none
-      type: string
-      description: '* `contact` - Contact maintainers
-
-        * `url` - Point to translation instructions URL
-
-        * `add` - Create new language file
-
-        * `none` - Disable adding new translations'
     PaginatedScreenshotList:
       type: object
       required:
@@ -6420,13 +6024,42 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Screenshot'
-    RepoRequest:
+    Error405:
       type: object
       properties:
-        operation:
-          $ref: '#/components/schemas/OperationEnum'
+        code:
+          $ref: '#/components/schemas/ErrorCode405Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
       required:
-      - operation
+      - attr
+      - code
+      - detail
+    PaginatedProjectList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Project'
     ComponentLinkResponse:
       type: object
       properties:
@@ -6434,76 +6067,62 @@ components:
           $ref: '#/components/schemas/Component'
       required:
       - data
-    ErrorCode423Enum:
-      enum:
-      - repository-locked
-      - component-locked
-      - unknown-locked
-      type: string
-      description: '* `repository-locked` - Repository Locked
-
-        * `component-locked` - Component Locked
-
-        * `unknown-locked` - Unknown Locked'
-    LockRequest:
+    Repository:
       type: object
+      description: Serializer for repository status information.
       properties:
-        lock:
+        needs_commit:
           type: boolean
+          description: Whether the repository has pending changes that need to be committed.
+        needs_merge:
+          type: boolean
+          description: Whether the repository needs to pull changes from upstream.
+        needs_push:
+          type: boolean
+          description: Whether the repository has commits that need to be pushed.
+        url:
+          type: string
+          description: URL to the repository API endpoint.
+        remote_commit:
+          oneOf:
+          - $ref: '#/components/schemas/CommitInfo'
+          - type: 'null'
+          description: Detailed information about the last commit in the remote repository (component/translation only).
+        weblate_commit:
+          oneOf:
+          - $ref: '#/components/schemas/CommitInfo'
+          - type: 'null'
+          description: Detailed information about the last commit in the Weblate repository (component/translation only).
+        status:
+          type:
+          - string
+          - 'null'
+          description: Full repository status text (component/translation only).
+        merge_failure:
+          type:
+          - string
+          - 'null'
+          description: Details about merge failure if any (component/translation only).
+        pending_units:
+          oneOf:
+          - $ref: '#/components/schemas/PendingUnits'
+          - type: 'null'
+          description: Detailed breakdown of translation units with pending changes.
+        outgoing_commits:
+          type:
+          - integer
+          - 'null'
+          description: Number of commits ready to be pushed to the remote repository (component/translation only).
+        missing_commits:
+          type:
+          - integer
+          - 'null'
+          description: Number of commits in the remote repository that need to be pulled (component/translation only).
       required:
-      - lock
-    ErrorResponse406:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error406'
-      required:
-      - errors
-      - type
-    OperationEnum:
-      enum:
-      - commit
-      - pull
-      - pull-rebase
-      - pull-merge
-      - pull-merge-noff
-      - push
-      - reset
-      - reset-keep
-      - cleanup
-      - file-sync
-      - file-scan
-      type: string
-      description: '* `commit` - Commit
-
-        * `pull` - Update
-
-        * `pull-rebase` - Update with rebase
-
-        * `pull-merge` - Update with merge
-
-        * `pull-merge-noff` - Update with merge without fast-forward
-
-        * `push` - Push
-
-        * `reset` - Reset all changes in the Weblate repository
-
-        * `reset-keep` - Reset the Weblate repository and reapply translations
-
-        * `cleanup` - Cleanup all untracked files in the Weblate repository
-
-        * `file-sync` - Force writing all translations to the Weblate repository
-
-        * `file-scan` - Rescan all translation files in the Weblate repository'
-    ErrorCode403Enum:
-      enum:
-      - permission_denied
-      type: string
-      description: '* `permission_denied` - Permission Denied'
+      - needs_commit
+      - needs_merge
+      - needs_push
+      - url
     LanguagePlural:
       type: object
       properties:
@@ -6531,63 +6150,582 @@ components:
       required:
       - id
       - type
-    Change:
+    Error404:
       type: object
       properties:
-        unit:
+        code:
+          $ref: '#/components/schemas/ErrorCode404Enum'
+        detail:
           type: string
-          format: uri
-          readOnly: true
-        component:
-          type: string
-          format: uri
-          readOnly: true
-        translation:
-          type: string
-          format: uri
-          readOnly: true
-        user:
-          type: string
-          format: uri
-          readOnly: true
-        author:
-          type: string
-          format: uri
-          readOnly: true
-        timestamp:
-          type: string
-          format: date-time
-          readOnly: true
-        action:
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    ComponentTranslation:
+      type: object
+      properties:
+        language:
           allOf:
-          - $ref: '#/components/schemas/ActionEnum'
-          minimum: -2147483648
-          maximum: 2147483647
-        target:
+          - $ref: '#/components/schemas/Language'
+          readOnly: true
+        language_code:
           type: string
-        old:
-          type: string
-        details: {}
+          maxLength: 50
         id:
           type: integer
           readOnly: true
-        action_name:
+        filename:
+          type: string
+          maxLength: 400
+        revision:
+          type: string
+          maxLength: 200
+        web_url:
+          type: string
+          readOnly: true
+        share_url:
+          type: string
+          readOnly: true
+        translate_url:
           type: string
           readOnly: true
         url:
           type: string
           format: uri
           readOnly: true
+        is_template:
+          type: boolean
+          readOnly: true
+        is_source:
+          type: boolean
+          readOnly: true
+        total:
+          type: integer
+          readOnly: true
+        total_words:
+          type: integer
+          readOnly: true
+        translated:
+          type: integer
+          readOnly: true
+        translated_words:
+          type: integer
+          readOnly: true
+        translated_percent:
+          type: number
+          format: double
+          readOnly: true
+        fuzzy:
+          type: integer
+          readOnly: true
+        fuzzy_words:
+          type: integer
+          readOnly: true
+        fuzzy_percent:
+          type: number
+          format: double
+          readOnly: true
+        failing_checks:
+          type: integer
+          readOnly: true
+        failing_checks_words:
+          type: integer
+          readOnly: true
+        failing_checks_percent:
+          type: number
+          format: double
+          readOnly: true
+        have_suggestion:
+          type: integer
+          readOnly: true
+        have_comment:
+          type: integer
+          readOnly: true
+        last_change:
+          type: string
+          format: date-time
+          readOnly: true
+        last_author:
+          type: string
+          readOnly: true
+        repository_url:
+          type: string
+          format: uri
+          readOnly: true
+        file_url:
+          type: string
+          format: uri
+          readOnly: true
+        statistics_url:
+          type: string
+          format: uri
+          readOnly: true
+        changes_list_url:
+          type: string
+          format: uri
+          readOnly: true
+        units_list_url:
+          type: string
+          format: uri
+          readOnly: true
+        announcements_url:
+          type: string
+          format: uri
+          readOnly: true
       required:
-      - action_name
-      - author
-      - component
+      - announcements_url
+      - changes_list_url
+      - failing_checks
+      - failing_checks_percent
+      - failing_checks_words
+      - file_url
+      - filename
+      - fuzzy
+      - fuzzy_percent
+      - fuzzy_words
+      - have_comment
+      - have_suggestion
       - id
-      - timestamp
-      - translation
-      - unit
+      - is_source
+      - is_template
+      - language
+      - last_author
+      - last_change
+      - repository_url
+      - share_url
+      - statistics_url
+      - total
+      - total_words
+      - translate_url
+      - translated
+      - translated_percent
+      - translated_words
+      - units_list_url
       - url
-      - user
+      - web_url
+    SeverityEnum:
+      enum:
+      - info
+      - warning
+      - danger
+      - success
+      type: string
+      description: '* `info` - Info (light blue)
+
+        * `warning` - Warning (yellow)
+
+        * `danger` - Danger (red)
+
+        * `success` - Success (green)'
+    ComponentTranslationResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ComponentTranslation'
+      required:
+      - data
+    ErrorCode404Enum:
+      enum:
+      - not_found
+      type: string
+      description: '* `not_found` - Not Found'
+    ClientErrorEnum:
+      enum:
+      - client_error
+      type: string
+      description: '* `client_error` - Client Error'
+    ErrorResponse500:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ServerErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error500'
+      required:
+      - errors
+      - type
+    Lock:
+      type: object
+      properties:
+        locked:
+          type: boolean
+          description: Locked component will not get any translation updates.
+    ErrorCode429Enum:
+      enum:
+      - throttled
+      type: string
+      description: '* `throttled` - Throttled'
+    ColorEnum:
+      enum:
+      - navy
+      - blue
+      - aqua
+      - teal
+      - olive
+      - green
+      - lime
+      - yellow
+      - orange
+      - red
+      - maroon
+      - fuchsia
+      - purple
+      - black
+      - gray
+      - silver
+      type: string
+      description: '* `navy` - Navy
+
+        * `blue` - Blue
+
+        * `aqua` - Aqua
+
+        * `teal` - Teal
+
+        * `olive` - Olive
+
+        * `green` - Green
+
+        * `lime` - Lime
+
+        * `yellow` - Yellow
+
+        * `orange` - Orange
+
+        * `red` - Red
+
+        * `maroon` - Maroon
+
+        * `fuchsia` - Fuchsia
+
+        * `purple` - Purple
+
+        * `black` - Black
+
+        * `gray` - Gray
+
+        * `silver` - Silver'
+    ErrorResponse403:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error403'
+      required:
+      - errors
+      - type
+    ErrorResponse401:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error401'
+      required:
+      - errors
+      - type
+    CommitInfo:
+      type: object
+      description: Detailed information about a Git commit.
+      properties:
+        revision:
+          type:
+          - string
+          - 'null'
+          description: Full commit hash.
+        shortrevision:
+          type:
+          - string
+          - 'null'
+          description: Abbreviated commit hash.
+        author:
+          type:
+          - string
+          - 'null'
+          description: Commit author with email (e.g., 'Name <email@example.com>').
+        author_name:
+          type:
+          - string
+          - 'null'
+          description: Author name.
+        author_email:
+          type:
+          - string
+          - 'null'
+          description: Author email address.
+        authordate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Date when the commit was authored.
+        commit:
+          type:
+          - string
+          - 'null'
+          description: Committer with email (e.g., 'Name <email@example.com>').
+        commit_name:
+          type:
+          - string
+          - 'null'
+          description: Committer name.
+        commit_email:
+          type:
+          - string
+          - 'null'
+          description: Committer email address.
+        commitdate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Date when the commit was committed.
+        message:
+          type:
+          - string
+          - 'null'
+          description: Full commit message.
+        summary:
+          type:
+          - string
+          - 'null'
+          description: First line of the commit message.
+    Screenshot:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          title: Screenshot name
+          maxLength: 200
+        repository_filename:
+          type: string
+          title: Repository path to screenshot
+          description: Scan for screenshot file change on repository update.
+          maxLength: 200
+        translation:
+          type: string
+          format: uri
+          readOnly: true
+        file_url:
+          type: string
+          format: uri
+          readOnly: true
+        units:
+          type: array
+          items:
+            type: string
+            format: uri
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+      required:
+      - file_url
+      - id
+      - name
+      - translation
+      - units
+      - url
+    SourceEnum:
+      enum:
+      - 0
+      - 1
+      - 3
+      - 4
+      - 5
+      - 6
+      - 2
+      type: integer
+      description: '* `0` - Default plural
+
+        * `1` - gettext plural formula
+
+        * `3` - CLDR plural with zero
+
+        * `4` - CLDR v38+ plural
+
+        * `5` - Android plural
+
+        * `6` - Qt Linguist plural
+
+        * `2` - Manually entered formula'
+    DirectionEnum:
+      enum:
+      - ltr
+      - rtl
+      type: string
+      description: '* `` - Automatically detect text direction
+
+        * `ltr` - Left to right
+
+        * `rtl` - Right to left'
+    ErrorResponse429:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error429'
+      required:
+      - errors
+      - type
+    Statistics:
+      type: object
+      properties:
+        total:
+          type: integer
+        total_words:
+          type: integer
+        total_chars:
+          type: integer
+        last_change:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        recent_changes:
+          type: integer
+        translated:
+          type: integer
+        translated_words:
+          type: integer
+        translated_percent:
+          type: number
+          format: double
+        translated_words_percent:
+          type: number
+          format: double
+        translated_chars:
+          type: integer
+        translated_chars_percent:
+          type: number
+          format: double
+        fuzzy:
+          type: integer
+        fuzzy_percent:
+          type: number
+          format: double
+        fuzzy_words:
+          type: integer
+        fuzzy_words_percent:
+          type: number
+          format: double
+        fuzzy_chars:
+          type: integer
+        fuzzy_chars_percent:
+          type: number
+          format: double
+        failing:
+          type: integer
+        failing_percent:
+          type: number
+          format: double
+        approved:
+          type: integer
+        approved_percent:
+          type: number
+          format: double
+        approved_words:
+          type: integer
+        approved_words_percent:
+          type: number
+          format: double
+        approved_chars:
+          type: integer
+        approved_chars_percent:
+          type: number
+          format: double
+        readonly:
+          type: integer
+        readonly_percent:
+          type: number
+          format: double
+        readonly_words:
+          type: integer
+        readonly_words_percent:
+          type: number
+          format: double
+        readonly_chars:
+          type: integer
+        readonly_chars_percent:
+          type: number
+          format: double
+        suggestions:
+          type: integer
+        comments:
+          type: integer
+        code:
+          type: string
+        name:
+          type: string
+        url:
+          type: string
+          format: uri
+        translate_url:
+          type: string
+          format: uri
+      required:
+      - approved
+      - approved_chars
+      - approved_chars_percent
+      - approved_percent
+      - approved_words
+      - approved_words_percent
+      - comments
+      - failing
+      - failing_percent
+      - fuzzy
+      - fuzzy_chars
+      - fuzzy_chars_percent
+      - fuzzy_percent
+      - fuzzy_words
+      - fuzzy_words_percent
+      - last_change
+      - readonly
+      - readonly_chars
+      - readonly_chars_percent
+      - readonly_percent
+      - readonly_words
+      - readonly_words_percent
+      - recent_changes
+      - suggestions
+      - total
+      - total_chars
+      - total_words
+      - translated
+      - translated_chars
+      - translated_chars_percent
+      - translated_percent
+      - translated_words
+      - translated_words_percent
+    MergeStyleEnum:
+      enum:
+      - merge
+      - rebase
+      - merge_noff
+      type: string
+      description: '* `merge` - Merge
+
+        * `rebase` - Rebase
+
+        * `merge_noff` - Merge without fast-forward'
     PatchedComponent:
       type: object
       properties:
@@ -7030,23 +7168,11 @@ components:
         locked:
           type: boolean
           readOnly: true
-    ErrorResponse500:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ServerErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error500'
-      required:
-      - errors
-      - type
-    Error404:
+    Error429:
       type: object
       properties:
         code:
-          $ref: '#/components/schemas/ErrorCode404Enum'
+          $ref: '#/components/schemas/ErrorCode429Enum'
         detail:
           type: string
         attr:
@@ -7057,88 +7183,106 @@ components:
       - attr
       - code
       - detail
-    ErrorResponse405:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error405'
-      required:
-      - errors
-      - type
-    Error500:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode500Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    LanguageCodeStyleEnum:
+    ErrorResponse400TypeEnum:
       enum:
-      - posix
-      - posix_lowercase
-      - bcp
-      - posix_long
-      - posix_long_lowercase
-      - bcp_long
-      - bcp_legacy
-      - bcp_lower
-      - android
-      - appstore
-      - googleplay
-      - linux
-      - linux_lowercase
+      - validation_error
+      - client_error
       type: string
-      description: '* `` - Default based on the file format
+      description: '* `validation_error` - Validation Error
 
-        * `posix` - POSIX style using underscore as a separator
-
-        * `posix_lowercase` - POSIX style using underscore as a separator, lower cased
-
-        * `bcp` - BCP style using hyphen as a separator
-
-        * `posix_long` - POSIX style using underscore as a separator, including country code
-
-        * `posix_long_lowercase` - POSIX style using underscore as a separator, including country code, lower cased
-
-        * `bcp_long` - BCP style using hyphen as a separator, including country code
-
-        * `bcp_legacy` - BCP style using hyphen as a separator, legacy language codes
-
-        * `bcp_lower` - BCP style using hyphen as a separator, lower cased
-
-        * `android` - Android style
-
-        * `appstore` - Apple App Store metadata style
-
-        * `googleplay` - Google Play metadata style
-
-        * `linux` - Linux style
-
-        * `linux_lowercase` - Linux style, lower cased'
-    ErrorResponse404:
+        * `client_error` - Client Error'
+    ErrorCode403Enum:
+      enum:
+      - permission_denied
+      type: string
+      description: '* `permission_denied` - Permission Denied'
+    Language:
       type: object
       properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
+        id:
+          type: integer
+          readOnly: true
+        code:
+          type: string
+          title: Language code
+          pattern: ^[A-Za-z0-9]+(?:[-_@][A-Za-z0-9]+)*$
+          maxLength: 50
+        name:
+          type: string
+          maxLength: 100
+        plural:
+          $ref: '#/components/schemas/LanguagePlural'
+        aliases:
           type: array
-          items:
-            $ref: '#/components/schemas/Error404'
+          items: {}
+          readOnly: true
+        direction:
+          title: Text direction
+          oneOf:
+          - $ref: '#/components/schemas/DirectionEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+        population:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+          title: Number of speakers
+          description: Number of people speaking this language.
+        web_url:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        statistics_url:
+          type: string
+          format: uri
+          readOnly: true
       required:
-      - errors
-      - type
+      - aliases
+      - code
+      - id
+      - statistics_url
+      - url
+      - web_url
+    Error423:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode423Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    Error401:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode401Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    LockRequest:
+      type: object
+      properties:
+        lock:
+          type: boolean
+      required:
+      - lock
     Error403:
       type: object
       properties:
@@ -7154,61 +7298,7 @@ components:
       - attr
       - code
       - detail
-    ErrorResponse400:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ErrorResponse400TypeEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error400'
-      required:
-      - errors
-      - type
-    PaginatedChangeList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          format: uri
-          example: http://api.example.org/accounts/?page=4
-        previous:
-          type: string
-          format: uri
-          example: http://api.example.org/accounts/?page=2
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Change'
-    PaginatedComponentTranslationList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          format: uri
-          example: http://api.example.org/accounts/?page=4
-        previous:
-          type: string
-          format: uri
-          example: http://api.example.org/accounts/?page=2
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ComponentTranslation'
-    ErrorResponse401:
+    ErrorResponse406:
       type: object
       properties:
         type:
@@ -7216,113 +7306,18 @@ components:
         errors:
           type: array
           items:
-            $ref: '#/components/schemas/Error401'
+            $ref: '#/components/schemas/Error406'
       required:
       - errors
       - type
-    PaginatedStatisticsList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          format: uri
-          example: http://api.example.org/accounts/?page=4
-        previous:
-          type: string
-          format: uri
-          example: http://api.example.org/accounts/?page=2
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Statistics'
-    SourceEnum:
-      enum:
-      - 0
-      - 1
-      - 3
-      - 4
-      - 5
-      - 6
-      - 2
-      type: integer
-      description: '* `0` - Default plural
-
-        * `1` - gettext plural formula
-
-        * `3` - CLDR plural with zero
-
-        * `4` - CLDR v38+ plural
-
-        * `5` - Android plural
-
-        * `6` - Qt Linguist plural
-
-        * `2` - Manually entered formula'
-    Screenshot:
+    RepoRequest:
       type: object
       properties:
-        id:
-          type: integer
-          readOnly: true
-        name:
-          type: string
-          title: Screenshot name
-          maxLength: 200
-        repository_filename:
-          type: string
-          title: Repository path to screenshot
-          description: Scan for screenshot file change on repository update.
-          maxLength: 200
-        translation:
-          type: string
-          format: uri
-          readOnly: true
-        file_url:
-          type: string
-          format: uri
-          readOnly: true
-        units:
-          type: array
-          items:
-            type: string
-            format: uri
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
+        operation:
+          $ref: '#/components/schemas/OperationEnum'
       required:
-      - file_url
-      - id
-      - name
-      - translation
-      - units
-      - url
-    ErrorCode404Enum:
-      enum:
-      - not_found
-      type: string
-      description: '* `not_found` - Not Found'
-    ErrorResponse400TypeEnum:
-      enum:
-      - validation_error
-      - client_error
-      type: string
-      description: '* `validation_error` - Validation Error
-
-        * `client_error` - Client Error'
+      - operation
   headers:
-    X-RateLimit-Limit:
-      schema:
-        type: integer
-      description: Allowed number of requests to perform
-      required: true
     X-RateLimit-Remaining:
       schema:
         type: integer
@@ -7332,6 +7327,11 @@ components:
       schema:
         type: integer
       description: Number of seconds until the rate-limit window resets
+      required: true
+    X-RateLimit-Limit:
+      schema:
+        type: integer
+      description: Allowed number of requests to perform
       required: true
   securitySchemes:
     bearerAuth:

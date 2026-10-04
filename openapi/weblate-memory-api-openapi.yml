@@ -618,6 +618,55 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ErrorCode423Enum:
+      enum:
+      - repository-locked
+      - component-locked
+      - unknown-locked
+      type: string
+      description: '* `repository-locked` - Repository Locked
+
+        * `component-locked` - Component Locked
+
+        * `unknown-locked` - Unknown Locked'
+    ServerErrorEnum:
+      enum:
+      - server_error
+      type: string
+      description: '* `server_error` - Server Error'
+    ErrorResponse401:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error401'
+      required:
+      - errors
+      - type
+    PaginatedMemoryList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Memory'
     Memory:
       type: object
       properties:
@@ -649,37 +698,12 @@ components:
       - source_language
       - target
       - target_language
-    Error429:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode429Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    Error406:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode406Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    ErrorResponse406:
+    ErrorCode405Enum:
+      enum:
+      - method_not_allowed
+      type: string
+      description: '* `method_not_allowed` - Method Not Allowed'
+    ErrorResponse405:
       type: object
       properties:
         type:
@@ -687,30 +711,10 @@ components:
         errors:
           type: array
           items:
-            $ref: '#/components/schemas/Error406'
+            $ref: '#/components/schemas/Error405'
       required:
       - errors
       - type
-    Error423:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode423Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    ServerErrorEnum:
-      enum:
-      - server_error
-      type: string
-      description: '* `server_error` - Server Error'
     MemoryLookupMatch:
       type: object
       properties:
@@ -733,23 +737,6 @@ components:
       - quality
       - source
       - target
-    ErrorCode405Enum:
-      enum:
-      - method_not_allowed
-      type: string
-      description: '* `method_not_allowed` - Method Not Allowed'
-    ErrorResponse500:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ServerErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error500'
-      required:
-      - errors
-      - type
     Error405:
       type: object
       properties:
@@ -765,22 +752,24 @@ components:
       - attr
       - code
       - detail
-    Error404:
+    ErrorResponse400:
       type: object
       properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode404Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
+        type:
+          $ref: '#/components/schemas/ErrorResponse400TypeEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error400'
       required:
-      - attr
-      - code
-      - detail
-    ErrorResponse405:
+      - errors
+      - type
+    ErrorCode415Enum:
+      enum:
+      - unsupported_media_type
+      type: string
+      description: '* `unsupported_media_type` - Unsupported Media Type'
+    ErrorResponse415:
       type: object
       properties:
         type:
@@ -788,25 +777,22 @@ components:
         errors:
           type: array
           items:
-            $ref: '#/components/schemas/Error405'
+            $ref: '#/components/schemas/Error415'
       required:
       - errors
       - type
-    Error500:
+    ErrorResponse429:
       type: object
       properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode500Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error429'
       required:
-      - attr
-      - code
-      - detail
+      - errors
+      - type
     ErrorResponse404:
       type: object
       properties:
@@ -819,11 +805,6 @@ components:
       required:
       - errors
       - type
-    ErrorCode415Enum:
-      enum:
-      - unsupported_media_type
-      type: string
-      description: '* `unsupported_media_type` - Unsupported Media Type'
     Error415:
       type: object
       properties:
@@ -839,153 +820,6 @@ components:
       - attr
       - code
       - detail
-    ErrorCode429Enum:
-      enum:
-      - throttled
-      type: string
-      description: '* `throttled` - Throttled'
-    MemoryLookupRequest:
-      type: object
-      properties:
-        strings:
-          type: array
-          items:
-            type: string
-            maxLength: 2000
-          maxItems: 100
-      required:
-      - strings
-    PaginatedMemoryList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          format: uri
-          example: http://api.example.org/accounts/?page=4
-        previous:
-          type: string
-          format: uri
-          example: http://api.example.org/accounts/?page=2
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Memory'
-    ErrorResponse400:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ErrorResponse400TypeEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error400'
-      required:
-      - errors
-      - type
-    ErrorResponse423:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ServerErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error423'
-      required:
-      - errors
-      - type
-    ErrorResponse415:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error415'
-      required:
-      - errors
-      - type
-    ErrorCode406Enum:
-      enum:
-      - not_acceptable
-      type: string
-      description: '* `not_acceptable` - Not Acceptable'
-    Error401:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorCode401Enum'
-        detail:
-          type: string
-        attr:
-          type:
-          - string
-          - 'null'
-      required:
-      - attr
-      - code
-      - detail
-    MemoryLookupResult:
-      type: object
-      properties:
-        query:
-          type: string
-        match:
-          oneOf:
-          - $ref: '#/components/schemas/MemoryLookupMatch'
-          - type: 'null'
-      required:
-      - match
-      - query
-    ErrorResponse401:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error401'
-      required:
-      - errors
-      - type
-    ClientErrorEnum:
-      enum:
-      - client_error
-      type: string
-      description: '* `client_error` - Client Error'
-    ErrorCode404Enum:
-      enum:
-      - not_found
-      type: string
-      description: '* `not_found` - Not Found'
-    ErrorResponse429:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ClientErrorEnum'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error429'
-      required:
-      - errors
-      - type
-    ErrorCode401Enum:
-      enum:
-      - authentication_failed
-      - not_authenticated
-      type: string
-      description: '* `authentication_failed` - Authentication Failed
-
-        * `not_authenticated` - Not Authenticated'
     Error400:
       type: object
       properties:
@@ -1029,11 +863,72 @@ components:
       - attr
       - code
       - detail
-    ErrorCode500Enum:
+    ErrorCode401Enum:
       enum:
-      - error
+      - authentication_failed
+      - not_authenticated
       type: string
-      description: '* `error` - Error'
+      description: '* `authentication_failed` - Authentication Failed
+
+        * `not_authenticated` - Not Authenticated'
+    MemoryLookupResult:
+      type: object
+      properties:
+        query:
+          type: string
+        match:
+          oneOf:
+          - $ref: '#/components/schemas/MemoryLookupMatch'
+          - type: 'null'
+      required:
+      - match
+      - query
+    MemoryLookupRequest:
+      type: object
+      properties:
+        strings:
+          type: array
+          items:
+            type: string
+            maxLength: 2000
+          maxItems: 100
+      required:
+      - strings
+    ErrorCode406Enum:
+      enum:
+      - not_acceptable
+      type: string
+      description: '* `not_acceptable` - Not Acceptable'
+    Error429:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode429Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    Error404:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode404Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
     ErrorResponse400TypeEnum:
       enum:
       - validation_error
@@ -1042,17 +937,122 @@ components:
       description: '* `validation_error` - Validation Error
 
         * `client_error` - Client Error'
-    ErrorCode423Enum:
+    Error500:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode500Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    ErrorCode404Enum:
       enum:
-      - repository-locked
-      - component-locked
-      - unknown-locked
+      - not_found
       type: string
-      description: '* `repository-locked` - Repository Locked
-
-        * `component-locked` - Component Locked
-
-        * `unknown-locked` - Unknown Locked'
+      description: '* `not_found` - Not Found'
+    ClientErrorEnum:
+      enum:
+      - client_error
+      type: string
+      description: '* `client_error` - Client Error'
+    Error423:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode423Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    ErrorCode429Enum:
+      enum:
+      - throttled
+      type: string
+      description: '* `throttled` - Throttled'
+    Error401:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode401Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
+    ErrorResponse500:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ServerErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error500'
+      required:
+      - errors
+      - type
+    ErrorResponse406:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ClientErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error406'
+      required:
+      - errors
+      - type
+    ErrorResponse423:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ServerErrorEnum'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error423'
+      required:
+      - errors
+      - type
+    ErrorCode500Enum:
+      enum:
+      - error
+      type: string
+      description: '* `error` - Error'
+    Error406:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode406Enum'
+        detail:
+          type: string
+        attr:
+          type:
+          - string
+          - 'null'
+      required:
+      - attr
+      - code
+      - detail
   headers:
     X-RateLimit-Limit:
       schema:
