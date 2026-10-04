@@ -364,6 +364,8 @@ apis:
   humanURL: https://docs.weblate.org/en/latest/api.html
   baseURL: https://hosted.weblate.org/api/
   tags:
+  - Addons
+  tags_raw:
   - Add Ons
   properties:
   - type: OpenAPI
@@ -371,6 +373,9 @@ apis:
   - type: Documentation
     url: https://docs.weblate.org/en/latest/api.html
 common:
+  - type: CapabilityMap
+    url: capabilities/weblate-capability-edges.yml
+    name: Weblate Business Capability Map
   - type: AgenticAccess
     url: agentic-access/weblate-agentic-access.yml
   - type: VulnerabilityDisclosure
