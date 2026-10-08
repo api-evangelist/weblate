@@ -149,3 +149,72 @@ plans:
       - Priority email support from core developers
       - Self-hosted deployment
       - Faster response times
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - negotiated
+  - subscription
+  units: []
+  plans:
+  - name: Libre / Free
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: 10k Strings
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: 40k Strings
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: 160k Strings
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: 640k Strings
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: 2.5M Strings
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: 10M Strings
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Custom / Enterprise
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Self-Hosted Basic Support
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Self-Hosted Extended Support
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
